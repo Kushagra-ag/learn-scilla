@@ -70,7 +70,7 @@ a:hover
 	z-index: 999;
 }
 
-.nav__link
+.nav-link
 {
 	color: #000000!important;
 	transform: scale(1);
@@ -83,7 +83,7 @@ a:hover
 	transition: color 1s ease-in;
 }
 
-.nav__link:hover
+.nav-link:hover
 {
 	color: #0025D3!important;
 	transform: scale(1.1);

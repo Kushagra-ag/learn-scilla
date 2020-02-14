@@ -55,13 +55,14 @@
 
 .chapter__image
 {
-	transform: scale(0.9);
-	transition: transform 500ms linear;
+	transform: scale(0.8);
+	opacity: 1;
+	transition: all 500ms linear;
 }
 
 .img__scale
 {
-	transform: scale(0);
+	opacity: 0;
 }
 
 .caption
