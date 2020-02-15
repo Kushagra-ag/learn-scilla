@@ -165,4 +165,13 @@ a:hover
 		background-color: #0025D3!important;
 		color: #fff!important;
 	}
+
+	.nav-item:active.nav-link, .nav-item:hover.nav-link
+	{
+		width: 90%;
+	}
+	.nav-link:hover
+	{
+		transform: scale(1);
+	}
 }
