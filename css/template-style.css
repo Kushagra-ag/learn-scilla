@@ -59,7 +59,7 @@
 	transition: all 500ms linear;
 }
 
-.img__scale
+.scale
 {
 	opacity: 0;
 }
@@ -68,6 +68,7 @@
 {
 	color: #FFDA91;
 	font-family: 'avenirnextDemi';
+	text-transform: uppercase;
 }
 
 .wrapper

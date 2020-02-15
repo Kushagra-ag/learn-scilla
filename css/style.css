@@ -14,11 +14,15 @@
 	src: url('../fonts/AvenirNextLTPro-Regular.otf');
 }
 
+/*-----Scrollbar-----*/
+
 *::-webkit-scrollbar
 {
 	
 	display: none;
 }
+
+/*-----Tag styles-----*/
 
 html
 {
@@ -41,6 +45,7 @@ main
 a
 {
 	color: unset!important;
+	cursor: pointer;
 }
 
 a:hover
@@ -148,5 +153,16 @@ a:hover
 		position: absolute;
 		max-height: unset;
 		padding-top: 6rem;
+	}
+
+	.nav-item
+	{
+		font-size: 120%;
+	}
+
+	.nav-item:active.nav-item>a, .nav-item:hover.nav-item>a
+	{
+		background-color: #0025D3!important;
+		color: #fff!important;
 	}
 }

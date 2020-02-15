@@ -54,12 +54,16 @@ function pageChange()
 
 	let target = document.querySelector(`.content__container[data-chapter='${chapter}'][data-page='${page}']`);
 	let image = document.querySelector('.chapter__image');
+	let caption = document.querySelector('.caption');
 
-	image.classList.add('img__scale');
+	image.classList.add('scale');
+	caption.classList.add('scale');
 
 	setTimeout(function(){
 		image.src = `./images/img${page}.png`;
-		image.classList.remove('img__scale');
+		caption.innerHTML = captions.key(page-1);
+		image.classList.remove('scale');
+		caption.classList.remove('scale');
 	},1000);
 
 	if(dir=="down")
