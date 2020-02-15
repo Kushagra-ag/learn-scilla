@@ -14,6 +14,8 @@ $(document).ready(function() {
 	});
 });
 
+/*-----Function for lifting homepage-----*/
+
 function showChapters()
 {
 	let ch = document.querySelector('.chapter__template');
@@ -28,15 +30,14 @@ function showChapters()
 	},500);
 }
 
+/*-----Function for card swipe animations-----*/
+
 function pageChange()
 {
 	let elem = event.currentTarget;
 	let chapter = elem.dataset.chapter;
 	let page = elem.dataset.page;
 	let dir = elem.dataset.dir;
-	
-	// console.log(event.target);
-	// console.log(elem);
 
 	let host = document.querySelector(`.content__container[data-chapter='${chapter}'][data-page='${page}']`);
 	
