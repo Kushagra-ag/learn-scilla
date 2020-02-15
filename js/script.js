@@ -1,6 +1,6 @@
 ;
-window.onload = function()
-{
+$(document).ready(function() {
+
 	let z = 200;
 	let containers = document.getElementsByClassName('content__container');
 	let nav = (document.querySelector('.navbar')).getBoundingClientRect();
@@ -12,10 +12,7 @@ window.onload = function()
 	[...containers].forEach((item)=>{
 		item.style.zIndex = z--;
 	});
-
-	// home.style.height = window.innerHeight - nav.height + "px";
-	// console.log(window.innerHeight);
-}
+});
 
 function showChapters()
 {

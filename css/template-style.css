@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/*-----Fonts declaration-----*/
+
 @font-face
 {
 	font-family: 'avenirnextDemi';
@@ -18,9 +20,11 @@
 	src: url('../fonts/AvenirNextLTPro-Bold.otf');
 }
 
+/*-----IDs-----*/
+
 #pageUp
 {
-	margin-top: -200vh!important;
+	margin-top: -250vh!important;
 }
 
 #pageDown
@@ -28,11 +32,7 @@
 	animation: pgd 1s 300ms 1;
 }
 
-@keyframes pgd
-{
-	from{margin-top: -200vh!important}
-	to{margin-top: 0!important}
-}
+/*-----Template classes-----*/
 
 .chapter__template
 {
@@ -43,7 +43,6 @@
 	max-height: 100vh;
 	min-height: 100vh;
 	overflow: hidden;
-	/*animation: chapter 1s 1;*/
 }
 
 .chapter__template__left
@@ -90,7 +89,6 @@
 .content__container:nth-last-child(1)
 {
 	position: relative;
-	/*max-height: 75vh;*/
 }
 
 .content__title
@@ -113,6 +111,26 @@
 	max-height: 40vh;
 	overflow: hidden;
 }
+
+/*-----Scrollbar style settings-----*/
+
+.content__body::-webkit-scrollbar
+{
+	display: block;
+	width: 2px;
+}
+
+.content__body::-webkit-scrollbar-thumb
+{
+	background-color: #2125298c;
+}
+
+.content__body::-webkit-scrollbar-track
+{
+	display: none;
+}
+
+/*-----Page control button styles-----*/
 
 .page__control
 {
@@ -168,6 +186,16 @@
 	width: 80%;
 }
 
+/*-----Animation keyframes-----*/
+
+@keyframes pgd
+{
+	from{margin-top: -250vh!important}
+	to{margin-top: 0!important}
+}
+
+/*-----Media queries-----*/
+
 @media only screen and (max-width: 767px)
 {
 	.chapter__template, .chapter__template__left
@@ -177,7 +205,17 @@
 
 	.chapter__template
 	{
+		overflow: unset;
+	}
+
+	.content__body
+	{
 		overflow: scroll;
+	}
+
+	.page__control
+	{
+		margin-top: 3rem;
 	}
 }
 

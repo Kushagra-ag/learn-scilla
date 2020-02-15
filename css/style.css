@@ -1,5 +1,7 @@
 @charset "UTF-8";
 
+/*-----Fonts declaration-----*/
+
 @font-face
 {
 	font-family: 'avenirnextDemi';
@@ -21,6 +23,7 @@
 html
 {
 	overflow: -moz-scrollbars-none; 
+	scroll-behavior: smooth;
 }
 
 body
@@ -45,20 +48,7 @@ a:hover
 	text-decoration: none!important;
 }
 
-.homepage
-{
-	position: absolute;
-	top: 0;
-	min-height: 100vh;
-	max-height: 100vh;
-	background-color: #fff;
-	padding-top: 8rem;
-	transition: all 1s ease-in;
-	font-family: 'avenirnextDemi', sans-serif!important;
-	box-shadow: 0 10px 10px 3px rgba(0,0,0,0.2);
-	z-index: 998;
-	overflow: hidden;
-}
+/*-----Navigation bar-----*/
 
 .navbar
 {
@@ -88,6 +78,23 @@ a:hover
 	color: #0025D3!important;
 	transform: scale(1.1);
 
+}
+
+/*-----Homepage styles-----*/
+
+.homepage
+{
+	position: absolute;
+	top: 0;
+	min-height: 100vh;
+	max-height: 100vh;
+	background-color: #fff;
+	padding-top: 8rem;
+	transition: all 1s ease-in;
+	font-family: 'avenirnextDemi', sans-serif!important;
+	box-shadow: 0 10px 10px 3px rgba(0,0,0,0.2);
+	z-index: 998;
+	overflow: hidden;
 }
 
 .card
@@ -131,6 +138,8 @@ a:hover
 	color: #0025D3;
 	font-family: 'avenirnextDemi', sans-serif!important;
 }
+
+/*-----Media queries-----*/
 
 @media only screen and (max-width: 767px)
 {
