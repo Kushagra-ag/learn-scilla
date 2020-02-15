@@ -83,7 +83,7 @@
 	min-height: 100%;
 	box-shadow: 0 5px 6px 3px rgba(0,0,0,0.1);
 	border-radius: 20px;
-	transition: all 1s ease-in;
+	transition: all 1s ease-in-out;
 	background-color: #fff;
 }
 
