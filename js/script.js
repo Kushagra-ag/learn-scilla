@@ -1,4 +1,5 @@
-;
+;import { captions } from './captions.js';
+
 $(document).ready(function() {
 
 	let z = 200;
@@ -6,7 +7,8 @@ $(document).ready(function() {
 	let nav = (document.querySelector('.navbar')).getBoundingClientRect();
 	let home = document.querySelector('.homepage');
 	containers[0].removeAttribute('style');
-
+	let ab = document.querySelector('.abcd');
+	console.log(ab);
 	
 
 	[...containers].forEach((item)=>{
@@ -82,3 +84,15 @@ function pageChange()
 	
 
 }
+
+/*-----Attaching event listeners-----*/
+
+[...document.getElementsByClassName('learn')].forEach((elem) => {
+	elem.addEventListener('click', showChapters);
+	elem.addEventListener('touchend', showChapters);
+});
+
+[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
+	elem.addEventListener('click', pageChange);
+	elem.addEventListener('touchend', pageChange);
+});

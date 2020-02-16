@@ -12,7 +12,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	<script src="./js/captions.js"></script>
+	<script src="./js/captions.js" type="module"></script>
 </head>
 <body>
 	
@@ -73,8 +73,8 @@
 
 						<span class="wide__text">I want to learn about <br/>blockchain</span>
 						<div class="row mt-5">
-							<div class="col-12 text-right learn">
-								<a class="title__learn1" onclick="showChapters()" ontouchend="showChapters()">Learn more </a>
+							<div class="col-12 text-right">
+								<a class="title__learn1 learn">Learn more </a>
 								<svg xmlns="http://www.w3.org/2000/svg" width="7.903" height="11.563" viewBox="0 0 7.903 11.563">
 									<path id="Path_470" data-name="Path 470" d="M2043.282,1147.525,2048,1142.8l4.721,4.721" transform="translate(1148.586 -2042.221) rotate(90)" fill="none" stroke="#0025d3" stroke-width="2"/>
 								</svg>
@@ -115,8 +115,8 @@
 						</div>
 
 						<div class="row mt-5">
-							<div class="col-12 text-right learn">
-								<a class="title__learn2" onclick="showChapters()" ontouchend="showChapters()">Learn more </a>
+							<div class="col-12 text-right">
+								<a class="title__learn2 learn">Learn more </a>
 								<svg xmlns="http://www.w3.org/2000/svg" width="7.903" height="11.563" viewBox="0 0 7.903 11.563">
 									<path id="Path_470" data-name="Path 470" d="M2043.282,1147.525,2048,1142.8l4.721,4.721" transform="translate(1148.586 -2042.221) rotate(90)" fill="none" stroke="#0025d3" stroke-width="2"/>
 								</svg>
@@ -188,7 +188,7 @@
 
 												<div class="col-12 d-flex justify-content-md-end justify-content-center">
 													<div class="page__control mb-3 d-flex flex-column align-items-center text-center">
-														<div class="page__control__up px-2 pt-3 w-100 pb-0" data-chapter="1" data-page="1" data-dir="up" onClick="pageChange()">
+														<div class="page__control__elem page__control__up px-2 pt-3 w-100 pb-0" data-chapter="1" data-page="1" data-dir="up">
 															<svg xmlns="http://www.w3.org/2000/svg" width="17.632" height="10.23" viewBox="0 0 17.632 10.23">
 																<path id="Path_459" data-name="Path 459" d="M2043.282,1150.913l8.109-8.109,8.109,8.109" transform="translate(-2042.575 -1141.39)" fill="none" stroke="#f1f1f1" stroke-width="2"/>
 															</svg>
@@ -197,7 +197,7 @@
 														<div class="px-2 py-2 w-100 m-0 small">
 															1/15									
 														</div>
-														<div class="page__control__down px-2 pb-3 w-100" data-chapter="1" data-page="1" data-dir="down" onClick="pageChange()">
+														<div class="page__control__elem page__control__down px-2 pb-3 w-100" data-chapter="1" data-page="1" data-dir="down">
 															<svg xmlns="http://www.w3.org/2000/svg" width="17.632" height="10.23" viewBox="0 0 17.632 10.23" >
 																<path id="Path_460" data-name="Path 460" d="M2043.282,1150.913l8.109-8.109,8.109,8.109" transform="translate(2060.207 1151.62) rotate(180)" fill="none" stroke="#f1f1f1" stroke-width="2" />
 															</svg>
@@ -235,7 +235,7 @@
 
 												<div class="col-12 d-flex justify-content-md-end justify-content-center">
 													<div class="page__control mb-2 d-flex flex-column align-items-center text-center">
-														<div class="page__control__up px-2 pt-3 w-100 pb-0" data-chapter="1" data-page="2" data-dir="up" onClick="pageChange()">
+														<div class="page__control__elem page__control__up px-2 pt-3 w-100 pb-0" data-chapter="1" data-page="2" data-dir="up">
 															<svg xmlns="http://www.w3.org/2000/svg" width="17.632" height="10.23" viewBox="0 0 17.632 10.23">
 																<path id="Path_459" data-name="Path 459" d="M2043.282,1150.913l8.109-8.109,8.109,8.109" transform="translate(-2042.575 -1141.39)" fill="none" stroke="#f1f1f1" stroke-width="2"/>
 															</svg>
@@ -244,7 +244,7 @@
 														<div class="px-2 py-2 w-100 m-0 small">
 															2/15									
 														</div>
-														<div class="page__control__down px-2 pb-3 w-100" data-chapter="1" data-page="1" data-dir="down" onClick="pageChange()">
+														<div class="page__control__elem page__control__down px-2 pb-3 w-100" data-chapter="1" data-page="1" data-dir="down">
 															<svg xmlns="http://www.w3.org/2000/svg" width="17.632" height="10.23" viewBox="0 0 17.632 10.23" >
 																<path id="Path_460" data-name="Path 460" d="M2043.282,1150.913l8.109-8.109,8.109,8.109" transform="translate(2060.207 1151.62) rotate(180)" fill="none" stroke="#f1f1f1" stroke-width="2" />
 															</svg>
@@ -263,6 +263,6 @@
 			</div>
 		</div>
 
-		<script type="text/javascript" src="./js/script.js"></script>
+		<script type="module" src="./js/script.js"></script>
 	</body>
 	</html>
