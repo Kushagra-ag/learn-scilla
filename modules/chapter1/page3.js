@@ -1,19 +1,21 @@
 ;import template from '../content__template.js';
 
 
-//console.log(template);
+console.log(template);
 
-export var d = template;
+var e = template;
 
 
-d.dataset.chapter = "1";
-d.dataset.page = "3";
+e.dataset.chapter = "1";
+e.dataset.page = "3";
 
-d.querySelector('.content__title>div').innerHTML = "aaaaaaaaaaaaaa";
+e.querySelector('.content__title>div').innerHTML = "aaaaaaaaaaaaaa";
 
-d.querySelector('.content__head').innerHTML = "bbbbbbbbbbb3";
+e.querySelector('.content__head').innerHTML = "bbbbbbbbbbb3";
 
-d.querySelector('.small').innerHTML = "3/15";
+e.querySelector('.small').innerHTML = "3/15";
+
+export default e;
 
 // let body = template.querySelector('.content__head>div:nth-child(2)');
 

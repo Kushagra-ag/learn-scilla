@@ -1,4 +1,6 @@
-;import { captions } from './captions.js';
+;
+import { captions } from './captions.js';
+import abc from '../modules/chapter1/chapter1.js';
 //import { para } from './extra.js';
 
 $(document).ready(function() {
@@ -31,6 +33,7 @@ function clone(node)
 
 function showChapters()
 {
+	
 	let ch = document.querySelector('.chapter__template');
 	let home = document.querySelector('.homepage');
 
@@ -118,13 +121,14 @@ function showPageNext(h,t,id)
 	console.log(host);
 	let dest = document.querySelector(`.y[data-id='${(id+1)%3}']`);
 	console.log(dest);
-
-	import(`../modules/chapter${t.chapter}/page${t.page}.js`).then(({d}) => {
-
+	let address = `../modules/chapter${t.chapter}/chapter${t.chapter}.js`;
+	console.log(address);
+	//let d = await import(address);
+	console.log(t);
 		//append imported module on selected id
-		console.log(d);
+		console.log(abc.page1);
 		// console.log(dest.firstElementChild);
-		let node = clone(d);
+		let node = clone(abc.page1);
 		dest.querySelector('.content__container').replaceWith(node);
 		
 
@@ -146,7 +150,8 @@ function showPageNext(h,t,id)
 
 			//host.style.position = "absolute";
 			node.style.display = "block";
-			host.setAttribute('data-class','up');
+			host.setAttribute('data-class','d__up');
+			// host.style.top = "0";
 
 			//host.querySelector('div').style.opacity = "1";
 			//host.dataset.class = "up";								
@@ -169,12 +174,12 @@ function showPageNext(h,t,id)
 
 		setTimeout(function(){
 			
-			dest.dataset.class = "current"
-			other.dataset.class = "behind";
+			dest.dataset.class = "d__current"
+			other.dataset.class = "d__behind";
 			other.id = "";
 			host.querySelector('.content__container').style.display = "none";
 		},1000)
-	});
+	
 
 
 
@@ -216,22 +221,25 @@ function showPagePrev(h,t,id)
 	// console.log(h);
 	// console.log(t);
 	console.log("host id "+id);
-	console.log("dest id "+(id-1)%3);
+	console.log("dest id "+(id+2)%3);
 	let host = document.querySelector(`.y[data-id='${id}']`);
 	//let host = document.getElementById(id);
 	console.log(host);
 	let dest = document.querySelector(`.y[data-id='${(id+2)%3}']`);
 	console.log(dest);
-
+	console.log(t);
+	let address = `../modules/chapter${t.chapter}/page${t.page}.js`;
+	console.log(address);
 	import(`../modules/chapter${t.chapter}/page${t.page}.js`).then(
 		({d}) => {
 
 		//append imported module on selected id
 		console.log(d);
+		
 		// console.log(dest.firstElementChild);
 		let node = clone(d);
 		dest.querySelector('.content__container').replaceWith(node);
-		
+		console.log(node);
 
 		//dest.appendChild(d);
 
@@ -249,9 +257,9 @@ function showPagePrev(h,t,id)
 		
 
 		
-		
-		dest.dataset.class = "current";
 		node.style.display = "block";
+		dest.dataset.class = "margin_0";
+		host.dataset.class = "u__behind";
 		
 
 		// dest.dataset.id = "2";
@@ -269,9 +277,10 @@ function showPagePrev(h,t,id)
 		setTimeout(function(){
 			
 			
-			host.dataset.class = "behind";
-			other.dataset.class = "up";
-			other.id = "";
+			// host.dataset.class = "u__behind";
+			dest.dataset.class = "u__current";
+			other.dataset.class = "u__up";
+			// other.id = "";
 			host.querySelector('.content__container').style.display = "none";
 		},1000)
 	});

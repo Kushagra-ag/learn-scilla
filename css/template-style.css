@@ -37,29 +37,64 @@
 
 /*-----Template classes-----*/
 
-[data-class="up"]
+[data-class="d__up"]
 {
 	width: 100%;
 	position: absolute;
 	margin-top: -250vh;
+	top: 0;
 	z-index: 30;
 	transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;
 }
 
-[data-class="current"]
+[data-class="d__current"]
 {
 	position: relative;
 	margin-top: 0vh;
+	width: 100%;
 	z-index: 20;
 	transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;
 }
 
-[data-class="behind"]
+[data-class="d__behind"]
 {
 	position: relative;
 	margin-top: 0vh;
 	z-index: 10;
 	/*transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;*/
+}
+
+[data-class="u__up"]
+{
+	width: 100%;
+	position: absolute;
+	margin-top: -250vh;
+	z-index: 20;
+	/*transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;*/
+}
+
+[data-class="u__current"]
+{
+	position: relative;
+	margin-top: 0vh;
+	bottom: 0;
+	width: 100%;
+	z-index: 30;
+	transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;
+}
+
+[data-class="u__behind"]
+{
+	position: relative;
+	margin-top: 0vh;
+	z-index: 10;
+	/*transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;*/
+}
+
+
+[data-class="margin_0"]
+{
+	margin-top: 0;
 }
 
 .chapter__template
