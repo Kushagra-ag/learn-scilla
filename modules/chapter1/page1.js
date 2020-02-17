@@ -1,6 +1,16 @@
-var para = document.createElement("p");
-var node = document.createTextNode("This is new.");
-export var d = document.createElement("div");
+;import template from '../content__template.js';
 
-para.appendChild(node);
-d.appendChild(para);
+
+let title = template.querySelector('.content__title>div');
+
+title.innerHTML = "aaaaaaaaaaaaaa";
+
+let head = template.querySelector('.content__head');
+
+head.innerHTML = "bbbbbbbbbbb";
+
+// let body = template.querySelector('.content__head>div:nth-child(2)');
+
+// body.innerHTML = "ccccccc";
+
+export var d = template;

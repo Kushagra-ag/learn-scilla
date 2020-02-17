@@ -5,14 +5,15 @@
 
 export var d = template;
 
+
 d.dataset.chapter = "1";
-d.dataset.page = "2";
+d.dataset.page = "3";
 
 d.querySelector('.content__title>div').innerHTML = "aaaaaaaaaaaaaa";
 
-d.querySelector('.content__head').innerHTML = "bbbbbbbbbbb2";
+d.querySelector('.content__head').innerHTML = "bbbbbbbbbbb3";
 
-d.querySelector('.small').innerHTML = "2/15";
+d.querySelector('.small').innerHTML = "3/15";
 
 // let body = template.querySelector('.content__head>div:nth-child(2)');
 
