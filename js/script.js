@@ -7,8 +7,7 @@ $(document).ready(function() {
 	let nav = (document.querySelector('.navbar')).getBoundingClientRect();
 	let home = document.querySelector('.homepage');
 	containers[0].removeAttribute('style');
-	let ab = document.querySelector('.abcd');
-	console.log(ab);
+
 	
 
 	[...containers].forEach((item)=>{
@@ -32,6 +31,20 @@ function showChapters()
 	},500);
 }
 
+function hideChapters()
+{
+	let ch = document.querySelector('.chapter__template');
+	let home = document.querySelector('.homepage');
+
+	home.style.marginTop="0";
+
+	setTimeout(function()
+	{
+		ch.style.display = "block";
+		
+	},500);
+}
+
 /*-----Function for card swipe animations-----*/
 
 function pageChange()
@@ -51,9 +64,17 @@ function pageChange()
 	{
 		page++;
 	}
+
+	console.log(page);
 	
-	if(page==0||page==3)
+	if(page==3)
 		return;
+
+	if(page==0)
+	{
+		hideChapters();
+		return;
+	}
 
 	let target = document.querySelector(`.content__container[data-chapter='${chapter}'][data-page='${page}']`);
 	let image = document.querySelector('.chapter__image');
