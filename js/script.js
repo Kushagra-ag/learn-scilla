@@ -40,9 +40,9 @@ function hideChapters()
 
 	setTimeout(function()
 	{
-		ch.style.display = "block";
+		ch.style.display = "none";
 		
-	},500);
+	},1000);
 }
 
 /*-----Function for card swipe animations-----*/
@@ -56,18 +56,19 @@ function pageChange()
 
 	let host = document.querySelector(`.content__container[data-chapter='${chapter}'][data-page='${page}']`);
 	
+
 	if(dir=="up")
 	{
 		page--;
 	}
-	else
+	else if(dir =="down")
 	{
-		page++;
+		page++;	
 	}
 
 	console.log(page);
 	
-	if(page==3)
+	if(page==4)
 		return;
 
 	if(page==0)

@@ -138,9 +138,15 @@ a:hover
 	max-width: 50%;
 }
 
+.title__text
+{
+	min-height: 20vh;
+	max-height: 20vh;
+}
+
 .learn
 {
-	color: #0025D3;
+	color: #0025D3!important;
 	font-family: 'avenirnextDemi', sans-serif!important;
 }
 
