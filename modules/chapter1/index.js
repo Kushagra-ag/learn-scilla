@@ -3,8 +3,6 @@ import template from '../data/template.js';
 import { chapter1 } from '../data/data.js';
 
 
-console.log(template);
-
 let page1 = template.cloneNode(true);
 
 page1.dataset.chapter = "1";
@@ -17,8 +15,6 @@ page1.querySelector('.content__head').innerHTML = chapter1.page1.head;
 page1.querySelector('.body').innerHTML = chapter1.page1.body;
 
 page1.querySelector('.small').innerHTML = "1/15";
-
-console.log(page1);
 
 
 let page2 = template.cloneNode(true);

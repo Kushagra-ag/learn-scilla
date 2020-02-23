@@ -94,6 +94,11 @@
 	z-index: 30;
 }
 
+[data-class="height"]
+{
+	position: absolute!important;
+}
+
 .chapter__template
 {
 	position: absolute;

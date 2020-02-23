@@ -3,20 +3,28 @@ import captions from '../modules/data/data.js';
 import chapters from '../modules/index.js';
 import images from '../images/index.js';
 
+var his;
 
 $(document).ready(function() {
 
 	//let z = 200;
 	let containers = document.getElementsByClassName('content__container');
+	
+	let node = clone(chapters[0].page1);
+	
+	containers[1].replaceWith(node);
+	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
+		elem.dataset.id = node.parentNode.dataset.id;
+		elem.dataset.chapter = node.dataset.chapter;
+		elem.dataset.page = node.dataset.page;
+	})
+
+	attach();
+	
 
 	containers[1].removeAttribute('style');
 
 	
-
-	[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
-		elem.addEventListener('click', pageChange);
-		elem.addEventListener('touchend', pageChange);
-	});
 
 	// [...containers].forEach((item)=>{
 	// 	item.style.zIndex = z--;
@@ -39,17 +47,27 @@ function showChapters()
 	let home = document.querySelector('.homepage');
 
 	// location.hash = "template";
-	// history.pushState({
-	// 	h_chapter: 0,
-	// 	h_page: 0,
-	// 	t_chapter: 1,
-	// 	t_page: 1
-	// },null,`chapter=1/page=1`);
+	history.replaceState({
+		h_chapter: 0,
+		h_page: 0,
+		t_chapter: 1,
+		t_page: 1,
+		id: -1,
+	},null,`./chapter1`);
+
 
 	setTimeout(function()
 	{
 		ch.style.display = "block";
 		home.style.marginTop="-200vh";
+
+		// console.log([...document.getElementsByClassName('content__container')])
+		// let c = [...document.getElementsByClassName('content__container')][1];
+		// let h = c.getBoundingClientRect();
+		// c.parentNode.parentNode.parentNode.style.minHeight = h.height+'px';
+		// //c.parentNode.parentNode.style.height = h.height+'px';
+		// console.log(c.parentNode.parentNode);
+
 	},500);
 }
 
@@ -69,6 +87,26 @@ function hideChapters()
 
 /*-----Function for card swipe animations-----*/
 
+function pageSelect(ch,p,dir)
+{
+	if(dir==="up")
+	{
+		if(ch===1 && p===1)
+			return {ch:1,p:1}
+		else if(ch===2 && p===1)
+			return {ch:1,p:4}
+		else
+			return {ch:ch,p:p-1}
+	}
+	else
+	{
+		if(ch===1 && p===4)
+			return {ch:2,p:1}
+		else
+			return {ch:ch,p:p+1}
+	}
+}
+
 function pageChange(e)
 {
 	console.log(e.state)
@@ -77,47 +115,48 @@ function pageChange(e)
 	
 	let elem = event.currentTarget;
 	let id = parseInt(elem.dataset.id);
-	let chapter = parseInt(elem.dataset.chapter) || 1;
-	let page = parseInt(elem.dataset.page) || 1;
+	let ch = parseInt(elem.dataset.chapter) || 1;
+	let p = parseInt(elem.dataset.page) || 1;
 	let dir = elem.dataset.dir;
 	let prev,cur,next;
 
 	//page++;
 
 	console.log(id);
-	console.log(page);
+	console.log(p);
 
+	let host = {
+		chapter: ch,
+		page: p,
+	};
 	
-	
 
-	if(dir=="up")
-	{
+	// if(dir=="up")
+	// {
 
-		cur = page;
-		next = page-1;
-	}
-	else if(dir =="down")
-	{
+	// 	cur = page;
+	// 	next = page-1;
+	// }
+	// else if(dir =="down")
+	// {
 
-		next = page+1;
-		cur = page;
+	// 	next = page+1;
+	// 	cur = page;
 
-	}
+	// }
 
-	console.log("next - "+next);
+	({ch, p} = pageSelect(ch, p, dir));
 
-	if(next==4)
+	console.log("next - "+p);
+
+	if(p==4)
 		return;
 
 	let target = {
-		chapter: chapter,
-		page: next,
+		chapter: ch,
+		page: p,
 	}
 
-	let host = {
-		chapter: chapter,
-		page: cur,
-	}
 
 	if(dir=="down")
 		showPageNext(host,target,id);
@@ -135,13 +174,8 @@ function showPageNext(h,t,id)
 	console.log("dest id "+(id+1)%3);
 	let host = document.querySelector(`.y[data-id='${id}']`);
 	
-	console.log(host);
 	let dest = document.querySelector(`.y[data-id='${(id+1)%3}']`);
-	console.log(dest);
-
-
-
-	console.log(chapters[t.chapter-1][`page${t.page}`]);
+	
 
 	let node = clone(chapters[t.chapter-1][`page${t.page}`]);
 	dest.querySelector('.content__container').replaceWith(node);
@@ -156,12 +190,6 @@ function showPageNext(h,t,id)
 	})
 
 	attach();
-
-	console.log(dest.childNodes);
-	console.log(dest.firstElementChild);
-
-
-
 
 
 	node.style.display = "block";
@@ -184,12 +212,20 @@ function showPageNext(h,t,id)
 	let image = document.querySelector('.chapter__image');
 	let caption = document.querySelector('.caption');
 
-	// history.pushState({
-	// 	h_chapter: h.chapter,
-	// 	h_page: h.page,
-	// 	t_chapter: t.chapter,
-	// 	t_page: t.page,
-	// },null,`../chapter=${t.chapter}/page=${t.page}`);
+	id = (id+1)%3;
+	history.pushState({
+		h_chapter: h.chapter,
+		h_page: h.page,
+		t_chapter: t.chapter,
+		t_page: t.page,
+		id: id,
+	},null,`./chapter${t.chapter}`);
+
+	his = window .history.state;
+	console.log(his);
+
+	console.log(h);
+	console.log(t);
 
 	image.classList.add('scale');
 	caption.classList.add('scale');
@@ -214,25 +250,23 @@ function showPagePrev(h,t,id)
 
 	console.log(h);
 	console.log(t);
+	console.log(id);
 
 	if(h.page===1 && h.chapter===1)
 	{
 		
-		let home = document.querySelector('.homepage');
+		hideChapters();
 
 		// location.hash = "template";
-		// history.pushState({
-		// 	h_chapter: 0,
-		// 	h_page: 0,
-		// 	t_chapter: 1,
-		// 	t_page: 1
-		// },null,`chapter=1/page=1`);
+		history.pushState({
+			h_chapter: 0,
+			h_page: 0,
+			t_chapter: 1,
+			t_page: 1,
+			id: -1,
+		},null,`./`);
 
-		setTimeout(function()
-		{
-			//ch.style.display = "block";
-			home.style.marginTop=0;
-		},100);
+		his = window .history.state;
 
 		return
 	}
@@ -240,14 +274,14 @@ function showPagePrev(h,t,id)
 
 	console.log("host id "+id);
 	console.log("dest id "+(id+2)%3);
+
 	let host = document.querySelector(`.y[data-id='${id}']`);
 	//let host = document.getElementById(id);
 	console.log(host);
 	let dest = document.querySelector(`.y[data-id='${(id+2)%3}']`);
-	console.log(dest);
-	console.log(t);
+	
 	let address = chapters[t.chapter-1][t.page-1];
-	console.log(address);
+	//console.log(address);
 	
 
 	
@@ -263,9 +297,6 @@ function showPagePrev(h,t,id)
 	})
 
 	attach();
-
-	console.log(dest.childNodes);
-	console.log(dest.firstElementChild);
 
 
 	node.style.display = "block";
@@ -303,12 +334,17 @@ function showPagePrev(h,t,id)
 	let image = document.querySelector('.chapter__image');
 	let caption = document.querySelector('.caption');
 
-	// history.pushState({
-	// 	h_chapter: h.chapter,
-	// 	h_page: h.page,
-	// 	t_chapter: t.chapter,
-	// 	t_page: t.page,
-	// },null,`../chapter=${t.chapter}/page=${t.page}`);
+	id = (id+2)%3;
+	history.pushState({
+		h_chapter: h.chapter,
+		h_page: h.page,
+		t_chapter: t.chapter,
+		t_page: t.page,
+		id: id,
+	},null,`./chapter${t.chapter}`);
+
+	his = window .history.state;
+	console.log(his);
 
 	image.classList.add('scale');
 	caption.classList.add('scale');
@@ -321,35 +357,43 @@ function showPagePrev(h,t,id)
 	},1000);
 
 	
-
-	
-
-
-	
 }
+
+
 
 
 function checkState(e)
 {
 	console.log(e.state);
+	console.log(his);
 
-	if(e.state)
+	let ch, p, id;
+	
+
+	if(his.id != -1)
 	{
+		if(e.state)
+		{
 
-		let target = {
-			chapter: e.state.t_chapter,
-			page: e.state.t_page
+			let host = {
+				chapter: his.t_chapter,
+				page: his.t_page
+			};
+
+			({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
+
+			let target = {
+				chapter: ch,
+				page: p
+			}
+
+			id = his.id;
+
+			
 		}
-
-		let host = {
-			chapter: e.state.h_chapter,
-			page: e.state.h_page
-		}
-
-		let dir = "up";
-
-		showPage(host,target,dir);
 	}
+
+	showPagePrev(host,target,id);
 }
 
 /*-----Attaching event listeners-----*/
