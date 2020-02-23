@@ -18,7 +18,7 @@ export const chapter1 =
 	page3:
 	{
 		title: '',
-		head: 'While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works',
+		head: "While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works",
 		body: ''
 	},
 	page4:
