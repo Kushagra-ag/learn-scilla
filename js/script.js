@@ -1,5 +1,5 @@
 ;
-import { captions } from './captions.js';
+import captions from '../modules/data/data.js';
 import chapters from '../modules/index.js';
 import images from '../images/index.js';
 
