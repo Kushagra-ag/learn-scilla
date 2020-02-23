@@ -1,10 +1,8 @@
 ;
 import { captions } from './captions.js';
-import chapter1 from '../modules/chapter1/index.js';
-import chapter2 from '../modules/chapter2/index.js';
+import chapters from '../modules/index.js';
 import images from '../images/index.js';
 
-let chapters = [chapter1, chapter2];
 
 $(document).ready(function() {
 
