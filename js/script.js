@@ -5,9 +5,14 @@ import images from '../images/index.js';
 
 var his;
 
-$(document).ready(function() {
+$(document).ready(function(e) {
 
 	//let z = 200;
+	if(e.state)
+	{
+		console.log("dkdjfkdfjf");
+	}
+
 	let containers = document.getElementsByClassName('content__container');
 	
 	let node = clone(chapters[0].page1);
@@ -53,7 +58,7 @@ function showChapters()
 		t_chapter: 1,
 		t_page: 1,
 		id: -1,
-	},null,`./chapter1`);
+	},null,`./chapter1/page1`);
 
 
 	setTimeout(function()
@@ -219,7 +224,7 @@ function showPageNext(h,t,id)
 		t_chapter: t.chapter,
 		t_page: t.page,
 		id: id,
-	},null,`./chapter${t.chapter}`);
+	},null,`../chapter${t.chapter}/page${t.page}`);
 
 	his = window .history.state;
 	console.log(his);
@@ -264,7 +269,7 @@ function showPagePrev(h,t,id)
 			t_chapter: 1,
 			t_page: 1,
 			id: -1,
-		},null,`./`);
+		},null,`../`);
 
 		his = window .history.state;
 
@@ -341,7 +346,7 @@ function showPagePrev(h,t,id)
 		t_chapter: t.chapter,
 		t_page: t.page,
 		id: id,
-	},null,`./chapter${t.chapter}`);
+	},null,`../chapter${t.chapter}/page${t.page}`);
 
 	his = window .history.state;
 	console.log(his);
@@ -367,7 +372,7 @@ function checkState(e)
 	console.log(e.state);
 	console.log(his);
 
-	let ch, p, id;
+	let ch, p, id, host, target;
 	
 
 	if(his.id != -1)
@@ -375,14 +380,14 @@ function checkState(e)
 		if(e.state)
 		{
 
-			let host = {
+			host = {
 				chapter: his.t_chapter,
 				page: his.t_page
 			};
 
 			({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
 
-			let target = {
+			target = {
 				chapter: ch,
 				page: p
 			}

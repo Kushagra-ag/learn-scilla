@@ -21,19 +21,19 @@ export const chapter1 =
 	page2:
 	{
 		title: '',
-		head: 'The technology behind bitcoin is now popularly called blockchain.',
-		body: ''
+		head: '',
+		body: `The technology behind bitcoin is now popularly called <strong>Blockchain.</strong>`
 	},
 	page3:
 	{
 		title: '',
-		head: "While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works",
-		body: ''
+		head: '',
+		body: `While the modern day blockchain platforms (such as our own <strong>Zilliqa!</strong>) have further built upon the original concept, <strong>Bitcoin's blockchain</strong> still remains a great starting point to learn about <strong>how the blockchain technology works</strong>`
 	},
 	page4:
 	{
 		title: '',
-		head: "So, let's start learning!",
+		head: `<span style='text-center'>So, let's start learning!</span>`,
 		body: ''
 	},
 
@@ -56,13 +56,13 @@ export const chapter2 =
 	page3:
 	{
 		title: '',
-		head: "While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works",
+		head: "While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works.",
 		body: ''
 	},
 	page4:
 	{
 		title: '',
-		head: "So, let's start learning!",
+		head: `<span style='text-center'>So, let's start learning!</span>`,
 		body: ''
 	},
 
