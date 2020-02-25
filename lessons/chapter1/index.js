@@ -57,11 +57,6 @@ page4.querySelector('.body').innerHTML = chapter1.page4.body;
 
 page4.querySelector('.small').innerHTML = "4/15";
 
-const chapter = {
-	page1: page1,
-	page2: page2,
-	page3: page3,
-	page4: page4,
-}
+const chapter = [ page1, page2, page3, page4 ];
 
 export default chapter;

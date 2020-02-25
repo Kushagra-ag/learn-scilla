@@ -5,7 +5,7 @@ import { chapter2 } from '../data/data.js';
 
 let page1 = template.cloneNode(true);
 
-page1.dataset.chapter = "1";
+page1.dataset.chapter = "2";
 page1.setAttribute('data-page', '1')
 
 page1.querySelector('.content__title>div').innerHTML = chapter2.page1.title;
@@ -19,7 +19,7 @@ page1.querySelector('.small').innerHTML = "1/15";
 
 let page2 = template.cloneNode(true);
 
-page2.dataset.chapter = "1";
+page2.dataset.chapter = "2";
 page2.dataset.page = "2";
 
 page2.querySelector('.content__title>div').innerHTML = chapter2.page2.title;
@@ -33,7 +33,7 @@ page2.querySelector('.small').innerHTML = "2/15";
 
 let page3 = template.cloneNode(true);
 
-page3.dataset.chapter = "1";
+page3.dataset.chapter = "2";
 page3.dataset.page = "3";
 
 page3.querySelector('.content__title>div').innerHTML = chapter2.page3.title;
@@ -47,7 +47,7 @@ page3.querySelector('.small').innerHTML = "3/15";
 
 let page4 = template.cloneNode(true);
 
-page4.dataset.chapter = "1";
+page4.dataset.chapter = "2";
 page4.dataset.page = "4";
 
 page4.querySelector('.content__title>div').innerHTML = chapter2.page4.title;
@@ -58,11 +58,6 @@ page4.querySelector('.body').innerHTML = chapter2.page4.body;
 
 page4.querySelector('.small').innerHTML = "4/15";
 
-const chapter = {
-	page1: page1,
-	page2: page2,
-	page3: page3,
-	page4: page4,
-}
+const chapter = [ page1, page2, page3, page4 ];
 
 export default chapter;

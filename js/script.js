@@ -7,41 +7,38 @@ var his;
 
 $(document).ready(function() {
 
-	//let z = 200;
-	console.log(window.history.state);
-	if(window.history.state)
-	{
-		console.log("bbbbbb");
-	}
+
+	let containers = document.getElementsByClassName('content__container'),node;
 
 	if(localStorage.getItem('v'))
 	{
 		[...document.getElementsByClassName('learn')].forEach((item) => {
 			item.innerHTML = "Continue";
-		})
-	}
+		});
 
-	let containers = document.getElementsByClassName('content__container');
+		let c = localStorage.getItem('c') || 1;
+		let p = localStorage.getItem('p') || 1;
+		node = clone(chapters[c-1][p-1]);
+	}
+	else
+	{
+		node = clone(chapters[0][0]);
+	}
 	
-	let node = clone(chapters[0].page1);
+	
 	
 	containers[1].replaceWith(node);
 	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
 		elem.dataset.id = node.parentNode.dataset.id;
 		elem.dataset.chapter = node.dataset.chapter;
 		elem.dataset.page = node.dataset.page;
-	})
+	});
 
 	attach();
 	
 
 	containers[1].removeAttribute('style');
 
-	
-
-	// [...containers].forEach((item)=>{
-	// 	item.style.zIndex = z--;
-	// });
 });
 
 function clone(node)
@@ -60,13 +57,14 @@ function showChapters()
 	let home = document.querySelector('.homepage');
 
 	// location.hash = "template";
+	let c = localStorage.getItem('c');
 	history.pushState({
 		h_chapter: 0,
 		h_page: 0,
-		t_chapter: 1,
-		t_page: 1,
+		t_chapter: c,
+		t_page: localStorage.getItem('p'),
 		id: -1,
-	},null,`./lessons/chapter1`);
+	},null,`./lessons/chapter${c}`);
 
 
 	setTimeout(function()
@@ -148,8 +146,8 @@ function pageChange(e)
 
 	console.log("next - "+p);
 
-	if(p==4)
-		return;
+	// if(p==4)
+	// 	return;
 
 	let target = {
 		chapter: ch,
@@ -176,7 +174,7 @@ function showPageNext(h,t,id)
 	let dest = document.querySelector(`.y[data-id='${(id+1)%3}']`);
 	
 
-	let node = clone(chapters[t.chapter-1][`page${t.page}`]);
+	let node = clone(chapters[t.chapter-1][t.page-1]);
 	dest.querySelector('.content__container').replaceWith(node);
 
 
@@ -247,9 +245,9 @@ function showPageNext(h,t,id)
 function showPagePrev(h,t,id)
 {
 
-	console.log(h);
-	console.log(t);
-	console.log(id);
+	// console.log(h);
+	// console.log(t);
+	// console.log(id);
 
 	if(h.page===1 && h.chapter===1)
 	{
@@ -284,7 +282,7 @@ function showPagePrev(h,t,id)
 	
 
 	
-	let node = clone(chapters[t.chapter-1][`page${t.page}`]);
+	let node = clone(chapters[t.chapter-1][t.page-1]);
 	
 	dest.querySelector('.content__container').replaceWith(node);
 
@@ -325,11 +323,6 @@ function showPagePrev(h,t,id)
 
 
 
-
-
-
-
-	//let target = document.querySelector(`.content__container[data-chapter='${t.chapter}'][data-page='${t.page}']`);
 	let image = document.querySelector('.chapter__image');
 	let caption = document.querySelector('.caption');
 
@@ -363,7 +356,7 @@ function showPagePrev(h,t,id)
 
 function checkState(e)
 {
-	console.log(e.state);
+	//console.log(e.state);
 	console.log(his);
 
 	let ch, p;
@@ -402,6 +395,8 @@ function checkState(e)
 			id: -1,
 		},null,`./`);
 
+		his = window.history.state;
+
 		hideChapters();
 	}
 
@@ -414,9 +409,13 @@ function unload()
 
 	if(his)
 	{
-		localStorage.setItem('c', his.t_chapter);
-		localStorage.setItem('p', his.t_page);
-		localStorage.setItem('v', 'y');
+		try
+		{
+			localStorage.setItem('c', his.t_chapter);
+			localStorage.setItem('p', his.t_page);
+			localStorage.setItem('v', 'y');
+		}
+		catch{}
 	}
 }
 
