@@ -13,7 +13,7 @@ page1.querySelector('.content__head').innerHTML = chapter1.page1.head;
 
 page1.querySelector('.body').innerHTML = chapter1.page1.body;
 
-page1.querySelector('.small').innerHTML = "1/15";
+page1.querySelector('.small').innerHTML = "1/4";
 
 
 let page2 = template.cloneNode(true);
@@ -27,7 +27,7 @@ page2.querySelector('.content__head').innerHTML = chapter1.page2.head;
 
 page2.querySelector('.body').innerHTML = chapter1.page2.body;
 
-page2.querySelector('.small').innerHTML = "2/15";
+page2.querySelector('.small').innerHTML = "2/4";
 
 
 let page3 = template.cloneNode(true);
@@ -41,7 +41,7 @@ page3.querySelector('.content__head').innerHTML = chapter1.page3.head;
 
 page3.querySelector('.body').innerHTML = chapter1.page3.body;
 
-page3.querySelector('.small').innerHTML = "3/15";
+page3.querySelector('.small').innerHTML = "3/4";
 
 
 let page4 = template.cloneNode(true);
@@ -55,7 +55,7 @@ page4.querySelector('.content__head').innerHTML = chapter1.page4.head;
 
 page4.querySelector('.body').innerHTML = chapter1.page4.body;
 
-page4.querySelector('.small').innerHTML = "4/15";
+page4.querySelector('.small').innerHTML = "4/4";
 
 const chapter = [ page1, page2, page3, page4 ];
 

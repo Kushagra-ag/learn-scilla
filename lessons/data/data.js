@@ -33,7 +33,7 @@ export const chapter1 =
 	page4:
 	{
 		title: '',
-		head: `<span style='text-center'>So, let's start learning!</span>`,
+		head: `<div class='text-center'>So, let's start learning!</div>`,
 		body: ''
 	},
 
