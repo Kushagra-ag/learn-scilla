@@ -2,7 +2,6 @@
 import template from '../data/template.js';
 import { chapter1 } from '../data/data.js';
 
-
 let page1 = template.cloneNode(true);
 
 page1.dataset.chapter = "1";

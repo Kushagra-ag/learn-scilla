@@ -1,16 +1,24 @@
 ;
-import captions from '../modules/data/data.js';
-import chapters from '../modules/index.js';
+import captions from '../lessons/data/data.js';
+import chapters from '../lessons/index.js';
 import images from '../images/index.js';
 
 var his;
 
-$(document).ready(function(e) {
+$(document).ready(function() {
 
 	//let z = 200;
-	if(e.state)
+	console.log(window.history.state);
+	if(window.history.state)
 	{
-		console.log("dkdjfkdfjf");
+		console.log("bbbbbb");
+	}
+
+	if(localStorage.getItem('v'))
+	{
+		[...document.getElementsByClassName('learn')].forEach((item) => {
+			item.innerHTML = "Continue";
+		})
 	}
 
 	let containers = document.getElementsByClassName('content__container');
@@ -52,13 +60,13 @@ function showChapters()
 	let home = document.querySelector('.homepage');
 
 	// location.hash = "template";
-	history.replaceState({
+	history.pushState({
 		h_chapter: 0,
 		h_page: 0,
 		t_chapter: 1,
 		t_page: 1,
 		id: -1,
-	},null,`./chapter1/page1`);
+	},null,`./lessons/chapter1`);
 
 
 	setTimeout(function()
@@ -120,8 +128,8 @@ function pageChange(e)
 	
 	let elem = event.currentTarget;
 	let id = parseInt(elem.dataset.id);
-	let ch = parseInt(elem.dataset.chapter) || 1;
-	let p = parseInt(elem.dataset.page) || 1;
+	let ch = parseInt(elem.dataset.chapter);
+	let p = parseInt(elem.dataset.page);
 	let dir = elem.dataset.dir;
 	let prev,cur,next;
 
@@ -135,20 +143,6 @@ function pageChange(e)
 		page: p,
 	};
 	
-
-	// if(dir=="up")
-	// {
-
-	// 	cur = page;
-	// 	next = page-1;
-	// }
-	// else if(dir =="down")
-	// {
-
-	// 	next = page+1;
-	// 	cur = page;
-
-	// }
 
 	({ch, p} = pageSelect(ch, p, dir));
 
@@ -224,7 +218,7 @@ function showPageNext(h,t,id)
 		t_chapter: t.chapter,
 		t_page: t.page,
 		id: id,
-	},null,`../chapter${t.chapter}/page${t.page}`);
+	},null,`./chapter${t.chapter}`);
 
 	his = window .history.state;
 	console.log(his);
@@ -269,7 +263,7 @@ function showPagePrev(h,t,id)
 			t_chapter: 1,
 			t_page: 1,
 			id: -1,
-		},null,`../`);
+		},null,`..`);
 
 		his = window .history.state;
 
@@ -346,7 +340,7 @@ function showPagePrev(h,t,id)
 		t_chapter: t.chapter,
 		t_page: t.page,
 		id: id,
-	},null,`../chapter${t.chapter}/page${t.page}`);
+	},null,`./chapter${t.chapter}`);
 
 	his = window .history.state;
 	console.log(his);
@@ -372,38 +366,64 @@ function checkState(e)
 	console.log(e.state);
 	console.log(his);
 
-	let ch, p, id, host, target;
+	let ch, p;
 	
 
-	if(his.id != -1)
+	if(his)
 	{
-		if(e.state)
+		if(his.id != -1)
 		{
 
-			host = {
+			let host = {
 				chapter: his.t_chapter,
 				page: his.t_page
 			};
 
 			({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
 
-			target = {
+			let target = {
 				chapter: ch,
 				page: p
 			}
 
-			id = his.id;
+			let id = his.id;
 
-			
+			showPagePrev(host,target,id);
 		}
 	}
 
-	showPagePrev(host,target,id);
+	else
+	{
+		history.pushState({
+			h_chapter: 0,
+			h_page: 0,
+			t_chapter:1,
+			t_page: 1,
+			id: -1,
+		},null,`./`);
+
+		hideChapters();
+	}
+
+	
+}
+
+function unload()
+{
+	console.log('unloaded');
+
+	if(his)
+	{
+		localStorage.setItem('c', his.t_chapter);
+		localStorage.setItem('p', his.t_page);
+		localStorage.setItem('v', 'y');
+	}
 }
 
 /*-----Attaching event listeners-----*/
 
 window.onpopstate = checkState;
+window.onbeforeunload = unload;
 
 [...document.getElementsByClassName('learn')].forEach((elem) => {
 	elem.addEventListener('click', showChapters);
