@@ -93,7 +93,6 @@ function showChapters()
 		// console.log(c.parentNode.parentNode);
 
 	},500);
-	console.log('showChapters');
 }
 
 function hideChapters()
@@ -113,7 +112,7 @@ function hideChapters()
 /*-----Function for card swipe animations-----*/
 
 function pageSelect(ch,p,dir)
-{
+{console.log('cc');
 	if(dir==="up")
 	{
 		if(ch===1 && p===1)
@@ -445,7 +444,6 @@ window.onbeforeunload = unload;
 
 [...document.getElementsByClassName('learn')].forEach((elem) => {
 	elem.addEventListener('click', showChapters);
-	elem.addEventListener('touchend', showChapters);
 });
 
 document.querySelector('.chapter__image').addEventListener('load', function(e) {
@@ -460,8 +458,7 @@ document.querySelector('.chapter__image').addEventListener('load', function(e) {
 let attach = () => {
 	setTimeout(function() {
 		[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
-			elem.addEventListener('click', pageChange);
-			elem.addEventListener('touchend', pageChange);
+			elem.addEventListener('click', pageChange);	
 		});
 	}, 1000);
 };
