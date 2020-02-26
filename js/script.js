@@ -93,6 +93,7 @@ function showChapters()
 		// console.log(c.parentNode.parentNode);
 
 	},500);
+	console.log('showChapters');
 }
 
 function hideChapters()
@@ -217,7 +218,7 @@ function showPageNext(h,t,id)
 		other.dataset.class = "d__behind";
 		other.id = "";
 		host.querySelector('.content__container').style.display = "none";
-	},1000)
+	},600)
 
 
 	let image = document.querySelector('.chapter__image');
@@ -334,7 +335,7 @@ function showPagePrev(h,t,id)
 
 		host.querySelector('.content__container').style.display = "none";
 
-	},1000)
+	},600)
 
 
 
@@ -350,7 +351,7 @@ function showPagePrev(h,t,id)
 		id: id,
 	},null,`./chapter${t.chapter}`);
 
-	his = window .history.state;
+	his = window.history.state;
 	console.log(his);
 
 	image.classList.add('scale');
@@ -384,21 +385,21 @@ function checkState(e)
 	{
 		
 
-			let host = {
-				chapter: his.t_chapter,
-				page: his.t_page
-			};
+		let host = {
+			chapter: his.t_chapter,
+			page: his.t_page
+		};
 
-			({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
+		({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
 
-			let target = {
-				chapter: ch,
-				page: p
-			}
+		let target = {
+			chapter: ch,
+			page: p
+		}
 
-			let id = his.id;
+		let id = his.id;
 
-			showPagePrev(host,target,id);
+		showPagePrev(host,target,id);
 		
 	}
 
@@ -451,14 +452,16 @@ document.querySelector('.chapter__image').addEventListener('load', function(e) {
 	let img = document.querySelector('.chapter__image');
 	
 	
-		img.classList.remove('scale');
+	img.classList.remove('scale');
 	
 });
 
 
 let attach = () => {
-	[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
-		elem.addEventListener('click', pageChange);
-		elem.addEventListener('touchend', pageChange);
-	});
+	setTimeout(function() {
+		[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
+			elem.addEventListener('click', pageChange);
+			elem.addEventListener('touchend', pageChange);
+		});
+	}, 1000);
 };

@@ -43,15 +43,16 @@ export const chapter2 =
 {
 	page1:
 	{
-		title: 'CHAPTER 1: INTRODUCTION',
-		head: 'On 31st Oct 2008, a mysterious figure Satoshi Nakamoto ­ published the Bitcoin white paper.',
-		body: ''
+		title: 'CHAPTER 2: PRIVATE KEY AND WALLET ADDRESS',
+		head: 'Symmetric encryption',
+		body: `Before the mid 1970s, a single key was used to encrypt as well as decrypt a message. This often meant that the sender and the receiver of the message had to possess the same key­ this of course created the question about how could the sender and receiver share the secret key with each other without it being intercepted.`
 	},
 	page2:
 	{
 		title: '',
-		head: 'The technology behind bitcoin is now popularly called blockchain.',
-		body: ''
+		head: 'Asymmetric encryption',
+		body: `In the early 1970s, few mathematicians and cryptographers came up with the concept of asymmetric encryption or the public key encryption.<br/>
+				Here, the encryption was done by one key, the public key.`
 	},
 	page3:
 	{
