@@ -20,20 +20,6 @@
 	src: url('../fonts/AvenirNextLTPro-Bold.otf');
 }
 
-/*-----IDs-----*/
-
-#pageUp
-{
-	/*position: absolute;
-	margin-top: -250vh!important;
-	transition: margin-top 1s ease-in-out, opacity 100ms linear 1s;*/
-}
-
-#pageDown
-{
-	margin-top: 0!important;
-	transition: margin-top 600ms ease-in-out, opacity 100ms linear 1s;
-}
 
 /*-----Template classes-----*/
 
@@ -116,7 +102,22 @@
 	min-height: 100vh;
 	max-height: 100vh;
 	overflow: hidden;
+	background-color: #192352;
+	z-index:7;
+	transition: all 600ms;
+}
+
+.chapter__template__right
+{
+	transition: width 900ms;
 	z-index: 6;
+}
+
+.img__container
+{
+	margin-top: 25vh;
+	min-height: 360px;
+	overflow: hidden;
 }
 
 .chapter__image
@@ -128,7 +129,17 @@
 
 .scale
 {
-	opacity: 0;
+	opacity: 0
+}
+
+.slide-up
+{
+	margin-top: -150vh;
+}
+
+.slide-down
+{
+	margin-top: 100vh;
 }
 
 .caption
@@ -136,6 +147,7 @@
 	color: #FFDA91;
 	font-family: 'avenirnextDemi';
 	text-transform: uppercase;
+	letter-spacing: 2px;
 }
 
 .progress
@@ -157,7 +169,7 @@
 	box-shadow: 0 5px 6px 3px rgba(0,0,0,0.1);
 	width: 100%;	
 	border-radius: 20px;
-	transition: margin-top 600ms ease-in-out, opacity 50ms linear;
+	transition: margin-top 600ms ease-in-out, opacity 50ms linear, all 600ms;
 	background-color: #fff;
 }
 
@@ -178,8 +190,8 @@
 
 .content__body
 {
-	min-height: 40vh;
-	max-height: 40vh;
+	min-height: 45vh;
+	max-height: 45vh;
 	overflow: hidden;
 }
 
@@ -212,12 +224,21 @@
 {
 	background-color: #192352;
 	display: inline-block;
-	color: #fff;	
+	color: #fff;
+	stroke: #fff;
 	margin-top: -3rem;
 	min-width: 45px;
 	border-radius: 20px;
 	max-height: 25vh;
 	box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.4);
+	transition: all 1s;
+}
+
+.page__control--dark
+{
+	background-color: #fff;
+	color: #192352;
+	stroke: #192352;
 }
 
 .page__control__up, .page__control__down

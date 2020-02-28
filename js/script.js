@@ -3,14 +3,15 @@ import captions from '../lessons/data/data.js';
 import chapters, { total } from '../lessons/index.js';
 import images from '../images/index.js';
 
+console.log(chapters);
+
 var his;
 
 $(document).ready(function() {
 
 
 	let containers = document.getElementsByClassName('content__container'),node;
-	let image = document.querySelector('.chapter__image');
-	let bar = document.querySelector('.progress');
+	
 
 	if(localStorage.getItem('v'))
 	{
@@ -20,17 +21,16 @@ $(document).ready(function() {
 
 		let c = localStorage.getItem('c') || 1;
 		let p = localStorage.getItem('p') || 1;
-		node = clone(chapters[c-1][p-1]);
-		image.src = images[c-1][p-1].slice(1);
-		bar.style.width = (p/(total[c-1]))*100+'%';
-		console.log('p- ',p);
-		console.log('c- ',c);
-		console.log(total);
+
+		node = contentUpdate(c,p,0);
+
+		
 	}
 	else
 	{
 		node = clone(chapters[0][0]);
 		image.src = images[0][0];
+		caption.innerHTML = captions[0][0];
 		bar.style.width = "25%";
 	}
 	
@@ -52,6 +52,33 @@ $(document).ready(function() {
 
 });
 
+function contentUpdate(c,p,time)
+{
+	let image = document.querySelector('.chapter__image');
+	let bar = document.querySelector('.progress');
+	let caption = document.querySelector('.caption');
+
+	
+	let node = clone(chapters[c-1][p-1]);
+	// image.src = images[c-1][p-1].slice(1);
+	// bar.style.width = (p/(total[c-1]))*100+'%';
+	// caption.innerHTML = captions[c-1][p-1];
+
+	image.classList.add('slide-up');
+	caption.classList.add('scale');
+
+	setTimeout(function(){
+		image.src = time ? images[c-1][p-1] : images[c-1][p-1].slice(1);
+		caption.innerHTML = captions[c-1][p-1];
+		caption.classList.remove('scale');
+		bar.style.width = (p/(total[c-1]))*100+'%';
+
+	},time);
+
+	return node;
+
+}
+
 function clone(node)
 {
 	let cloned = node.cloneNode(true);
@@ -68,12 +95,12 @@ function showChapters()
 	let home = document.querySelector('.homepage');
 
 	// location.hash = "template";
-	let c = localStorage.getItem('c');
+	let c = localStorage.getItem('c')||1;
 	history.pushState({
 		h_chapter: 0,
 		h_page: 0,
 		t_chapter: c,
-		t_page: localStorage.getItem('p'),
+		t_page: localStorage.getItem('p')||1,
 		id: -1,
 	},null,`./lessons/chapter${c}`);
 
@@ -84,13 +111,6 @@ function showChapters()
 	{
 		ch.style.display = "block";
 		home.style.marginTop="-200vh";
-
-		// console.log([...document.getElementsByClassName('content__container')])
-		// let c = [...document.getElementsByClassName('content__container')][1];
-		// let h = c.getBoundingClientRect();
-		// c.parentNode.parentNode.parentNode.style.minHeight = h.height+'px';
-		// //c.parentNode.parentNode.style.height = h.height+'px';
-		// console.log(c.parentNode.parentNode);
 
 	},500);
 }
@@ -112,7 +132,7 @@ function hideChapters()
 /*-----Function for card swipe animations-----*/
 
 function pageSelect(ch,p,dir)
-{console.log('cc');
+{
 	if(dir==="up")
 	{
 		if(ch===1 && p===1)
@@ -159,8 +179,8 @@ function pageChange(e)
 
 	console.log("next - "+p);
 
-	// if(p==4)
-	// 	return;
+	if(p==11)
+		return;
 
 	let target = {
 		chapter: ch,
@@ -169,13 +189,33 @@ function pageChange(e)
 
 
 	if(dir=="down")
-		showPageNext(host,target,id);
+	{
+		if(ch===2 && p===10)
+		{
+			showPageNext(host,target,id,1);
+			
+			setTimeout(cardLandscape,1200);
+			return;
+		}
+
+		showPageNext(host,target,id,0);
+	}
 	else
-		showPagePrev(host,target,id);
+	{
+		if(ch===2 && p===9)
+		{
+			showPagePrev(host,target,id,-1);
+			
+			setTimeout(cardPortrait,1200);
+			return;
+		}
+
+		showPagePrev(host,target,id,0);
+	}
 
 }
 
-function showPageNext(h,t,id)
+function showPageNext(h,t,id,f)
 {
 
 	// console.log(h);
@@ -184,11 +224,15 @@ function showPageNext(h,t,id)
 	console.log("host id "+id);
 	console.log("dest id "+(id+1)%3);
 	let host = document.querySelector(`.y[data-id='${id}']`);
-	
 	let dest = document.querySelector(`.y[data-id='${(id+1)%3}']`);
-	
+	let other = document.querySelector(`.y[data-id='${(id+2)%3}']`);
 
-	let node = clone(chapters[t.chapter-1][t.page-1]);
+	host.classList.remove('active--card');
+	dest.classList.add('active--card');
+
+
+	let node = contentUpdate(t.chapter,t.page,600);
+
 	dest.querySelector('.content__container').replaceWith(node);
 
 
@@ -208,20 +252,18 @@ function showPageNext(h,t,id)
 
 
 
-	let other = document.querySelector(`.y[data-id='${(id+2)%3}']`);
+	
 
 
 	setTimeout(function(){
 
 		dest.dataset.class = "d__current"
 		other.dataset.class = "d__behind";
-		other.id = "";
+		
 		host.querySelector('.content__container').style.display = "none";
 	},600)
 
 
-	let image = document.querySelector('.chapter__image');
-	let caption = document.querySelector('.caption');
 
 	id = (id+1)%3;
 	history.pushState({
@@ -238,26 +280,11 @@ function showPageNext(h,t,id)
 	console.log(h);
 	console.log(t);
 
-	image.classList.add('scale');
-	caption.classList.add('scale');
-
-	setTimeout(function(){
-		image.src = images[t.chapter-1][t.page-1];
-		caption.innerHTML = captions.key(t.page-1);
-		image.classList.remove('scale');
-		caption.classList.remove('scale');
-		bar.style.width = (t.page/(total[t.chapter-1]))*100+'%';
-	},600);
-
 	
-
-	
-
-
 	
 }
 
-function showPagePrev(h,t,id)
+function showPagePrev(h,t,id,f)
 {
 	let bar = document.querySelector('.progress');
 	// console.log(h);
@@ -288,16 +315,15 @@ function showPagePrev(h,t,id)
 	console.log("dest id "+(id+2)%3);
 
 	let host = document.querySelector(`.y[data-id='${id}']`);
-	//let host = document.getElementById(id);
-	console.log(host);
 	let dest = document.querySelector(`.y[data-id='${(id+2)%3}']`);
-	
-	let address = chapters[t.chapter-1][t.page-1];
-	//console.log(address);
+	let other = document.querySelector(`.y[data-id='${(id+1)%3}']`);
+
+	host.classList.remove('active--card');
+	dest.classList.add('active--card');
 	
 
 	
-	let node = clone(chapters[t.chapter-1][t.page-1]);
+	let node = contentUpdate(t.chapter,t.page,600);
 	
 	dest.querySelector('.content__container').replaceWith(node);
 
@@ -319,12 +345,6 @@ function showPagePrev(h,t,id)
 	dest.dataset.class = "u__current";
 
 
-
-
-	let other = document.querySelector(`.y[data-id='${(id+1)%3}']`);
-	console.log(other);
-
-
 	setTimeout(function(){
 
 
@@ -336,10 +356,6 @@ function showPagePrev(h,t,id)
 
 	},600)
 
-
-
-	let image = document.querySelector('.chapter__image');
-	let caption = document.querySelector('.caption');
 
 	id = (id+2)%3;
 	history.pushState({
@@ -353,18 +369,7 @@ function showPagePrev(h,t,id)
 	his = window.history.state;
 	console.log(his);
 
-	image.classList.add('scale');
-	caption.classList.add('scale');
 	
-
-	setTimeout(function(){
-		image.src = images[t.chapter-1][t.page-1];
-		caption.innerHTML = captions.key(t.page-1);
-		//image.classList.remove('scale');
-		caption.classList.remove('scale');
-		bar.style.width = (t.page/(total[t.chapter-1]))*100+'%';
-	},600);
-
 	
 }
 
@@ -447,12 +452,61 @@ window.onbeforeunload = unload;
 });
 
 document.querySelector('.chapter__image').addEventListener('load', function(e) {
-	let img = document.querySelector('.chapter__image');
-	
-	
-	img.classList.remove('scale');
+	setTimeout(function() {
+		let img = document.querySelector('.chapter__image');
+
+		img.classList.remove('slide-up');
+		//img.classList.remove('slide-down');
+	},500)
 	
 });
+
+function cardLandscape()
+{
+	let r = document.querySelector('.chapter__template__right');
+	let l = document.querySelector('.chapter__template__left');
+	let active = r.querySelector('.active--card');
+	
+	r.classList.add('card--full');
+	l.style.zIndex = '5';
+	l.style.opacity = "0";
+
+	
+
+	setTimeout(function() {
+		r.classList.add('col-md-12');
+		r.classList.add('fullWidth');
+		active.querySelector('.content__container').classList.add('fullWidth--dark');
+		active.querySelector('.page__control').classList.add('page__control--dark');
+
+		if(window.innerWidth >= 768)
+		{
+			r.querySelector('.card__bar').style.width = "30%";
+		}
+
+	},800);
+}
+
+function cardPortrait()
+{
+	let r = document.querySelector('.chapter__template__right');
+	let l = document.querySelector('.chapter__template__left');
+	let active = r.querySelector('.active--card');
+
+	
+	r.classList.remove('fullWidth');
+
+	setTimeout(function() {
+		r.classList.remove('card--full');
+		l.removeAttribute('style');
+		r.classList.remove('col-md-12');
+		active.querySelector('.content__container').classList.remove('fullWidth--dark');
+		active.querySelector('.page__control').classList.remove('page__control--dark');
+	},800);
+
+	r.querySelector('.card__bar').removeAttribute('style');
+}
+
 
 
 let attach = () => {

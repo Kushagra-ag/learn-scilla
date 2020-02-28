@@ -1,21 +1,30 @@
 ;
 
-export const captions = {
-	c1 : 'Published on October 31, 2008',
-	c2 : 'Enigma : Used in world war II',
-	c3 : 'Enigma : Used in world war III',
+export const captions = [[
+	'Published on October 31, 2008',
+	'Blockchain',
+	'Zilliqa',
+	'Blockchain',
+	],[
+	'ENIGMA: USED IN WORLD WAR II',
+	'Cryptography',
+	'WHITEFILED DIFFIE and MARTIN HELLMAN',
+	'Public Key and Private Key',
+	'Private Key',
+	'Github Code',
+	'Public Key',
+	'Github Code',
+	'Public Key and Private Key',
+	'Github Code'
+    ]]
 
-	key: function(n) {
-        return this[Object.keys(this)[n]];
-    }
-};
 
 export const chapter1 = 
 {
 	page1:
 	{
 		title: 'CHAPTER 1: INTRODUCTION',
-		head: 'On 31st Oct 2008, a mysterious figure Satoshi Nakamoto ­ published the Bitcoin white paper.',
+		head: `On 31st Oct 2008, a mysterious figure Satoshi Nakamoto published the Bitcoin white paper.`,
 		body: ''
 	},
 	page2:
@@ -57,16 +66,54 @@ export const chapter2 =
 	page3:
 	{
 		title: '',
-		head: "While the modern day blockchain platforms (such as our own Zilliqa!) have further built upon the original concept, Bitcoin's blockchain still remains a great starting point to learn about how the blockchain technology works.",
-		body: ''
+		head: 'Fun Trivia',
+		body: `Till 1992, cryptography was on the U.S. Munitions List as an Auxiliary Military Equipment. Such an attitude was common among the governments and because of that the first known discovery of asymmetric encryption by UK Government Communications Headquarters (GCHQ), wasn't publicly acknowled till 1997, which was about 27 years after the discovery.`
 	},
 	page4:
 	{
 		title: '',
-		head: `<span style='text-center'>So, let's start learning!</span>`,
-		body: ''
+		head: '',
+		body: `Now, to understand the asymmetric encryption, that involves a public and a private key for encrypting and decrypting a message, let's start with the concept of private key.`
 	},
-
+	page5:
+	{
+		title: '',
+		head: 'Private key',
+		body: `A private key is essentially a randomly generated number between 1 and 2^256.<br/>
+				While any method can be used to pick this random number, it’s recommended that one uses a cryptographically secure pseudorandom number generator (CSPRNG) with a seed from a source of sufficient entropy.`
+	},
+	page6:
+	{
+		title: '',
+		head: 'Your random private key',
+		body: ``
+	},
+	page7:
+	{
+		title: '',
+		head: 'Public key',
+		body: `Once the random private key is selected, the corresponding public key can be calculated. <br/>However, no method is currently known that allows one to calculate the private key from the public key`
+	},
+	page8:
+	{
+		title: '',
+		head: 'Public key calculated',
+		body: ``
+	},
+	page9:
+	{
+		title: '',
+		head: '',
+		body: `Now, let's take an example of how this works.<br/>
+		Suppose, you distribute the <strong>public key</strong> created above so that anybody
+		who wants to contact you <strong>can encrypt the message with that key.</strong>`
+	},
+	page10:
+	{
+		title: '',
+		head: '',
+		body: ``
+	},
 };
 
 

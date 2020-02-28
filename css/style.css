@@ -53,6 +53,11 @@ a:hover
 	text-decoration: none!important;
 }
 
+path
+{
+	stroke: inherit;
+}
+
 /*-----Navigation bar-----*/
 
 .navbar
@@ -107,6 +112,7 @@ a:hover
 	border: none!important;
 	box-shadow: 0 10px 11px 3px rgba(0, 0, 0, 0.12);
 	border-radius: 1rem!important;
+	stroke: #0025D3;
 	transition: all 300ms ease-in-out;
 }
 
@@ -119,6 +125,25 @@ a:hover
 .card:active
 {
 	transform: scale(0.95);
+}
+
+.card--full
+{
+	position: absolute!important;
+	width: 50vw!important;
+	right: 0;
+}
+
+.fullWidth
+{
+	width: 100vw!important;
+}
+
+.fullWidth--dark
+{
+	background-color: #192352!important;
+	background: url('../images/chapter2/cartoon1.png') 5% 15% no-repeat, url('../images/chapter2/cartoon2.png') center 15% no-repeat, url('../images/chapter2/cartoon3.png') 95% 15% no-repeat;
+	color: #fff;
 }
 
 .card__bar
