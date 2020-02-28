@@ -3,8 +3,6 @@ import captions from '../lessons/data/data.js';
 import chapters, { total } from '../lessons/index.js';
 import images from '../images/index.js';
 
-console.log(chapters);
-
 var his;
 
 $(document).ready(function() {
@@ -28,10 +26,7 @@ $(document).ready(function() {
 	}
 	else
 	{
-		node = clone(chapters[0][0]);
-		image.src = images[0][0];
-		caption.innerHTML = captions[0][0];
-		bar.style.width = "25%";
+		node = contentUpdate(1,1,0);
 	}
 	
 	
@@ -57,12 +52,8 @@ function contentUpdate(c,p,time)
 	let image = document.querySelector('.chapter__image');
 	let bar = document.querySelector('.progress');
 	let caption = document.querySelector('.caption');
-
-	
 	let node = clone(chapters[c-1][p-1]);
-	// image.src = images[c-1][p-1].slice(1);
-	// bar.style.width = (p/(total[c-1]))*100+'%';
-	// caption.innerHTML = captions[c-1][p-1];
+
 
 	image.classList.add('slide-up');
 	caption.classList.add('scale');
@@ -74,6 +65,11 @@ function contentUpdate(c,p,time)
 		bar.style.width = (p/(total[c-1]))*100+'%';
 
 	},time);
+
+	if(c==2 && p==10)
+	{
+		cardLandscape();
+	}
 
 	return node;
 
@@ -287,9 +283,9 @@ function showPageNext(h,t,id,f)
 function showPagePrev(h,t,id,f)
 {
 	let bar = document.querySelector('.progress');
-	// console.log(h);
-	// console.log(t);
-	// console.log(id);
+	console.log(h);
+	console.log(t);
+	console.log(id);
 
 	if(h.page===1 && h.chapter===1)
 	{
@@ -383,45 +379,27 @@ function checkState(e)
 	console.log(his);
 
 	let ch, p;
+
+
+	let host = {
+		chapter: his.t_chapter,
+		page: his.t_page
+	};
+
+	({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
+
+	let target = {
+		chapter: ch,
+		page: p
+	}
+
+	let id = his.id;
+
+	showPagePrev(host,target,id);
+
 	
 
-	if(his && his.id != -1)
-	{
-		
-
-		let host = {
-			chapter: his.t_chapter,
-			page: his.t_page
-		};
-
-		({ch, p} = pageSelect(his.t_chapter, his.t_page, "up"));
-
-		let target = {
-			chapter: ch,
-			page: p
-		}
-
-		let id = his.id;
-
-		showPagePrev(host,target,id);
-		
-	}
-
-	else
-	{
-		console.log("jkjkjk");
-		history.pushState({
-			h_chapter: 0,
-			h_page: 0,
-			t_chapter:1,
-			t_page: 1,
-			id: -1,
-		},null,`./`);
-
-		his = window.history.state;
-
-		hideChapters();
-	}
+	
 
 	
 }
