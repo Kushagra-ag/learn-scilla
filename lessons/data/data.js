@@ -85,8 +85,8 @@ export const chapter2 =
 	page6:
 	{
 		title: '',
-		head: 'Your random private key',
-		body: ``
+		head: '<span class="mx-2" >Your random private key</span>',
+		body: `<input class="mb-3 mx-2 input">`
 	},
 	page7:
 	{
@@ -98,7 +98,7 @@ export const chapter2 =
 	{
 		title: '',
 		head: 'Public key calculated',
-		body: ``
+		body: `<input class="mb-3 mx-2 input">`
 	},
 	page9:
 	{

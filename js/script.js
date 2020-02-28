@@ -61,7 +61,7 @@ function contentUpdate(c,p,time)
 	setTimeout(function(){
 		image.src = time ? images[c-1][p-1] : images[c-1][p-1].slice(1);
 		caption.innerHTML = captions[c-1][p-1];
-		caption.classList.remove('scale');
+		
 		bar.style.width = (p/(total[c-1]))*100+'%';
 
 	},time);
@@ -90,15 +90,25 @@ function showChapters()
 	let ch = document.querySelector('.chapter__template');
 	let home = document.querySelector('.homepage');
 
-	// location.hash = "template";
+	
 	let c = localStorage.getItem('c')||1;
+	let p = localStorage.getItem('p')||1;
 	history.pushState({
 		h_chapter: 0,
 		h_page: 0,
 		t_chapter: c,
-		t_page: localStorage.getItem('p')||1,
-		id: -1,
+		t_page: p,
+		id: 1,
 	},null,`./lessons/chapter${c}`);
+
+	
+	history.pushState({
+		h_chapter: 0,
+		h_page: 0,
+		t_chapter: c,
+		t_page: p,
+		id: 1,
+	},null,`./chapter${c}`);
 
 	his = window.history.state;
 
@@ -123,24 +133,43 @@ function hideChapters()
 		ch.style.display = "none";
 		
 	},1000);
+
+	// history.pushState({
+	// 	h_chapter: 0,
+	// 	h_page: 0,
+	// 	t_chapter: 1,
+	// 	t_page: 1,
+	// 	id: -1,
+	// },null,`..`);
+
+	// his = window.history.state;
+
+	try
+	{
+		localStorage.setItem('c', his.t_chapter);
+		localStorage.setItem('p', his.t_page);
+	}
+	catch {}
 }
 
 /*-----Function for card swipe animations-----*/
 
 function pageSelect(ch,p,dir)
 {
-	if(dir==="up")
+	if(dir=="up")
 	{
-		if(ch===1 && p===1)
+		if(ch==1 && p==1)
 			return {ch:1,p:1}
-		else if(ch===2 && p===1)
+		else if(ch==1 && p==1)
+			return {ch:1,p:1}
+		else if(ch==2 && p==1)
 			return {ch:1,p:4}
 		else
 			return {ch:ch,p:p-1}
 	}
 	else
 	{
-		if(ch===1 && p===4)
+		if(ch==1 && p==4)
 			return {ch:2,p:1}
 		else
 			return {ch:ch,p:p+1}
@@ -186,7 +215,7 @@ function pageChange(e)
 
 	if(dir=="down")
 	{
-		if(ch===2 && p===10)
+		if(ch==2 && p==10)
 		{
 			showPageNext(host,target,id,1);
 			
@@ -198,7 +227,7 @@ function pageChange(e)
 	}
 	else
 	{
-		if(ch===2 && p===9)
+		if(ch==2 && p==9)
 		{
 			showPagePrev(host,target,id,-1);
 			
@@ -270,7 +299,7 @@ function showPageNext(h,t,id,f)
 		id: id,
 	},null,`./chapter${t.chapter}`);
 
-	his = window .history.state;
+	his = window.history.state;
 	console.log(his);
 
 	console.log(h);
@@ -287,7 +316,7 @@ function showPagePrev(h,t,id,f)
 	console.log(t);
 	console.log(id);
 
-	if(h.page===1 && h.chapter===1)
+	if(h.page==1 && h.chapter==1)
 	{
 		
 		hideChapters();
@@ -432,9 +461,14 @@ window.onbeforeunload = unload;
 document.querySelector('.chapter__image').addEventListener('load', function(e) {
 	setTimeout(function() {
 		let img = document.querySelector('.chapter__image');
+		let caption
 
 		img.classList.remove('slide-up');
 		//img.classList.remove('slide-down');
+
+		setTimeout(function() {
+			document.querySelector('.caption').classList.remove('scale');
+		},600);
 	},500)
 	
 });

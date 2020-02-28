@@ -148,6 +148,7 @@
 	font-family: 'avenirnextDemi';
 	text-transform: uppercase;
 	letter-spacing: 2px;
+	transition: 600ms;
 }
 
 .progress
@@ -216,6 +217,21 @@
 .content__body::-webkit-scrollbar-track
 {
 	display: none;
+}
+
+.input
+{
+	border: none;
+	outline: none;
+	padding: 5px 5px 5px 10px;
+	border-radius: 10px;
+	box-shadow: 0 5px 6px 3px rgba(0,0,0,0.1);
+}
+
+.input:focus
+{
+	border: none;
+	outline: none;
 }
 
 /*-----Page control button styles-----*/
