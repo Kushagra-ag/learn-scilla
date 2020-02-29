@@ -171,12 +171,12 @@ path
 .anchor__button
 {
 	background-color: unset;
-    border: none;
+	border: none;
 }
 
 .anchor__button:focus
 {
-    border: none;
+	border: none;
 }
 
 .learn
@@ -214,5 +214,20 @@ path
 	.nav-link:hover
 	{
 		transform: scale(1);
+	}
+	.fullWidth--dark
+	{
+		background: url('../images/chapter2/cartoon1.png') center 10% no-repeat, url('../images/chapter2/cartoon2.png') center center no-repeat, url('../images/chapter2/cartoon3.png') center 90% no-repeat;
+		height: 200vh;
+	}
+	.fullWidth--dark>div:nth-child(1)
+	{
+		height: 200vh;
+		justify-content: space-between!important;
+		align-items: center;
+	}
+	.card--full
+	{
+		width: 100vw!important;
 	}
 }

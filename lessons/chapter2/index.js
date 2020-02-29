@@ -14,7 +14,7 @@ page1.querySelector('.content__head').innerHTML = chapter2.page1.head;
 
 page1.querySelector('.body').innerHTML = chapter2.page1.body;
 
-page1.querySelector('.small').innerHTML = "1/15";
+page1.querySelector('.small').innerHTML = "1/16";
 
 
 let page2 = template.cloneNode(true);
@@ -28,7 +28,7 @@ page2.querySelector('.content__head').innerHTML = chapter2.page2.head;
 
 page2.querySelector('.body').innerHTML = chapter2.page2.body;
 
-page2.querySelector('.small').innerHTML = "2/15";
+page2.querySelector('.small').innerHTML = "2/16";
 
 
 let page3 = template.cloneNode(true);
@@ -42,7 +42,7 @@ page3.querySelector('.content__head').innerHTML = chapter2.page3.head;
 
 page3.querySelector('.body').innerHTML = chapter2.page3.body;
 
-page3.querySelector('.small').innerHTML = "3/15";
+page3.querySelector('.small').innerHTML = "3/16";
 
 
 let page4 = template.cloneNode(true);
@@ -56,7 +56,7 @@ page4.querySelector('.content__head').innerHTML = chapter2.page4.head;
 
 page4.querySelector('.body').innerHTML = chapter2.page4.body;
 
-page4.querySelector('.small').innerHTML = "4/15";
+page4.querySelector('.small').innerHTML = "4/16";
 
 
 let page5 = template.cloneNode(true);
@@ -70,7 +70,7 @@ page5.querySelector('.content__head').innerHTML = chapter2.page5.head;
 
 page5.querySelector('.body').innerHTML = chapter2.page5.body;
 
-page5.querySelector('.small').innerHTML = "5/15";
+page5.querySelector('.small').innerHTML = "5/16";
 
 
 let page6 = template.cloneNode(true);
@@ -84,7 +84,7 @@ page6.querySelector('.content__head').innerHTML = chapter2.page6.head;
 
 page6.querySelector('.body').innerHTML = chapter2.page6.body;
 
-page6.querySelector('.small').innerHTML = "6/15";
+page6.querySelector('.small').innerHTML = "6/16";
 
 
 let page7 = template.cloneNode(true);
@@ -98,7 +98,7 @@ page7.querySelector('.content__head').innerHTML = chapter2.page7.head;
 
 page7.querySelector('.body').innerHTML = chapter2.page7.body;
 
-page7.querySelector('.small').innerHTML = "7/15";
+page7.querySelector('.small').innerHTML = "7/16";
 
 
 let page8 = template.cloneNode(true);
@@ -112,7 +112,7 @@ page8.querySelector('.content__head').innerHTML = chapter2.page8.head;
 
 page8.querySelector('.body').innerHTML = chapter2.page8.body;
 
-page8.querySelector('.small').innerHTML = "8/15";
+page8.querySelector('.small').innerHTML = "8/16";
 
 
 let page9 = template.cloneNode(true);
@@ -126,7 +126,7 @@ page9.querySelector('.content__head').innerHTML = chapter2.page9.head;
 
 page9.querySelector('.body').innerHTML = chapter2.page9.body;
 
-page9.querySelector('.small').innerHTML = "9/15";
+page9.querySelector('.small').innerHTML = "9/16";
 
 
 let page10 = template.cloneNode(true);
@@ -139,10 +139,93 @@ page10.querySelector('.content__title>div').innerHTML = chapter2.page10.title;
 page10.querySelector('.content__head').innerHTML = chapter2.page10.head;
 
 page10.querySelector('.body').innerHTML = chapter2.page10.body;
+page10.dataset.mode = 'D';
+page10.querySelector('.small').innerHTML = "10/16";
 
-page10.querySelector('.small').innerHTML = "10/15";
+
+let page11 = template.cloneNode(true);
+
+page11.dataset.chapter = "2";
+page11.dataset.page = "11";
+
+page11.querySelector('.content__title>div').innerHTML = chapter2.page11.title;
+
+page11.querySelector('.content__head').innerHTML = chapter2.page11.head;
+
+page11.querySelector('.body').innerHTML = chapter2.page11.body;
+
+page11.querySelector('.small').innerHTML = "11/16";
 
 
-const chapter = [ page1, page2, page3, page4, page5, page6, page7, page8, page9, page10 ];
+let page12 = template.cloneNode(true);
+
+page12.dataset.chapter = "2";
+page12.dataset.page = "12";
+
+page12.querySelector('.content__title>div').innerHTML = chapter2.page12.title;
+
+page12.querySelector('.content__head').innerHTML = chapter2.page12.head;
+
+page12.querySelector('.body').innerHTML = chapter2.page12.body;
+page12.dataset.mode = 'D';
+page12.querySelector('.small').innerHTML = "12/16";
+
+
+let page13 = template.cloneNode(true);
+
+page13.dataset.chapter = "2";
+page13.dataset.page = "13";
+
+page13.querySelector('.content__title>div').innerHTML = chapter2.page13.title;
+
+page13.querySelector('.content__head').innerHTML = chapter2.page13.head;
+
+page13.querySelector('.body').innerHTML = chapter2.page13.body;
+
+page13.querySelector('.small').innerHTML = "13/16";
+
+
+let page14 = template.cloneNode(true);
+
+page14.dataset.chapter = "2";
+page14.dataset.page = "14";
+
+page14.querySelector('.content__title>div').innerHTML = chapter2.page14.title;
+
+page14.querySelector('.content__head').innerHTML = chapter2.page14.head;
+
+page14.querySelector('.body').innerHTML = chapter2.page14.body;
+
+page14.querySelector('.small').innerHTML = "14/16";
+
+
+let page15 = template.cloneNode(true);
+
+page15.dataset.chapter = "2";
+page15.dataset.page = "15";
+
+page15.querySelector('.content__title>div').innerHTML = chapter2.page15.title;
+
+page15.querySelector('.content__head').innerHTML = chapter2.page15.head;
+
+page15.querySelector('.body').innerHTML = chapter2.page15.body;
+
+page15.querySelector('.small').innerHTML = "15/16";
+
+
+let page16 = template.cloneNode(true);
+
+page16.dataset.chapter = "2";
+page16.dataset.page = "16";
+
+page16.querySelector('.content__title>div').innerHTML = chapter2.page16.title;
+
+page16.querySelector('.content__head').innerHTML = chapter2.page16.head;
+
+page16.querySelector('.body').innerHTML = chapter2.page16.body;
+
+page16.querySelector('.small').innerHTML = "16/16";
+
+const chapter = [ page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13, page14, page15, page16 ];
 
 export default chapter;
