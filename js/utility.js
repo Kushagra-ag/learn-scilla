@@ -163,7 +163,7 @@ function pageChange(e)
 
 	console.log("next - "+p);
 
-	if(p==16 && c==4)
+	if(p==16 && ch==3)
 		return;
 
 	let target = {
