@@ -13,10 +13,10 @@ $(document).ready(function() {
 			item.innerHTML = "Continue";
 		});
 
-		let c = localStorage.getItem('c') || 1;
-		let p = localStorage.getItem('p') || 1;
+		let c = parseInt(localStorage.getItem('c')) || 1;
+		//let p = localStorage.getItem('p') || 1;
 
-		node = util.contentUpdate(c,p,0);
+		node = util.contentUpdate(c,1,0);
 
 		
 	}

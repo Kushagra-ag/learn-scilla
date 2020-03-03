@@ -7,8 +7,8 @@ var his;
 
 function contentUpdate(c,p,time)
 {
-	c = parseInt(c);
-	p = time ? parseInt(p) : 1;
+	// c = parseInt(c);
+	// p = parseInt(p);
 
 	let image = document.querySelector('.chapter__image');
 	let bar = document.querySelector('.progress');
@@ -123,14 +123,17 @@ function pageSelect(ch,p,dir)
 			return {ch:1,p:1}
 		else if(ch==2 && p==1)
 			return {ch:1,p:4}
+		else if(ch==3 && p==1)
+			return {ch:2,p:16}
 		else
 			return {ch:ch,p:p-1}
 	}
 	else
 	{
 		if(ch==1 && p==4)
-
 			return {ch:2,p:1}
+		if(ch==2 && p==16)
+			return {ch:3,p:1}
 		else
 			return {ch:ch,p:p+1}
 	}
@@ -154,16 +157,13 @@ function pageChange(e)
 		chapter: ch,
 		page: p,
 	};
-
-	// hch = ch;
-	// hp = p;
 	
 
 	({ch, p} = pageSelect(ch, p, dir));
 
 	console.log("next - "+p);
 
-	if(p==16)
+	if(p==16 && c==4)
 		return;
 
 	let target = {
@@ -201,6 +201,13 @@ function orientSelect(c,p,dir)
 			{
 				flag=-1
 			}		
+		}
+		if(c==3)
+		{
+			if(p==2)
+			{
+				flag=1;
+			}
 		}	
 	}
 
@@ -216,6 +223,13 @@ function orientSelect(c,p,dir)
 			else if(p==13)
 			{
 				flag=1
+			}
+		}
+		else if(c==3)
+		{
+			if(p==1)
+			{
+				flag=-1;
 			}
 		}
 	}
@@ -245,12 +259,14 @@ function showPageNext(h,t,id,f)
 
 	if(f==1)
 	{
+		dest.firstElementChild.firstElementChild.style.opacity = '0';
 		setTimeout(cardLandscape,1000,mode);
 	}
 	else if(f==-1)
 	{
-		setTimeout(cardPortrait,1000,mode);
+		setTimeout(cardPortrait,1000);
 	}
+
 
 	theme(mode);
 
@@ -308,7 +324,7 @@ function showPagePrev(h,t,id,f)
 	if(h.page==1 && h.chapter==1)
 	{
 		
-		util.hideChapters();
+		hideChapters();
 
 		// location.hash = "template";
 		history.pushState({
@@ -337,7 +353,7 @@ function showPagePrev(h,t,id,f)
 	
 
 	
-	let node = util.contentUpdate(t.chapter,t.page,600);
+	let node = contentUpdate(t.chapter,t.page,600);
 	
 	dest.querySelector('.content__container').replaceWith(node);
 
@@ -346,14 +362,15 @@ function showPagePrev(h,t,id,f)
 
 	if(f==1)
 	{
+		dest.firstElementChild.firstElementChild.style.opacity = '0';
 		setTimeout(cardLandscape,1000,mode);
 	}
 	else if(f==-1)
 	{
 		setTimeout(cardPortrait,1000,mode);
 	}
-
 	theme(mode);
+
 
 
 	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
@@ -454,13 +471,13 @@ function cardLandscape(mode)
 	
 	r.classList.add('card--full');
 	l.style.zIndex = '5';
-	l.style.opacity = "0";
-	// theme(mode);
+	l.style.opacity = '0';
 	
 
 	setTimeout(function() {
 		r.classList.add('col-md-12');
 		r.classList.add('fullWidth');
+		active.querySelector('.content__row').removeAttribute('style');
 		
 
 		if(window.innerWidth >= 768)
@@ -485,7 +502,8 @@ function cardPortrait()
 		l.removeAttribute('style');
 		r.classList.remove('col-md-12');
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
-		active.querySelector('.page__control').classList.remove('page__control--dark');
+		active.querySelector('.page__control').classList.remove('page__control--dark')
+		active.querySelector('.page__control').classList.remove('page__control--dark--null');
 	},800);
 
 	r.querySelector('.card__bar').removeAttribute('style');
@@ -499,11 +517,19 @@ function theme(mode)
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
+		
+	}
+	else if(mode == 'DN')
+	{
+		active.querySelector('.content__container').classList.add('fullWidth--dark');
+		active.querySelector('.page__control').classList.add('page__control--dark');
+		active.querySelector('.content__container').classList.add('fullWidth--dark--null');
 	}
 	else
 	{
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark');
+		active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
 	}
 }
 

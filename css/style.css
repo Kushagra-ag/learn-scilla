@@ -33,6 +33,7 @@ html
 body
 {
 	font-family: 'avenirnextReg', sans-serif!important;
+	overscroll-behavior: none;
 }
 
 main
@@ -146,6 +147,11 @@ path
 	color: #fff;
 }
 
+.fullWidth--dark--null
+{
+	background-image: none;
+}
+
 .card__bar
 {
 	height: 5px;
@@ -219,6 +225,11 @@ path
 	{
 		background: url('../images/chapter2/cartoon1.png') center 10% no-repeat, url('../images/chapter2/cartoon2.png') center center no-repeat, url('../images/chapter2/cartoon3.png') center 90% no-repeat;
 		height: 200vh;
+	}
+	.fullWidth--dark--null
+	{
+		background-color: #192352;
+		background-image: none!important;
 	}
 	.fullWidth--dark>div:nth-child(1)
 	{
