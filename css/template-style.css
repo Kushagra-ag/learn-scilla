@@ -396,6 +396,11 @@
 	text-decoration: line-through;
 }
 
+.card__block--red:hover, .card__block--red:focus
+{
+	border: solid 1px #FF1717;
+}
+
 .card__footer
 {
     display: inline-block;
@@ -409,7 +414,9 @@
 
 .card__footer:after,
 {
-	
+	content: url(../images/svg/right.svg);
+	display: inline-block;
+	margin-left: 10px;
 }
 
 .arrow:after
