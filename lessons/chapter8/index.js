@@ -31,6 +31,9 @@ while(i<23)
 
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/23`;
 
+	if(i==22)
+		chapter[i].dataset.last = true;
+
 	i++;
 }
 

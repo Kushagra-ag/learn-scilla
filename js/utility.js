@@ -306,6 +306,7 @@ function showPageNext(h,t,id,f)
 	dest.querySelector('.content__container').replaceWith(node);
 
 	let mode = dest.querySelector('.content__container').dataset.mode;
+	let last = dest.querySelector('.content__container').dataset.last;
 
 	if(f==1)
 	{
@@ -329,6 +330,11 @@ function showPageNext(h,t,id,f)
 	})
 
 	attach();
+
+	if(last)
+	{
+		dest.querySelector('.page__control__down').style.opacity = '0';
+	}
 
 
 	node.style.display = "block";
@@ -404,6 +410,7 @@ function showPagePrev(h,t,id,f)
 	dest.querySelector('.content__container').replaceWith(node);
 
 	let mode = dest.querySelector('.content__container').dataset.mode;
+	let last = dest.querySelector('.content__container').dataset.last;
 
 	if(f==1)
 	{
@@ -423,6 +430,11 @@ function showPagePrev(h,t,id,f)
 	})
 
 	attach();
+
+	if(last)
+	{
+		dest.querySelector('.page__control__down').style.opacity = '0';
+	}
 
 	node.style.display = "block";
 	host.dataset.class = "u__behind";

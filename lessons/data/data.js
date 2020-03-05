@@ -63,7 +63,7 @@ export const chapter1 =
 	{
 		title: '',
 		head: `<div class='text-center'>So, let's start learning!</div>`,
-		body: `<center><div class='mt-3 card__footer next'>next</div></center>`
+		body: `<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 
 };
@@ -224,7 +224,7 @@ export const chapter2 =
 		a wallet address.<br><br>
 		Warning:</strong> This is for educational purposes only. We don't 
 		recommend using it for storing any actual bitcoin.<br>
-		<center><div class='mt-3 card__footer next'>next</div></center>`
+		<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -259,7 +259,7 @@ export const chapter3 =
 		title: '',
 		head: "",
 		body: `<div class='row mb-3'><div class='col-12' style='color:#FFDA91;width:100%'>We'll get into the details of some of the fields later. But for now, let's go into the link at the bottom that leads to the transaction details:</div></div> 
-		<div class='row my-4 align-items-center' style='width:100%'><div class='col-md-4' style=''>No inputs(newly generated coins)</div><div class='col-md-8 py-2' style='color:#001F74;background-color:#fff'><div class='row d-flex justify-content-around'><div>1A1zP1eP5QGefi...(Genesis of Bitcoin)-(Unspent)</div><div>50 BTC</div></div></div></div>
+		<div class='row my-4 align-items-center' style='width:100%'><div class='col-md-4' style=''>No inputs(newly generated coins)</div><div class='col-md-8 py-2' style='color:#001F74;background-color:#fff'><div class='row d-flex justify-content-around'><div class='col-8'>1A1zP1eP5QGefi...(Genesis of Bitcoin)-(Unspent)</div><div class='col-4'>50 BTC</div></div></div></div>
 		<div class='row py-5' style='width:100%'><div class='col-md-7'>${table3('204 (bytes)','816','2009-01-03 18:15:05','0','Hide scripts from coinbase','View tree chart')}</div><div class='col-md-5 d-flex justify-content-around'><div style='height:fit-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>Crypto credit</div><div style='height:fit-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>50 BTC </div></div></div> `
 	},
 	page5:
@@ -324,7 +324,7 @@ export const chapter3 =
 	{
 		title: '',
 		head: `Next, we'll see what happens when we spend an <strong>unspent transaction output a.k.a UTXO</strong>`,
-		body: `<center><div class='mt-3 card__footer next'>next</div></center>`
+		body: `<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 }
 
@@ -451,7 +451,7 @@ export const chapter4 =
 		places, similar to how a dollar can be divided upto 2 decimal places) right from the original 
 		coinbase transaction to the payee wallet P, to the next payee wallet Q and so on till the 
 		current payee wallet.
-		<center><div class='mt-5 card__footer next'>next</div></center>`
+		<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -467,7 +467,7 @@ export const chapter5 =
 	page2:
 	{
 		title: '',
-		head: "Additionally, we've then also seen it in the block information. Let's look at Block 0 again",
+		head: "Additionally, we've then also seen it in the block information. Let's look at Block #0 again",
 		body: ``
 	},
 	page3:
@@ -517,7 +517,7 @@ export const chapter5 =
 		head: '',
 		body: `<input class="mx-2 input" value='Enter your name'>
 		<div class='card__button my-5 px-3 py-2'>Generate the hash</div>
-		<input class="mx-2 mb-3 input" value='Result' disabled>
+		<input class="mx-2 mb-3 input" value='Result' disabled><br>
 		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
 	},
 	page10:
@@ -531,10 +531,14 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<div class='input mt-2 mx-2 card__textbox'></div>
-		<div class='card__button my-5 px-3 py-2'>Generate the hash</div>
-		<input class="mx-2 mb-3 input" value='Result' disabled>
-		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
+		body: `<div class='row p-5' style='width:100%'>
+		<div class='col-md-7'><textarea style='width:100%' class='input card__textbox'></textarea></div>
+		<div class='col-md-5'><div class='row'>
+		<div class='col-12 my-5'><div class='card__button px-3 py-2'>Generate the hash</div></div>
+		<div class='col-12'><input class="input" value='Result' disabled></div></div></div>
+		<br>
+		<div class='row px-5'>
+		<div class='col-12'><div class='mt-5 card__footer'>Link to the Hashing code</div></div>`
 	},
 	page12:
 	{
@@ -562,7 +566,7 @@ export const chapter5 =
 	{
 		title: '',
 		head: "Now, it's time to see how hashes help connect the blocks of a blockchain together.",
-		body: `<center><div class='mt-3 card__footer next'>next</div></center>`
+		body: `<center><div class='mt-3 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -625,7 +629,8 @@ export const chapter6 =
 		title: '',
 		head: ``,
 		body: `As we can see, our calculated hash of block #0 becomes the reference of previous block for block #1.<br><br>
-		Similarly, hash of block #1 will become a reference for block #2 and so on`
+		Similarly, hash of block #1 will become a reference for block #2 and so on
+		<center><div class='mt-3 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -716,7 +721,8 @@ export const chapter7 =
 	{
 		title: '',
 		head: '',
-		body: `The whole process of calculating the right hash for the block and then submitting the block to the chain is known as <strong>mining.</strong>`
+		body: `The whole process of calculating the right hash for the block and then submitting the block to the chain is known as <strong>mining.</strong>
+		<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -869,7 +875,8 @@ export const chapter8 =
 	{
 		title: '',
 		head: '',
-		body: `It does so by identifying the last block in the chain which it wants to append itself to.`
+		body: `It does so by identifying the last block in the chain which it wants to append itself to.
+		<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 

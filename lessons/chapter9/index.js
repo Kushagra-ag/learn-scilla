@@ -23,6 +23,9 @@ while(i<7)
 
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/7`;
 
+	if(i==6)
+		chapter[i].dataset.last = true;
+
 	i++;
 }
 

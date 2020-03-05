@@ -23,6 +23,9 @@ while(i<4)
 
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/4`;
 
+	if(i==3)
+		chapter[i].dataset.last = true;
+
 	i++;
 }
 

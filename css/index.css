@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+/*-----Fonts declaration-----*/
+
+@font-face
+{
+	font-family: 'avenirnextDemi';
+	src: url('../fonts/AvenirNextLTPro-Demi.otf');
+}
+
+@font-face
+{
+	font-family: 'avenirnextReg';
+	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+}
+
+.index
+{
+	color: #0025D3;
+	font-variant: small-caps;
+	font-weight: bold;
+}
+
+.index__chapter
+{
+	display: inline-block;
+	color: #fff;
+    border-radius: 30px;
+    letter-spacing: 1.5px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #192352;
+}
+
+.index__page
+{
+	display: inline-block;
+	color: #192352;
+	border: solid 2px #192352;
+    border-radius: 30px;
+    letter-spacing: 1.5px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    background-color: #fff;
+    transition: all 200ms ease-in;
+    cursor: pointer;
+}
+
+.index__page:hover, .index__page:active
+{
+	color: #fff;
+	background-color: #192352;
+}
