@@ -181,15 +181,19 @@
 
 .content
 {
+    display: flex;
+    flex-direction: column;    
+    align-items: center;
 	overflow: scroll;
 	max-height: 55vh;
+	min-height: 55vh;
 }
 
 .content__title
 {
 	text-transform: uppercase;
 	color: #0025D3;
-	min-height: 10vh;
+	/*min-height: 10vh;*/
 	max-height: 10vh;
 	text-align: center;
 	font-family: 'avenirnextBold';
@@ -200,11 +204,18 @@
 	font-family: 'avenirnextDemi';
 }
 
+.content__head--center
+{
+	display: flex;
+	justify-content: center;
+}
+
 .content__body
 {
 	min-height: 45vh;
 	max-height: 45vh;
-	overflow: hidden;
+	overflow-x: unset;
+	overflow-y: scroll;
 }
 
 .body
@@ -214,24 +225,48 @@
 
 /*-----Scrollbar style settings-----*/
 
-.content__body::-webkit-scrollbar
+.content__body::-webkit-scrollbar:vertical, .content::-webkit-scrollbar:vertical
 {
 	display: block;
 	width: 2px;
 }
 
-.content__body::-webkit-scrollbar-thumb
+.content__body::-webkit-scrollbar-thumb, .content::-webkit-scrollbar-thumb
 {
 	background-color: #2125298c;
 }
+.fullWidth--dark .content__body::-webkit-scrollbar-thumb, .fullWidth--dark .content::-webkit-scrollbar-thumb,.fullWidth--dark--null .content__body::-webkit-scrollbar-thumb, .fullWidth--dark--null .content::-webkit-scrollbar-thumb
+{
+	background-color: #fff;
+}
 
-.content__body::-webkit-scrollbar-track
+.content__body::-webkit-scrollbar-track, .content::-webkit-scrollbar-track
 {
 	display: none;
 }
 
+.card__button
+{
+	color: #fff;
+    border-radius: 30px;
+    letter-spacing: 1.5px;
+    font-size: 80%;
+    font-weight: bold;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: #192352;
+}
+
+.card__textbox
+{
+	min-height: 30vh;
+	max-height: 30vh;
+	overflow-y: scroll;
+}
+
 .input
 {
+	color: #192352;
 	border: none;
 	outline: none;
 	padding: 5px 5px 5px 10px;
@@ -254,12 +289,23 @@
 	border-spacing: 0;
 }
 
+.table2 td.value
+{
+	font-size: 60%;
+}
+
 .table td
 {
 	border-bottom: solid 1px #fff;
 	vertical-align: middle!important;
 	/*padding: 0 5px;*/
 	border-top: solid 1px #fff!important;
+}
+
+.table tr.selected
+{
+	color: #192352;
+	background-color: #fff;
 }
 
 /*-----Page control button styles-----*/
@@ -328,11 +374,62 @@
 	width: 80%;
 }
 
+.card__block
+{
+	padding: 40px 10px;
+    margin: 10px 100px 40px;
+    color: #0025D3;
+    font-weight: bold;
+    border-radius: 10px;
+    box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.3);
+    cursor: pointer;
+}
+
+.card__block:hover, .card__block:focus
+{
+	border: solid 1px #0025D3;
+}
+
+.card__block--red
+{
+	color: #FF1717;
+	text-decoration: line-through;
+}
+
+.card__footer
+{
+    display: inline-block;
+    color: #0025D3;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #0025D3;
+    font-weight: bold;
+    cursor: pointer;
+    stroke: #0025D3;
+}
+
+.card__footer:after,
+{
+	
+}
+
+.arrow:after
+{
+	content: url(../images/svg/right-white.svg);
+	display: inline-block;
+	margin-left: 10px;
+}
+
+.next
+{
+	border: none;
+	letter-spacing: 4px;
+	text-transform: uppercase;
+}
+
 input[type="submit"]
 {
 	outline: none;
     border: none;
-    background: none;
     color: #192352;
     font-weight: bold;
 }
@@ -367,6 +464,8 @@ input[type="submit"]
 	.content
 	{
 		overflow: scroll;
+		max-height: unset;
+		min-height: unset;
 	}
 
 	.page__control

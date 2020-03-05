@@ -16,9 +16,8 @@
 
 /*-----Scrollbar-----*/
 
-*::-webkit-scrollbar
+*::-webkit-scrollbar, *::-webkit-scrollbar-button:horizontal
 {
-	
 	display: none;
 }
 
@@ -150,6 +149,18 @@ path
 .fullWidth--dark--null
 {
 	background-image: none;
+}
+
+.fullWidth--dark--DN81
+{
+	background-image: url('../images/chapter8/graph1.png');
+	background-size: contain;
+}
+
+.fullWidth--dark--DN82
+{
+	background-image: url('../images/chapter8/graph2.png');
+	background-size: contain;
 }
 
 .card__bar

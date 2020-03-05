@@ -1,17 +1,17 @@
 ;
 
-export const table1 = (v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15) => {
+export const table1 = (v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15,cl,bl) => {
 
 	return (`
 		<table class="table table-borderless">
 		    <thead>
 		      <tr>
 		        <th>Summary</th>
-		        <th></th>
+		        <th> Block #${bl}</th>
 		      </tr>
 		    </thead>
 		    <tbody>
-		      <tr>
+		      <tr class='${cl?'selected':''}'>
 		        <td>Number of Transactions</td>
 		        <td>${v1}</td>
 		      </tr>
@@ -76,10 +76,10 @@ export const table1 = (v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15) => {
 		`)
 };
 
-export const table2 = (v1,v2,v3,v4) => {
+export const table2 = (v1,v2,v3,v4,cl) => {
 
 	return(`
-		<table class="table table-borderless">
+		<table class="table table-borderless table2">
 		    <thead>
 		      <tr>
 		        <th>Hashes</th>
@@ -87,21 +87,21 @@ export const table2 = (v1,v2,v3,v4) => {
 		      </tr>
 		    </thead>
 		    <tbody>
-		      <tr>
+		      <tr class='${cl?'selected':''}'>
 		        <td>Hash</td>
-		        <td>${v1||''}</td>
+		        <td class='value'>${v1||''}</td>
 		      </tr>
 		      <tr>
 		        <td>Previous Block</td>
-		        <td>${v2||''}</td>
+		        <td class='value'>${v2||''}</td>
 		      </tr>
 		      <tr>
 		        <td>Next Block(s)</td>
-		        <td>${v3||''}</td>
+		        <td class='value'>${v3||''}</td>
 		      </tr>
 		      <tr>
 		        <td>Merkle Root</td>
-		        <td>${v4||''}</td>
+		        <td class='value'>${v4||''}</td>
 		      </tr>
 		    </tbody>
 		</table>
@@ -111,7 +111,7 @@ export const table2 = (v1,v2,v3,v4) => {
 export const table3 = (v1,v2,v3,v4,v5,v6) => {
 
 	return(`
-		<table class="table table-borderless table-sm">
+		<table class="table table-borderless">
 		    <thead>
 		      <tr>
 		        <th>Summary</th>

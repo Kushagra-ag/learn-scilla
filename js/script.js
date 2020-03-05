@@ -3,9 +3,8 @@ import util from './utility.js';
 
 $(document).ready(function() {
 
-
 	let containers = document.getElementsByClassName('content__container'),node;
-	
+	const totalChapters = 9;
 
 	if(localStorage.getItem('v'))
 	{
@@ -14,11 +13,8 @@ $(document).ready(function() {
 		});
 
 		let c = parseInt(localStorage.getItem('c')) || 1;
-		//let p = localStorage.getItem('p') || 1;
-
+		document.querySelector('.status').style.width = ((c/totalChapters)*100)+'%';
 		node = util.contentUpdate(c,1,0);
-
-		
 	}
 	else
 	{

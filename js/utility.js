@@ -7,30 +7,22 @@ var his;
 
 function contentUpdate(c,p,time)
 {
-	// c = parseInt(c);
-	// p = parseInt(p);
 
 	let image = document.querySelector('.chapter__image');
 	let bar = document.querySelector('.progress');
 	let caption = document.querySelector('.caption');
 	let node = clone(chapters[c-1][p-1]);
 
-
 	image.classList.add('slide-up');
 	caption.classList.add('scale');
 
 	setTimeout(function(){
 		image.src = time ? images[c-1][p-1] : images[c-1][p-1].slice(1);
-		caption.innerHTML = captions[c-1][p-1];
+		caption.innerHTML = captions[c-1][p-1]||'';
 		
 		bar.style.width = (p/(total[c-1]))*100+'%';
 
 	},time);
-
-	if(c==2 && p==10)
-	{
-		cardLandscape();
-	}
 
 	return node;
 
@@ -108,7 +100,6 @@ function hideChapters()
 	try
 	{
 		localStorage.setItem('c', his.t_chapter);
-		localStorage.setItem('p', his.t_page);
 	}
 	catch {}
 }
@@ -124,7 +115,19 @@ function pageSelect(ch,p,dir)
 		else if(ch==2 && p==1)
 			return {ch:1,p:4}
 		else if(ch==3 && p==1)
-			return {ch:2,p:16}
+			return {ch:2,p:20}
+		else if(ch==4 && p==1)
+			return {ch:3,p:11}
+		else if(ch==5 && p==1)
+			return {ch:4,p:12}
+		else if(ch==6 && p==1)
+			return {ch:5,p:15}
+		else if(ch==7 && p==1)
+			return {ch:6,p:8}
+		else if(ch==8 && p==1)
+			return {ch:7,p:13}
+		else if(ch==9 && p==1)
+			return {ch:8,p:23}
 		else
 			return {ch:ch,p:p-1}
 	}
@@ -132,8 +135,22 @@ function pageSelect(ch,p,dir)
 	{
 		if(ch==1 && p==4)
 			return {ch:2,p:1}
-		if(ch==2 && p==16)
+		else if(ch==2 && p==20)
 			return {ch:3,p:1}
+		else if(ch==3 && p==11)
+			return {ch:4,p:1}
+		else if(ch==4 && p==12)
+			return {ch:5,p:1}
+		else if(ch==5 && p==15)
+			return {ch:6,p:1}
+		else if(ch==6 && p==8)
+			return {ch:7,p:1}
+		else if(ch==7 && p==13)
+			return {ch:8,p:1}
+		else if(ch==8 && p==23)
+			return {ch:9,p:1}
+		else if(ch==9 && p==7)
+			return {ch:null,p:null}
 		else
 			return {ch:ch,p:p+1}
 	}
@@ -148,7 +165,6 @@ function pageChange(e)
 	let ch = parseInt(elem.dataset.chapter);
 	let p = parseInt(elem.dataset.page);
 	let dir = elem.dataset.dir;
-	let prev,cur,next;
 
 	console.log(id);
 	console.log(p);
@@ -163,7 +179,7 @@ function pageChange(e)
 
 	console.log("next - "+p);
 
-	if(p==16 && ch==3)
+	if(!(p && ch))
 		return;
 
 	let target = {
@@ -189,25 +205,29 @@ function orientSelect(c,p,dir)
 	let flag=0;
 	if(dir=="down")
 	{
-
 		if(c==2)
 		{
-			if(p==9)
-			{
+			if(p==12)
 				flag=1;
-			}
-
-			else if(p==14)
-			{
+			else if(p==18)
 				flag=-1
-			}		
 		}
-		if(c==3)
+		else if(c==3)
 		{
 			if(p==2)
-			{
 				flag=1;
-			}
+		}
+		else if(c>=4 && c<=8)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==2)
+				flag=1;
+		}
+		else if(c==9)
+		{
+			if(p==1)
+				flag=-1;
 		}	
 	}
 
@@ -215,22 +235,52 @@ function orientSelect(c,p,dir)
 	{
 		if(c==2)
 		{
-			if(p==8)
-			{
+			if(p==11)
 				flag=-1;
-			}
-
-			else if(p==13)
-			{
+			else if(p==17)
 				flag=1
-			}
 		}
 		else if(c==3)
 		{
 			if(p==1)
-			{
 				flag=-1;
-			}
+			else if(p==11)
+				flag=1;
+		}
+		else if(c==4)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==12)
+				flag=1;
+		}
+		else if(c==5)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==15)
+				flag=1;
+		}
+		else if(c==6)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==8)
+				flag=1;
+		}
+		else if(c==7)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==13)
+				flag=1;
+		}
+		else if(c==8)
+		{
+			if(p==1)
+				flag=-1;
+			else if(p==23)
+				flag=1;
 		}
 	}
 	return flag;
@@ -242,7 +292,7 @@ function showPageNext(h,t,id,f)
 
 	console.log(f);
 	let bar = document.querySelector('.progress');
-	//console.log(t);
+	console.log(t);
 	console.log("host id "+id);
 	console.log("dest id "+(id+1)%3);
 	let host = document.querySelector(`.y[data-id='${id}']`);
@@ -260,11 +310,11 @@ function showPageNext(h,t,id,f)
 	if(f==1)
 	{
 		dest.firstElementChild.firstElementChild.style.opacity = '0';
-		setTimeout(cardLandscape,1000,mode);
+		setTimeout(cardLandscape,600,mode);
 	}
 	else if(f==-1)
 	{
-		setTimeout(cardPortrait,1000);
+		setTimeout(cardPortrait,600);
 	}
 
 
@@ -326,7 +376,6 @@ function showPagePrev(h,t,id,f)
 		
 		hideChapters();
 
-		// location.hash = "template";
 		history.pushState({
 			h_chapter: 0,
 			h_page: 0,
@@ -340,7 +389,6 @@ function showPagePrev(h,t,id,f)
 		return
 	}
 
-
 	console.log("host id "+id);
 	console.log("dest id "+(id+2)%3);
 
@@ -351,27 +399,22 @@ function showPagePrev(h,t,id,f)
 	host.classList.remove('active--card');
 	dest.classList.add('active--card');
 	
-
-	
 	let node = contentUpdate(t.chapter,t.page,600);
 	
 	dest.querySelector('.content__container').replaceWith(node);
 
 	let mode = dest.querySelector('.content__container').dataset.mode;
-	//console.log(mode,f);
 
 	if(f==1)
 	{
 		dest.firstElementChild.firstElementChild.style.opacity = '0';
-		setTimeout(cardLandscape,1000,mode);
+		setTimeout(cardLandscape,600,mode);
 	}
 	else if(f==-1)
 	{
-		setTimeout(cardPortrait,1000,mode);
+		setTimeout(cardPortrait,600,mode);
 	}
 	theme(mode);
-
-
 
 	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
 		elem.dataset.id = node.parentNode.dataset.id;
@@ -381,22 +424,13 @@ function showPagePrev(h,t,id,f)
 
 	attach();
 
-
 	node.style.display = "block";
-
-
 	host.dataset.class = "u__behind";
-
 	dest.dataset.class = "u__current";
 
 
 	setTimeout(function(){
-
-
-
 		other.dataset.class = "u__up";
-
-
 		host.querySelector('.content__container').style.display = "none";
 
 	},600)
@@ -413,19 +447,14 @@ function showPagePrev(h,t,id,f)
 
 	his = window.history.state;
 	console.log(his);
-
-	
-	
+		
 }
 
 function checkState(e)
-{
-	//console.log(e.state);
-	//e.preventDefault();
+{	
 	console.log(his);
 
 	let ch, p;
-
 
 	let host = {
 		chapter: his.t_chapter,
@@ -449,14 +478,11 @@ function checkState(e)
 
 function unload()
 {
-	console.log('unloaded');
-
 	if(his)
 	{
 		try
 		{
 			localStorage.setItem('c', his.t_chapter);
-			localStorage.setItem('p', his.t_page);
 			localStorage.setItem('v', 'y');
 		}
 		catch{}
@@ -473,19 +499,17 @@ function cardLandscape(mode)
 	l.style.zIndex = '5';
 	l.style.opacity = '0';
 	
-
 	setTimeout(function() {
 		r.classList.add('col-md-12');
 		r.classList.add('fullWidth');
 		active.querySelector('.content__row').removeAttribute('style');
 		
-
 		if(window.innerWidth >= 768)
 		{
 			r.querySelector('.card__bar').style.width = "30%";
 		}
 
-	},800);
+	},600);
 }
 
 function cardPortrait()
@@ -494,8 +518,7 @@ function cardPortrait()
 	let l = document.querySelector('.chapter__template__left');
 	let active = r.querySelector('.active--card');
 
-	
-	r.classList.remove('fullWidth');
+	r.classList.remove('fullWidth','d-flex','justify-content-center');
 
 	setTimeout(function() {
 		r.classList.remove('card--full');
@@ -504,7 +527,7 @@ function cardPortrait()
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark')
 		active.querySelector('.page__control').classList.remove('page__control--dark--null');
-	},800);
+	},600);
 
 	r.querySelector('.card__bar').removeAttribute('style');
 }
@@ -524,6 +547,18 @@ function theme(mode)
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
 		active.querySelector('.content__container').classList.add('fullWidth--dark--null');
+	}
+	else if(mode == 'DN81')
+	{
+		active.querySelector('.content__container').classList.add('fullWidth--dark');
+		active.querySelector('.page__control').classList.add('page__control--dark');
+		active.querySelector('.content__container').classList.add('fullWidth--dark--DN81');
+	}
+	else if(mode == 'DN82')
+	{
+		active.querySelector('.content__container').classList.add('fullWidth--dark');
+		active.querySelector('.page__control').classList.add('page__control--dark');
+		active.querySelector('.content__container').classList.add('fullWidth--dark--DN82');
 	}
 	else
 	{
@@ -546,17 +581,9 @@ function attach()
 
 const util = {
 	contentUpdate, 
-	clone,
 	showChapters,
-	hideChapters,
-	pageSelect,
-	pageChange,
-	showPageNext,
-	showPagePrev,
 	checkState,
 	unload,
-	cardLandscape,
-	cardPortrait,
 	attach
 }
 
