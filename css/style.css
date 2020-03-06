@@ -19,6 +19,7 @@
 *::-webkit-scrollbar, *::-webkit-scrollbar-button:horizontal
 {
 	display: none;
+	scrollbar-width: none;
 }
 
 /*-----Tag styles-----*/

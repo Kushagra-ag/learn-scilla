@@ -207,7 +207,7 @@ export const chapter2 =
 		head: '',
 		body: `Iin Bitcoin we run a hashing operation twice on the public key to obtain the wallet
 		address adding a further layer of safety<br>
-		(Hashing is a rather important concept in blockchain and we will learn more about hashing later)
+		(Hashing is a rather important concept in blockchain and we will learn more about hashing later)<br>
 		<div class='mt-3 card__footer'>Calculate the wallet address</div>`
 	},
 	page19:
@@ -260,7 +260,7 @@ export const chapter3 =
 		head: "",
 		body: `<div class='row mb-3'><div class='col-12' style='color:#FFDA91;width:100%'>We'll get into the details of some of the fields later. But for now, let's go into the link at the bottom that leads to the transaction details:</div></div> 
 		<div class='row my-4 align-items-center' style='width:100%'><div class='col-md-4' style=''>No inputs(newly generated coins)</div><div class='col-md-8 py-2' style='color:#001F74;background-color:#fff'><div class='row d-flex justify-content-around'><div class='col-8'>1A1zP1eP5QGefi...(Genesis of Bitcoin)-(Unspent)</div><div class='col-4'>50 BTC</div></div></div></div>
-		<div class='row py-5' style='width:100%'><div class='col-md-7'>${table3('204 (bytes)','816','2009-01-03 18:15:05','0','Hide scripts from coinbase','View tree chart')}</div><div class='col-md-5 d-flex justify-content-around'><div style='height:fit-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>Crypto credit</div><div style='height:fit-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>50 BTC </div></div></div> `
+		<div class='row py-5' style='width:100%'><div class='col-md-7'>${table3('204 (bytes)','816','2009-01-03 18:15:05','0','Hide scripts from coinbase','View tree chart')}</div><div class='col-md-5 d-flex justify-content-around'><div style='height:min-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>Crypto credit</div><div style='height:min-content;border:solid 1px #fff;padding:10px 15px;border-radius:10px;'>50 BTC </div></div></div> `
 	},
 	page5:
 	{
@@ -316,7 +316,7 @@ export const chapter3 =
         <label for='option1'>One UTXO worth 150 bitcoins</label><br>
         <input type='radio' name='UTX' value='option2' id='option2'>
         <label for='option2'>Three UTXOs worth 50 bitcoins each</label><br><br>
-        <input type='submit'>
+        <input type='submit' value='Submit'>
 		</form>
         `
 	},
@@ -515,8 +515,8 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<input class="mx-2 input" value='Enter your name'>
-		<div class='card__button my-5 px-3 py-2'>Generate the hash</div>
+		body: `<input class="mx-2 input" value='Enter your name'><br>
+		<div class='card__button my-5 px-3 py-2'>Generate the hash</div><br>
 		<input class="mx-2 mb-3 input" value='Result' disabled><br>
 		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
 	},
