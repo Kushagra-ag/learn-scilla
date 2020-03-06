@@ -334,6 +334,7 @@ function showPageNext(h,t,id,f)
 	if(last)
 	{
 		dest.querySelector('.page__control__down').style.opacity = '0';
+		dest.querySelector('.page__control__down').style.zIndex = '-1';
 	}
 
 
@@ -434,6 +435,7 @@ function showPagePrev(h,t,id,f)
 	if(last)
 	{
 		dest.querySelector('.page__control__down').style.opacity = '0';
+		dest.querySelector('.page__control__down').style.zIndex = '-1';
 	}
 
 	node.style.display = "block";

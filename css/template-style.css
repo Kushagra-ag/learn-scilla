@@ -375,7 +375,7 @@
 	transition: transform 100ms ease-in;
 }
 
-.page__control>div:nth-last-child(1):active
+.page__control>div:nth-last-child(1):active, .next:active
 {
 	transform: scale(0.8);
 }
@@ -444,6 +444,7 @@
 	border: none;
 	letter-spacing: 4px;
 	text-transform: uppercase;
+	transition: transform 100ms ease-in
 }
 
 input[type="submit"]
