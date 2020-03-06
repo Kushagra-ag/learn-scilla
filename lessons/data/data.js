@@ -515,9 +515,9 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<input class="mx-2 input" value='Enter your name'><br>
-		<div class='card__button my-5 px-3 py-2'>Generate the hash</div><br>
-		<input class="mx-2 mb-3 input" value='Result' disabled><br>
+		body: `<input class="mx-2 my-4 input" value='Enter your name'><br>
+		<div class='card__button px-3 py-2'>Generate the hash</div><br>
+		<input class="mx-2 my-4 input" value='Result' disabled><br>
 		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
 	},
 	page10:
@@ -534,7 +534,7 @@ export const chapter5 =
 		body: `<div class='row p-5' style='width:100%'>
 		<div class='col-md-7'><textarea style='width:100%' class='input card__textbox'></textarea></div>
 		<div class='col-md-5'><div class='row'>
-		<div class='col-12 my-5'><div class='card__button px-3 py-2'>Generate the hash</div></div>
+		<div class='col-12 my-5'><div class='card__button px-3 py-3'>Generate the hash</div></div>
 		<div class='col-12'><input class="input" value='Result' disabled></div></div></div>
 		<br>
 		<div class='row px-5'>
@@ -544,7 +544,7 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<br>You'll notice that irrespective of the input length, the output is the same.<br><br>
+		body: `<br><br>You'll notice that irrespective of the input length, the output is the same.<br><br>
 		There are various hashing algorithms; the one that bitcoin follows is SHA256. Which is named so because it contains 256 bits of information.<br><br>
 		If the hash were represented in binary format where each place has 2^1 options (basically, 0 or 1), then we will need a string of 256 ones and zeroes to represent it.<br><br>
 		However, since we are using hexadecimal notation, for each place there are 2^4 options. Thus to represent 256 bits we just need (256/4=) 64 characters.<br><br>
@@ -620,9 +620,9 @@ export const chapter6 =
 		title: '',
 		head: '',
 		body: `Calculated block hash<br>
-		<input class="mx-2 my-3 input" style='width: 80%' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled><br>
+		<input class="mx-2 my-3 input" style='width:min-content' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled><br>
 		Block hash in block 0<br>
-		<input class="mx-2 my-3 input" style='width: 80%' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled>`
+		<input class="mx-2 my-3 input" style='width:min-content' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled>`
 	},
 	page8:
 	{
@@ -630,7 +630,7 @@ export const chapter6 =
 		head: ``,
 		body: `As we can see, our calculated hash of block #0 becomes the reference of previous block for block #1.<br><br>
 		Similarly, hash of block #1 will become a reference for block #2 and so on
-		<center><div class='mt-3 card__footer next page__control__elem' data-dir='down'>next</div></center>`
+		<center><div class='mt-5 card__footer next page__control__elem' data-dir='down'>next</div></center>`
 	},
 };
 
@@ -779,17 +779,17 @@ export const chapter8 =
 	page9:
 	{
 		title: '',
-		head: '',
-		body: `Every block's first transaction is called the 'coinbase transaction' and is a reward to the miner who added the new block to the chain through the process of mining.`
+		head: "Every block's first transaction is called the 'coinbase transaction' and is a reward to the miner who added the new block to the chain through the process of mining.",
+		body: ``
 	},
 	page10:
 	{
 		title: '',
 		head: "Today, those 50 bitcoins given out as a reward are worth:",
 		body: `<input class="mx-2 my-4 input" value=''>
-		<div> Bitcoins  =  </div>
+		<div style='display:inline'> Bitcoins  =  </div>
 		<input class="mx-2 my-4 input" value='' disabled>
-		<div> USD  </div>`
+		<div style='display:inline'> USD  </div>`
 	},
 	page11:
 	{
@@ -797,9 +797,10 @@ export const chapter8 =
 		head: "However, at the time of mining, they were worthless.",
 		body: `<div>The first time somebody exchanged a bitcoin for a physical good, they ordered pizzas (Of course!)</div><br><br>
 		<input class="mx-2 my-4 input" value=''>
-		<div> Pizzas for  </div>
+		<div style='display:inline'> Pizzas for  </div>
 		<input class="mx-2 my-4 input" value='' disabled>
-		<div> Bitcoins =  </div>
+		<div style='display:inline'> Bitcoins </div><br>
+		<div style='display:inline'> = </div>
 		<input class="mx-2 my-4 input" value='' disabled>
 		<div> USD  </div>`
 	},
@@ -825,8 +826,8 @@ export const chapter8 =
 	page15:
 	{
 		title: '',
-		head: "Simply stated, Metcalfe's law says that a network's value is proportional to the square of the number of people/entities in that network.",
-		body: ``
+		head: "",
+		body: `Simply stated, Metcalfe's law says that a network's value is proportional to the square of the number of people/entities in that network.`
 	},
 	page16:
 	{
@@ -849,8 +850,8 @@ export const chapter8 =
 	page19:
 	{
 		title: '',
-		head: "The miner's rewards are halved every 210,000 blocks.",
-		body: ``
+		head: "",
+		body: `The miner's rewards are halved every 210,000 blocks.`
 	},
 	page20:
 	{

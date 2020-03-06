@@ -4,14 +4,23 @@
 
 @font-face
 {
-	font-family: 'avenirnextDemi';
-	src: url('../fonts/AvenirNextLTPro-Demi.otf');
+	font-family: 'avenirnext';
+	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+	font-weight: 400;
 }
 
 @font-face
 {
-	font-family: 'avenirnextReg';
-	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+	font-family: 'avenirnext';
+	src: url('../fonts/AvenirNextLTPro-Demi.otf');
+	font-weight: 600;
+}
+
+@font-face
+{
+	font-family: 'avenirnext';
+	src: url('../fonts/AvenirNextLTPro-Bold.otf');
+	font-weight: 700;
 }
 
 /*-----Scrollbar-----*/
@@ -32,7 +41,8 @@ html
 
 body
 {
-	font-family: 'avenirnextReg', sans-serif!important;
+	font-family: 'avenirnext', sans-serif!important;
+	font-weight: 400;
 	overscroll-behavior: none;
 }
 
@@ -66,7 +76,8 @@ path
 	position: relative;
 	justify-content: space-between!important;
 	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
-	font-family: 'avenirnextDemi', sans-serif!important;
+	font-family: 'avenirnext', sans-serif!important;
+	font-weight: 600;
 	background-color: white;
 	z-index: 15;
 }
@@ -102,7 +113,8 @@ path
 	background-color: #fff;
 	padding-top: 5rem;
 	transition: all 1s ease-in-out;
-	font-family: 'avenirnextDemi', sans-serif!important;
+	font-family: 'avenirnext', sans-serif!important;
+	font-weight: 600;
 	box-shadow: 0 10px 10px 3px rgba(0,0,0,0.2);
 	z-index: 10;
 	overflow: hidden;
@@ -200,7 +212,8 @@ path
 .learn
 {
 	color: #0025D3!important;
-	font-family: 'avenirnextDemi', sans-serif!important;
+	font-family: 'avenirnext', sans-serif!important;
+	font-weight: 600;
 }
 
 /*-----Media queries-----*/

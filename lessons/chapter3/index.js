@@ -19,16 +19,13 @@ while(i<11)
 
 	chapter[i].querySelector('.content__head').innerHTML = data[i][1].head;
 
-	if(i==1 || i==3 || i==4)
+	if(i==1 || i==3)
 		chapter[i].querySelector('.content').innerHTML = data[i][1].body;
 	else
 		chapter[i].querySelector('.body').innerHTML = data[i][1].body;
 
 	if(i==1 || i==3)
 		chapter[i].dataset.mode = 'DN';
-
-	// if(i==3)
-	// 	chapter[i].style.alignContent = 'unset';
 
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/11`;
 

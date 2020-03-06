@@ -333,7 +333,6 @@ function showPageNext(h,t,id,f)
 
 	if(last)
 	{
-		dest.querySelector('.page__control__down').style.opacity = '0';
 		dest.querySelector('.page__control__down').style.zIndex = '-1';
 	}
 
@@ -434,7 +433,6 @@ function showPagePrev(h,t,id,f)
 
 	if(last)
 	{
-		dest.querySelector('.page__control__down').style.opacity = '0';
 		dest.querySelector('.page__control__down').style.zIndex = '-1';
 	}
 
@@ -512,11 +510,14 @@ function cardLandscape(mode)
 	r.classList.add('card--full');
 	l.style.zIndex = '5';
 	l.style.opacity = '0';
-	
+	console.log(mode);
 	setTimeout(function() {
 		r.classList.add('col-md-12');
 		r.classList.add('fullWidth');
 		active.querySelector('.content__row').removeAttribute('style');
+		
+		if(!mode)
+			active.querySelector('.content').style.maxWidth = '75%';
 		
 		if(window.innerWidth >= 768)
 		{
@@ -541,6 +542,7 @@ function cardPortrait()
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark')
 		active.querySelector('.page__control').classList.remove('page__control--dark--null');
+		active.querySelector('.content').removeAttribute('style');
 	},600);
 
 	r.querySelector('.card__bar').removeAttribute('style');
@@ -549,11 +551,13 @@ function cardPortrait()
 function theme(mode)
 {
 	let active = document.querySelector('.active--card');
-
+	console.log('t');
 	if(mode == 'D')
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
+		active.querySelector('.content').removeAttribute('style');
+		active.querySelector('.content').style.alignSelf = 'stretch';
 		
 	}
 	else if(mode == 'DN')
@@ -561,24 +565,31 @@ function theme(mode)
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
 		active.querySelector('.content__container').classList.add('fullWidth--dark--null');
+		active.querySelector('.content').removeAttribute('style');
+		active.querySelector('.content').style.alignSelf = 'stretch';
 	}
 	else if(mode == 'DN81')
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
 		active.querySelector('.content__container').classList.add('fullWidth--dark--DN81');
+		active.querySelector('.content').removeAttribute('style');
+		active.querySelector('.content').style.alignSelf = 'stretch';
 	}
 	else if(mode == 'DN82')
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
 		active.querySelector('.content__container').classList.add('fullWidth--dark--DN82');
+		active.querySelector('.content').removeAttribute('style');
+		active.querySelector('.content').style.alignSelf = 'stretch';
 	}
 	else
 	{
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark');
 		active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
+		active.querySelector('.content').style.maxWidth = '75%';
 	}
 }
 

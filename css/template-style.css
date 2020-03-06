@@ -2,23 +2,7 @@
 
 /*-----Fonts declaration-----*/
 
-@font-face
-{
-	font-family: 'avenirnextDemi';
-	src: url('../fonts/AvenirNextLTPro-Demi.otf');
-}
 
-@font-face
-{
-	font-family: 'avenirnextReg';
-	src: url('../fonts/AvenirNextLTPro-Regular.otf');
-}
-
-@font-face
-{
-	font-family: 'avenirnextBold';
-	src: url('../fonts/AvenirNextLTPro-Bold.otf');
-}
 
 
 /*-----Template classes-----*/
@@ -152,7 +136,8 @@
 .caption
 {
 	color: #FFDA91;
-	font-family: 'avenirnextDemi';
+	font-family: 'avenirnext';
+	font-weight: 600;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	transition: 600ms;
@@ -192,6 +177,7 @@
     display: flex;
     flex-direction: column;    
     align-items: center;
+    align-self: center;
 	overflow: auto;
 	max-height: 55vh;
 	min-height: 55vh;
@@ -206,12 +192,14 @@
 	/*min-height: 10vh;*/
 	max-height: 10vh;
 	text-align: center;
-	font-family: 'avenirnextBold';
+	font-family: 'avenirnext';
+	font-weight: 700;
 }
 
 .content__head
 {
-	font-family: 'avenirnextDemi';
+	font-family: 'avenirnext';
+	font-weight: 600;
 }
 
 .content__head--center
@@ -259,12 +247,12 @@
 
 .card__button
 {
-	display: inline;
+	display: inline-block;
 	color: #fff;
     border-radius: 30px;
     letter-spacing: 1.5px;
     font-size: 80%;
-    font-weight: bold;
+    font-weight: 600;
     text-align: center;
     text-transform: uppercase;
     background-color: #192352;
@@ -487,6 +475,7 @@ input[type="submit"]
 		overflow: scroll;
 		max-height: unset;
 		min-height: unset;
+		max-width: unset;
 	}
 
 	.page__control
