@@ -1,6 +1,6 @@
 ;
 
-const img1 = '../images/chapter3/img1.png';
+const img1 = '../images/chapter3/img1.svg';
 const img2 = '../images/noimg.png';
 const img3 = '../images/noimg.png';
 const img4 = '../images/noimg.png';

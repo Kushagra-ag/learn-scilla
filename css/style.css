@@ -155,7 +155,7 @@ path
 .fullWidth--dark
 {
 	background-color: #192352!important;
-	background: url('../images/chapter2/cartoon1.png') 5% 15% no-repeat, url('../images/chapter2/cartoon2.png') center 15% no-repeat, url('../images/chapter2/cartoon3.png') 95% 15% no-repeat;
+	background: url('../images/svg/avatar1.svg') 5% 15% no-repeat, url('../images/svg/avatar2.svg') center 15% no-repeat, url('../images/svg/avatar3.svg') 95% 15% no-repeat;
 	color: #fff;
 }
 
@@ -248,7 +248,7 @@ path
 	}
 	.fullWidth--dark
 	{
-		background: url('../images/chapter2/cartoon1.png') center 10% no-repeat, url('../images/chapter2/cartoon2.png') center center no-repeat, url('../images/chapter2/cartoon3.png') center 90% no-repeat;
+		background: url('../images/svg/avatar1.svg') center 10% no-repeat, url('../images/svg/avatar2.svg') center center no-repeat, url('../images/svg/avatar3.svg') center 90% no-repeat;
 		height: 200vh;
 	}
 	.fullWidth--dark--null

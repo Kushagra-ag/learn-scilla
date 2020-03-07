@@ -29,6 +29,8 @@ while(i<23)
 	else if(i==2)
 		chapter[i].dataset.mode = 'DN82';
 
+	chapter[i].dataset.orient = 'L';
+
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/23`;
 
 	if(i==22)

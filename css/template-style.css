@@ -137,7 +137,7 @@
 {
 	color: #FFDA91;
 	font-family: 'avenirnext';
-	font-weight: 600;
+	font-weight: 600!important;
 	text-transform: uppercase;
 	letter-spacing: 2px;
 	transition: 600ms;
@@ -380,6 +380,7 @@
 	padding: 40px 10px;
     margin: 10px 100px 40px;
     color: #0025D3;
+    width: max-content;
     font-weight: bold;
     border-radius: 10px;
     box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.3);

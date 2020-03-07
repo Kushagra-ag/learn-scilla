@@ -24,6 +24,9 @@ while(i<20)
 	if(i==12 || i==14)
 		chapter[i].dataset.mode = 'D';
 
+	if(i>11 && i<18)
+		chapter[i].dataset.orient = 'L';
+
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/20`;
 
 	if(i==19)

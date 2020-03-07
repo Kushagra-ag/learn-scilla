@@ -27,6 +27,8 @@ while(i<13)
 	if(i==7)
 		chapter[i].dataset.mode = 'DN';
 
+	chapter[i].dataset.orient = 'L';
+
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/13`;
 
 	if(i==12)

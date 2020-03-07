@@ -74,7 +74,7 @@ export const chapter2 =
 	{
 		title: 'CHAPTER 2: PRIVATE KEY AND WALLET ADDRESS',
 		head: 'Symmetric encryption',
-		body: `Before the mid 1970s, a single key was used to encrypt as well as decrypt a message. This often meant that the sender and the receiver of the message had to possess the same key­ this of course created the question about how could the sender and receiver share the secret key with each other without it being intercepted.`
+		body: `<br>Before the mid 1970s, a single key was used to encrypt as well as decrypt a message. This often meant that the sender and the receiver of the message had to possess the same key­ this of course created the question about how could the sender and receiver share the secret key with each other without it being intercepted.`
 	},
 	page2:
 	{
@@ -232,7 +232,7 @@ export const chapter3 =
 {
 	page1:
 	{
-		title: 'Chapter3: Genesis Block',
+		title: 'Chapter 3: Genesis Block',
 		head: '',
 		body: `<strong>Bitcoin's blockchain</strong> is a data structure where
 		<strong>transactions are publicly verified and aggregated
@@ -426,11 +426,15 @@ export const chapter4 =
 		title: '',
 		head: "",
 		body: `<div class='row' style='text-align:center'>
-		<div class='col-md-6'><div class='card__block'> Satoshi's Wallet 'A'<br>Balance displayed: 50</div><div class='card__block'> 1 UTXO of 50 bitcoin<br>associated with A</div></div>
-		<div class='col-md-6'><div class='card__block'> Hal's Wallet 'B'<br>Balance displayed: 0</div><div class='card__block'> No UTXO associated<br>associated with B</div></div>
+		<div class='col-md-6'><div class='card__block'> Satoshi's Wallet 'A'<br>Balance displayed: 50</div></div>
+		<div class='col-md-6'><div class='card__block'> Hal's Wallet 'B'<br>Balance displayed: 0</div></div>
 		</div>
 		<div class='row' style='text-align:center'>
-		<center><div class='card__footer'>Send 10 BTC from Wallet A to B</div></center>
+		<div class='col-md-6'><div class='card__block'> 1 UTXO of 50 bitcoin<br>associated with A </div></div>
+		<div class='col-md-6'><div class='card__block'> No UTXO associated<br>associated with B</div></div>
+		</div>
+		<div class='row' style='text-align:center'>
+		<div class='card__footer'>Send 10 BTC from Wallet A to B</div>
 		<div>`
 	},
 	page11:
@@ -438,8 +442,16 @@ export const chapter4 =
 		title: '',
 		head: ``,
 		body: `<div class='row'>
-		<div class='col-md-6'><div class='card__block'> Satoshi's Wallet 'A'<br>Balance displayed: 50</div><div class='card__block card__block--red'> 1 UTXO of 50 bitcoin<br>associated with A</div><div class='card__block'> 1 UTXO of 50 bitcoin<br>associated with A</div></div>
-		<div class='col-md-6'><div class='card__block'> Hal's Wallet 'B'<br>Balance displayed: 0</div><div class='card__block'> No UTXO associated<br>associated with B</div></div>
+		<div class='col-md-6'><div class='card__block'> Satoshi's Wallet 'A'<br>Balance displayed: 50</div></div>
+		<div class='col-md-6'><div class='card__block'> Hal's Wallet 'B'<br>Balance displayed: 0</div></div>
+		</div>
+		<div class='row'>
+		<div class='col-md-6'><div class='card__block card__block--red'> 1 UTXO of 50 bitcoin<br>associated with A</div></div>
+		<div class='col-md-6'><div class='card__block'> No UTXO associated<br>associated with B </div></div>
+		</div>
+		<div class='row just'>
+		<div class='col-md-6'><div class='card__block'> 1 UTXO of 50 bitcoin<br>associated with A</div></div>
+		<div class='col-md-6' style='z-index:-1'><div class='card__block'> 1 UTXO of 50 bitcoin<br>associated with A</div></div>
 		</div>`
 	},
 	page12:

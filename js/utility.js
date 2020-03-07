@@ -16,6 +16,9 @@ function contentUpdate(c,p,time)
 	image.classList.add('slide-up');
 	caption.classList.add('scale');
 
+	if(!time && node.dataset.orient=='L')
+		cardLandscape(node.dataset.mode);
+
 	setTimeout(function(){
 		image.src = time ? images[c-1][p-1] : images[c-1][p-1].slice(1);
 		caption.innerHTML = captions[c-1][p-1]||'';
@@ -214,16 +217,16 @@ function orientSelect(c,p,dir)
 		}
 		else if(c==3)
 		{
-			if(p==2)
-				flag=1;
-		}
-		else if(c>=4 && c<=8)
-		{
 			if(p==1)
-				flag=-1;
-			else if(p==2)
 				flag=1;
 		}
+		// else if(c>=4 && c<=8)
+		// {
+		// 	if(p==1)
+		// 		flag=-1;
+		// 	else if(p==2)
+		// 		flag=1;
+		// }
 		else if(c==9)
 		{
 			if(p==1)
@@ -238,50 +241,50 @@ function orientSelect(c,p,dir)
 			if(p==11)
 				flag=-1;
 			else if(p==17)
-				flag=1
-		}
-		else if(c==3)
-		{
-			if(p==1)
-				flag=-1;
-			else if(p==11)
 				flag=1;
-		}
-		else if(c==4)
-		{
-			if(p==1)
+			else if(p==20)
 				flag=-1;
-			else if(p==12)
-				flag=1;
 		}
-		else if(c==5)
-		{
-			if(p==1)
-				flag=-1;
-			else if(p==15)
-				flag=1;
-		}
-		else if(c==6)
-		{
-			if(p==1)
-				flag=-1;
-			else if(p==8)
-				flag=1;
-		}
-		else if(c==7)
-		{
-			if(p==1)
-				flag=-1;
-			else if(p==13)
-				flag=1;
-		}
-		else if(c==8)
-		{
-			if(p==1)
-				flag=-1;
-			else if(p==23)
-				flag=1;
-		}
+			// else if(c==3)
+			// {
+			// 	if(p==1)
+			// 		flag=-1;
+			// 	else if(p==11)
+			// 		flag=1;
+			// }
+			// else if(c==4)
+			// {
+			// 	if(p==1)
+			// 		flag=-1;
+			// 	else if(p==12)
+			// 		flag=1;
+			// }
+			// else if(c==5)
+			// {
+			// 	if(p==1)
+			// 		flag=-1;
+			// 	else if(p==15)
+			// 		flag=1;
+			// }
+			// else if(c==6)
+			// {
+			// 	if(p==1)
+			// 		flag=-1;
+			// 	else if(p==8)
+			// 		flag=1;
+			// }
+			// else if(c==7)
+			// {
+			// 	if(p==1)
+			// 		flag=-1;
+			// 	else if(p==13)
+			// 		flag=1;
+			// }
+			else if(c==8)
+			{
+				if(p==23)
+					flag=1;
+			}
 	}
 	return flag;
 
@@ -306,6 +309,7 @@ function showPageNext(h,t,id,f)
 	dest.querySelector('.content__container').replaceWith(node);
 
 	let mode = dest.querySelector('.content__container').dataset.mode;
+	let orient = dest.querySelector('.content__container').dataset.orient;
 	let last = dest.querySelector('.content__container').dataset.last;
 
 	if(f==1)
@@ -319,7 +323,7 @@ function showPageNext(h,t,id,f)
 	}
 
 
-	theme(mode);
+	theme(mode,orient);
 
 
 
@@ -410,6 +414,7 @@ function showPagePrev(h,t,id,f)
 	dest.querySelector('.content__container').replaceWith(node);
 
 	let mode = dest.querySelector('.content__container').dataset.mode;
+	let orient = dest.querySelector('.content__container').dataset.orient;
 	let last = dest.querySelector('.content__container').dataset.last;
 
 	if(f==1)
@@ -421,7 +426,7 @@ function showPagePrev(h,t,id,f)
 	{
 		setTimeout(cardPortrait,600,mode);
 	}
-	theme(mode);
+	theme(mode,orient);
 
 	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
 		elem.dataset.id = node.parentNode.dataset.id;
@@ -516,6 +521,7 @@ function cardLandscape(mode)
 		r.classList.add('fullWidth');
 		active.querySelector('.content__row').removeAttribute('style');
 		
+		console.log(mode);
 		if(!mode)
 			active.querySelector('.content').style.maxWidth = '75%';
 		
@@ -548,7 +554,7 @@ function cardPortrait()
 	r.querySelector('.card__bar').removeAttribute('style');
 }
 
-function theme(mode)
+function theme(mode,o)
 {
 	let active = document.querySelector('.active--card');
 	console.log('t');
@@ -589,7 +595,8 @@ function theme(mode)
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark');
 		active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
-		active.querySelector('.content').style.maxWidth = '75%';
+		if(o=='L')
+			active.querySelector('.content').style.maxWidth = '75%';
 	}
 }
 

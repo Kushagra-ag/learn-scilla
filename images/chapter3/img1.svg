@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="185.208mm" height="135.467mm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"  version="1.2" baseProfile="tiny">
+	<style>
+		text {
+		margin: 50px;
+		}
+	</style>
+<defs>
+</defs>
+<g fill="none" stroke="black" stroke-width="1" fill-rule="evenodd" stroke-linecap="square" stroke-linejoin="bevel" >
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M20,0 L610,0 C621.046,0 630,8.9543 630,20 L630,476 C630,487.046 621.046,496 610,496 L20,496 C8.9543,496 0,487.046 0,476 L0,20 C0,8.9543 8.9543,0 20,0 M20,1 L610,1 C620.493,1 629,9.50659 629,20 L629,476 C629,486.493 620.493,495 610,495 L20,495 C9.50659,495 1,486.493 1,476 L1,20 C1,9.50659 9.50659,1 20,1 "/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,30 L364,30 L364,31 L1,31 L1,30"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,60 L364,60 L364,61 L1,61 L1,60"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,30 L629,30 L629,31 L364,31 L364,30"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,60 L629,60 L629,61 L364,61 L364,60"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,61 L364,61 L364,62 L1,62 L1,61"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,91 L364,91 L364,92 L1,92 L1,91"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,61 L629,61 L629,62 L364,62 L364,61"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,91 L629,91 L629,92 L364,92 L364,91"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,92 L364,92 L364,93 L1,93 L1,92"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,122 L364,122 L364,123 L1,123 L1,122"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,92 L629,92 L629,93 L364,93 L364,92"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,122 L629,122 L629,123 L364,123 L364,122"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,123 L364,123 L364,124 L1,124 L1,123"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,153 L364,153 L364,154 L1,154 L1,153"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,123 L629,123 L629,124 L364,124 L364,123"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,153 L629,153 L629,154 L364,154 L364,153"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,154 L364,154 L364,155 L1,155 L1,154"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,184 L364,184 L364,185 L1,185 L1,184"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,154 L629,154 L629,155 L364,155 L364,154"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,184 L629,184 L629,185 L364,185 L364,184"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,185 L364,185 L364,186 L1,186 L1,185"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,215 L364,215 L364,216 L1,216 L1,215"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,185 L629,185 L629,186 L364,186 L364,185"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,215 L629,215 L629,216 L364,216 L364,215"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,216 L364,216 L364,217 L1,217 L1,216"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,246 L364,246 L364,247 L1,247 L1,246"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,216 L629,216 L629,217 L364,217 L364,216"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,246 L629,246 L629,247 L364,247 L364,246"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,247 L364,247 L364,248 L1,248 L1,247"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,277 L364,277 L364,278 L1,278 L1,277"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,247 L629,247 L629,248 L364,248 L364,247"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,277 L629,277 L629,278 L364,278 L364,277"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,278 L364,278 L364,279 L1,279 L1,278"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,308 L364,308 L364,309 L1,309 L1,308"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,278 L629,278 L629,279 L364,279 L364,278"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,308 L629,308 L629,309 L364,309 L364,308"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,309 L364,309 L364,310 L1,310 L1,309"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,339 L364,339 L364,340 L1,340 L1,339"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,309 L629,309 L629,310 L364,310 L364,309"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,339 L629,339 L629,340 L364,340 L364,339"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,340 L364,340 L364,341 L1,341 L1,340"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,370 L364,370 L364,371 L1,371 L1,370"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,340 L629,340 L629,341 L364,341 L364,340"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,370 L629,370 L629,371 L364,371 L364,370"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,371 L364,371 L364,372 L1,372 L1,371"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,401 L364,401 L364,402 L1,402 L1,401"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,371 L629,371 L629,372 L364,372 L364,371"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,401 L629,401 L629,402 L364,402 L364,401"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,402 L364,402 L364,403 L1,403 L1,402"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,432 L364,432 L364,433 L1,433 L1,432"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,402 L629,402 L629,403 L364,403 L364,402"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,432 L629,432 L629,433 L364,433 L364,432"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,433 L364,433 L364,434 L1,434 L1,433"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,463 L364,463 L364,464 L1,464 L1,463"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,433 L629,433 L629,434 L364,434 L364,433"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,463 L629,463 L629,464 L364,464 L364,463"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,464 L364,464 L364,465 L1,465 L1,464"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M1,494 L364,494 L364,495 L1,495 L1,494"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,464 L629,464 L629,465 L364,465 L364,464"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="none" transform="matrix(1,0,0,1,0,0)"
+>
+<path vector-effect="none" fill-rule="evenodd" d="M364,494 L629,494 L629,495 L364,495 L364,494"/>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="145.5" y="22" font-family="Segoe UI" font-size="16" font-weight="700" font-style="normal" 
+ >Summary</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="469" y="22" font-family="Segoe UI" font-size="16" font-weight="700" font-style="normal" 
+ >Block 0</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="52" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Number of Transactions</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="52" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >1</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="83" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Output Total</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="83" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >50 BTC</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="114" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Estimated Transaction Volume</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="114" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >0 BTC</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="145" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Transaction Fees</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="145" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >0 BTC</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="176" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Height</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="176" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >0 (Main chain)</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="207" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Timestamp</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="207" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >2009-01-03 </text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="456" y="207" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >18:15:05</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="238" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Received Time</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="238" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >2009-01-03 </text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="456" y="238" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >18:15:05</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="269" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Replayed By</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="269" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Unknown</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="300" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Difficulty</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="300" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >1</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="331" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Bits</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="331" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >486604799</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="362" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Size</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="362" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >0.285 kB</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="393" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Weight</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="393" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >0.896 kWU</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="424" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Version</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="424" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >1</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="455" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Nonce</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="455" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >2083236893</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="5" y="486" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >Block Rewards</text>
+</g>
+
+<g fill="#ffffff" fill-opacity="1" stroke="#ffffff" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="bevel" transform="matrix(1,0,0,1,0,0)"
+>
+<text fill="#ffffff" fill-opacity="1" stroke="none" xml:space="preserve" x="368" y="486" font-family="Segoe UI" font-size="16" font-weight="400" font-style="normal" 
+ >50 BTC</text>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+
+<g fill="#000000" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="1" stroke-linecap="square" stroke-linejoin="miter" stroke-miterlimit="2" transform="matrix(1,0,0,1,0,0)"
+>
+</g>
+</g>
+</svg>

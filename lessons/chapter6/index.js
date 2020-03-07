@@ -27,6 +27,9 @@ while(i<8)
 	if(i==5)
 		chapter[i].dataset.mode = 'DN';
 
+	
+	chapter[i].dataset.orient = 'L';
+
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/8`;
 
 	if(i==7)
