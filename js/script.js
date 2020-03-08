@@ -3,7 +3,7 @@ import util from './utility.js';
 
 $(document).ready(function() {
 
-	let containers = document.getElementsByClassName('content__container'),node;
+	
 	const totalChapters = 9;
 
 	if(localStorage.getItem('v'))
@@ -12,29 +12,12 @@ $(document).ready(function() {
 			item.innerHTML = "Continue";
 		});
 
-		let c = parseInt(localStorage.getItem('c')) || 1;
+		let c = parseInt(localStorage.getItem('c')) || 0;
 		document.querySelector('.status').style.width = ((c/totalChapters)*100)+'%';
-		node = util.contentUpdate(c,1,0);
 	}
-	else
-	{
-		node = util.contentUpdate(1,1,0);
-	}
-	
-	
-	
-	containers[1].replaceWith(node);
-	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
-		elem.dataset.id = node.parentNode.dataset.id;
-		elem.dataset.chapter = node.dataset.chapter;
-		elem.dataset.page = node.dataset.page;
-	});
 
-	util.attach();
-	
-
-	containers[1].removeAttribute('style');
-
+	history.pushState(null,null,'./');
+	console.log(window.history.state);
 
 
 });
@@ -47,6 +30,10 @@ window.onpopstate = util.checkState;
 window.onbeforeunload = util.unload;
 
 [...document.getElementsByClassName('learn')].forEach((elem) => {
+	elem.addEventListener('click', util.showIndex);
+});
+
+[...document.getElementsByClassName('index__chapter')].forEach((elem) => {
 	elem.addEventListener('click', util.showChapters);
 });
 

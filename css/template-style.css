@@ -178,6 +178,7 @@
     flex-direction: column;    
     align-items: center;
     align-self: center;
+    padding-top: 20px;
 	overflow: auto;
 	max-height: 55vh;
 	min-height: 55vh;
@@ -378,10 +379,10 @@
 .card__block
 {
 	padding: 40px 10px;
-    margin: 10px 100px 40px;
     color: #0025D3;
     width: max-content;
     font-weight: bold;
+    border: solid 1px #0025d300;
     border-radius: 10px;
     box-shadow: 0 5px 11px 0px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -389,7 +390,7 @@
 
 .card__block:hover, .card__block:focus
 {
-	border: solid 1px #0025D3;
+	border-color: #0025D3;
 }
 
 .card__block--red
