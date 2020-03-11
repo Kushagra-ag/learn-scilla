@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.info
+{
+	display: none;
+}
+
+.info__box
+{
+	position: absolute;
+	background-color: #fff;
+	padding: 10px 20px;
+	top: 50%;
+	left: 50%;
+	font-size: 125%;
+	border-radius: 20px;
+	box-shadow: 0 5px 6px 3px rgba(0,0,0,0.1);
+	transform: translate(-50% ,-50%);
+	z-index: 999;
+}
+
+.info__box__content
+{
+	font-size: 60%;
+}
+
+.info__box__back
+{
+	border-radius: 15%;
+	text-transform: unset;
+	float: right;
+	font-size: 60%;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+.correct
+{
+	color: green;
+}
+
+.incorrect
+{
+	color: red;
+}

@@ -1,9 +1,11 @@
 ;
 import captions from '../lessons/data/data.js';
+import forms from './formActions.js';
 import chapters, { total } from '../lessons/index.js';
 import images from '../images/index.js';
+console.log(chapters);
 
-var his;
+var his, w=window.innerWidth>=768?true:false;
 
 function contentUpdate(c,p,time)
 {
@@ -104,22 +106,28 @@ function showChapters(e)
 	setTimeout(function()
 	{
 		ch.style.display = "block";
-		index.style.marginTop="-200vh";
+		index.style.marginTop="-250vh";
 
 	},500);
 
-	
-	
 }
+
+
+function reset()
+{
+	document.querySelector(`.y[data-id='0']`).dataset.class = 'd__up';
+	document.querySelector(`.y[data-id='1']`).dataset.class = 'd__current';
+	document.querySelector(`.y[data-id='2']`).dataset.class = 'd__behind';
+	cardPortrait();
+}
+
 
 function hideChapters()
 {
 	let ch = document.querySelector('.chapter__template');
 	let index = document.querySelector('.index');
 
-	document.querySelector(`.y[data-id='0']`).dataset.class = 'd__up';
-	document.querySelector(`.y[data-id='1']`).dataset.class = 'd__current';
-	document.querySelector(`.y[data-id='2']`).dataset.class = 'd__behind';
+	reset();
 
 	index.style.marginTop="0";
 
@@ -152,57 +160,57 @@ function hideIndex()
 }
 
 
-function pageSelect(ch,p,dir)
+function pageSelect(c,p,dir)
 {
 	if(dir=="up")
 	{
-		if(ch==0 && p==0)
-			return {ch:-1,p:-1}
-		else if(ch==1 && p==1)
-			return {ch:0,p:0}
-		else if(ch==0 && p==0)
-			return {ch:1,p:1}
-		else if(ch==2 && p==1)
-			return {ch:1,p:4}
-		else if(ch==3 && p==1)
-			return {ch:2,p:20}
-		else if(ch==4 && p==1)
-			return {ch:3,p:11}
-		else if(ch==5 && p==1)
-			return {ch:4,p:12}
-		else if(ch==6 && p==1)
-			return {ch:5,p:15}
-		else if(ch==7 && p==1)
-			return {ch:6,p:8}
-		else if(ch==8 && p==1)
-			return {ch:7,p:13}
-		else if(ch==9 && p==1)
-			return {ch:8,p:23}
+		if(c==0 && p==0)
+			return {c:-1,p:-1}
+		else if(c==1 && p==1)
+			return {c:0,p:0}
+		else if(c==0 && p==0)
+			return {c:1,p:1}
+		else if(c==2 && p==1)
+			return {c:1,p:4}
+		else if(c==3 && p==1)
+			return {c:2,p:20}
+		else if(c==4 && p==1)
+			return {c:3,p:11}
+		else if(c==5 && p==1)
+			return {c:4,p:12}
+		else if(c==6 && p==1)
+			return {c:5,p:15}
+		else if(c==7 && p==1)
+			return {c:6,p:8}
+		else if(c==8 && p==1)
+			return {c:7,p:13}
+		else if(c==9 && p==1)
+			return {c:8,p:23}
 		else
-			return {ch:ch,p:p-1}
+			return {c:c,p:p-1}
 	}
 	else
 	{
-		if(ch==1 && p==4)
-			return {ch:2,p:1}
-		else if(ch==2 && p==20)
-			return {ch:3,p:1}
-		else if(ch==3 && p==11)
-			return {ch:4,p:1}
-		else if(ch==4 && p==12)
-			return {ch:5,p:1}
-		else if(ch==5 && p==15)
-			return {ch:6,p:1}
-		else if(ch==6 && p==8)
-			return {ch:7,p:1}
-		else if(ch==7 && p==13)
-			return {ch:8,p:1}
-		else if(ch==8 && p==23)
-			return {ch:9,p:1}
-		else if(ch==9 && p==7)
-			return {ch:null,p:null}
+		if(c==1 && p==4)
+			return {c:2,p:1}
+		else if(c==2 && p==20)
+			return {c:3,p:1}
+		else if(c==3 && p==11)
+			return {c:4,p:1}
+		else if(c==4 && p==12)
+			return {c:5,p:1}
+		else if(c==5 && p==15)
+			return {c:6,p:1}
+		else if(c==6 && p==8)
+			return {c:7,p:1}
+		else if(c==7 && p==13)
+			return {c:8,p:1}
+		else if(c==8 && p==23)
+			return {c:9,p:1}
+		else if(c==9 && p==7)
+			return {c:null,p:null}
 		else
-			return {ch:ch,p:p+1}
+			return {c:c,p:p+1}
 	}
 }
 
@@ -211,7 +219,7 @@ function pageChange(e)
 	
 	let elem = event.currentTarget;
 	let id = parseInt(elem.dataset.id);
-	let ch = parseInt(elem.dataset.chapter);
+	let c = parseInt(elem.dataset.chapter);
 	let p = parseInt(elem.dataset.page);
 	let dir = elem.dataset.dir;
 
@@ -219,24 +227,26 @@ function pageChange(e)
 	console.log(p);
 
 	let host = {
-		chapter: ch,
+		chapter: c,
 		page: p,
 	};
 	
 
-	({ch, p} = pageSelect(ch, p, dir));
+	({c, p} = pageSelect(c, p, dir));
 
 	console.log("next - "+p);
 
-	if((p==null && ch==null))
+	forms(c,p);
+
+	if((p==null && c==null))
 		return;
 
 	let target = {
-		chapter: ch,
+		chapter: c,
 		page: p,
 	}
 
-	let flag = orientSelect(ch,p,dir) || 0;
+	let flag = orientSelect(c,p,dir) || 0;
 
 	if(dir == 'down')
 		showPageNext(host,target,id,flag);
@@ -307,6 +317,7 @@ function showPageNext(h,t,id,f)
 	let other = document.querySelector(`.y[data-id='${(id+2)%3}']`);
 
 	host.classList.remove('active--card');
+	other.classList.remove('active--card');
 	dest.classList.add('active--card');
 
 	let node = contentUpdate(t.chapter,t.page,600);
@@ -429,6 +440,7 @@ function showPagePrev(h,t,id,f)
 	let other = document.querySelector(`.y[data-id='${(id+1)%3}']`);
 
 	host.classList.remove('active--card');
+	other.classList.remove('active--card');
 	dest.classList.add('active--card');
 	
 	let node = contentUpdate(t.chapter,t.page,600);
@@ -548,7 +560,7 @@ function cardLandscape(mode)
 			active.querySelector('.content').style.width = '75%';
 		}
 		
-		if(window.innerWidth >= 768)
+		if(w)
 		{
 			r.querySelector('.card__bar').style.width = "30%";
 		}
@@ -581,44 +593,35 @@ function theme(mode,o)
 {
 	let active = document.querySelector('.active--card');
 	console.log('t');
-	if(mode == 'D')
+	if(mode && mode.search("D") != -1)
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
 		active.querySelector('.page__control').classList.add('page__control--dark');
 		active.querySelector('.content').removeAttribute('style');
 		active.querySelector('.content').style.alignSelf = 'stretch';
+
+		if(mode == 'DN')
+		{
+			active.querySelector('.content__container').classList.add('fullWidth--dark--null');
+		}
+		else if(mode == 'DN81')
+		{
+			active.querySelector('.content__container').classList.add('fullWidth--dark--DN81');
+		}
+		else if(mode == 'DN82')
+		{
+			active.querySelector('.content__container').classList.add('fullWidth--dark--DN82');
+		}
 		
 	}
-	else if(mode == 'DN')
-	{
-		active.querySelector('.content__container').classList.add('fullWidth--dark');
-		active.querySelector('.page__control').classList.add('page__control--dark');
-		active.querySelector('.content__container').classList.add('fullWidth--dark--null');
-		active.querySelector('.content').removeAttribute('style');
-		active.querySelector('.content').style.alignSelf = 'stretch';
-	}
-	else if(mode == 'DN81')
-	{
-		active.querySelector('.content__container').classList.add('fullWidth--dark');
-		active.querySelector('.page__control').classList.add('page__control--dark');
-		active.querySelector('.content__container').classList.add('fullWidth--dark--DN81');
-		active.querySelector('.content').removeAttribute('style');
-		active.querySelector('.content').style.alignSelf = 'stretch';
-	}
-	else if(mode == 'DN82')
-	{
-		active.querySelector('.content__container').classList.add('fullWidth--dark');
-		active.querySelector('.page__control').classList.add('page__control--dark');
-		active.querySelector('.content__container').classList.add('fullWidth--dark--DN82');
-		active.querySelector('.content').removeAttribute('style');
-		active.querySelector('.content').style.alignSelf = 'stretch';
-	}
+	
 	else
 	{
+		console.log(w);
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark');
 		active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
-		if(o=='L')
+		if(o=='L' && w)
 		{
 			active.querySelector('.content').style.maxWidth = '75%';
 			active.querySelector('.content').style.width = '75%';

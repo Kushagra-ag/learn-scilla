@@ -16,7 +16,7 @@ $(document).ready(function() {
 		document.querySelector('.status').style.width = ((c/totalChapters)*100)+'%';
 	}
 
-	history.pushState(null,null,'./');
+	history.pushState(null,'homepage','./');
 	console.log(window.history.state);
 
 
@@ -29,13 +29,15 @@ $(document).ready(function() {
 window.onpopstate = util.checkState;
 window.onbeforeunload = util.unload;
 
-[...document.getElementsByClassName('learn')].forEach((elem) => {
+[...document.getElementsByClassName('card')].forEach((elem) => {
 	elem.addEventListener('click', util.showIndex);
 });
 
 [...document.getElementsByClassName('index__chapter')].forEach((elem) => {
 	elem.addEventListener('click', util.showChapters);
 });
+
+
 
 document.querySelector('.chapter__image').addEventListener('load', function(e) {
 	setTimeout(function() {

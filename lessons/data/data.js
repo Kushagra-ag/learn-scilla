@@ -266,7 +266,7 @@ export const chapter3 =
 	{
 		title: '',
 		head: '',
-		body: `<div>Every block contains atleast one transaction, called <strong>Coinbase Transaction</strong> 
+		body: `<div><br>Every block contains atleast one transaction, called <strong>Coinbase Transaction</strong> 
 		that's a reward for the miner. We will learn more about it later, for now, we see that 
 		<strong>50 bitcoins are generated in this transaction</strong> and go to Satoshi's wallet with the<br><br>
 		<font style='color:#0025D3'><strong>Address: 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa</strong></font><br><br>
@@ -311,12 +311,12 @@ export const chapter3 =
 		body: `Suppose you mine three blocks with no transactions (except the coinbase transaction) and each time 50 bitcoin reward is sent to the same wallet address. Your wallet now shows a total balance of 150 bitcoins!<br>
 		<strong>How many UTXOs now exist in the UTXO set?</strong><br>
 		Choose one option<br><br>
-		<form>
-        <input type='radio' name='UTX' value='option1' id='option1'>
+		<form name='c3p10' onsubmit='return false'>
+        <input type='radio' name='UTX' id='option1'>
         <label for='option1'>One UTXO worth 150 bitcoins</label><br>
-        <input type='radio' name='UTX' value='option2' id='option2'>
+        <input type='radio' name='UTX' id='option2'>
         <label for='option2'>Three UTXOs worth 50 bitcoins each</label><br><br>
-        <input type='submit' value='Submit'>
+        <input type='submit' placeholder='Submit'>
 		</form>
         `
 	},
@@ -527,9 +527,9 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<input class="mx-2 my-4 input" value='Enter your name'><br>
-		<div class='card__button px-3 py-2'>Generate the hash</div><br>
-		<input class="mx-2 my-4 input" value='Result' disabled><br>
+		body: `<input class="mx-2 my-4 input" placeholder='Enter your name'><br>
+		<div class='card__button px-3 py-2 my-4'>Generate the hash</div><br>
+		<input class="mx-2 my-4 input" placeholder='Result' disabled><br>
 		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
 	},
 	page10:
@@ -547,7 +547,7 @@ export const chapter5 =
 		<div class='col-md-7'><textarea style='width:100%' class='input card__textbox'></textarea></div>
 		<div class='col-md-5'><div class='row'>
 		<div class='col-12 my-5'><div class='card__button px-3 py-3'>Generate the hash</div></div>
-		<div class='col-12'><input class="input" value='Result' disabled></div></div></div>
+		<div class='col-12'><input class="input" placeholder='Result' disabled></div></div></div>
 		<br>
 		<div class='row px-5'>
 		<div class='col-12'><div class='mt-5 card__footer'>Link to the Hashing code</div></div>`
@@ -632,9 +632,9 @@ export const chapter6 =
 		title: '',
 		head: '',
 		body: `Calculated block hash<br>
-		<input class="mx-2 my-3 input" style='width:min-content' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled><br>
+		<input class="mx-2 my-3 input" style='width:min-content' placeholder='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled><br>
 		Block hash in block 0<br>
-		<input class="mx-2 my-3 input" style='width:min-content' value='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled>`
+		<input class="mx-2 my-3 input" style='width:min-content' placeholder='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled>`
 	},
 	page8:
 	{
@@ -706,9 +706,9 @@ export const chapter7 =
 		title: '',
 		head: '',
 		body: `Calculated block hash<br>
-		<input class="my-4 mx-2 input" style='width:75%' value='Value based on nonce' disabled><br>
+		<input class="my-4 mx-2 input" style='width:75%' placeholder='Value based on nonce' disabled><br>
 		Difficulty target (Derived from bits)<br>
-		<input style='width: 75%' class="mx-2 my-4 input" value='00000000ffff0000000000000000000000000000000000000000000000000000' disabled>`
+		<input style='width: 75%' class="mx-2 my-4 input" placeholder='00000000ffff0000000000000000000000000000000000000000000000000000' disabled>`
 	},
 	page10:
 	{
@@ -798,9 +798,9 @@ export const chapter8 =
 	{
 		title: '',
 		head: "Today, those 50 bitcoins given out as a reward are worth:",
-		body: `<input class="mx-2 my-4 input" value=''>
+		body: `<input class="mx-2 my-4 input" placeholder=''>
 		<div style='display:inline'> Bitcoins  =  </div>
-		<input class="mx-2 my-4 input" value='' disabled>
+		<input class="mx-2 my-4 input" placeholder='' disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page11:
@@ -808,12 +808,12 @@ export const chapter8 =
 		title: '',
 		head: "However, at the time of mining, they were worthless.",
 		body: `<div>The first time somebody exchanged a bitcoin for a physical good, they ordered pizzas (Of course!)</div><br><br>
-		<input class="mx-2 my-4 input" value=''>
+		<input class="mx-2 my-4 input" placeholder=''>
 		<div style='display:inline'> Pizzas for  </div>
-		<input class="mx-2 my-4 input" value='' disabled>
+		<input class="mx-2 my-4 input" placeholder='' disabled>
 		<div style='display:inline'> Bitcoins </div><br>
 		<div style='display:inline'> = </div>
-		<input class="mx-2 my-4 input" value='' disabled>
+		<input class="mx-2 my-4 input" placeholder='' disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page12:
@@ -876,7 +876,7 @@ export const chapter8 =
 		title: '',
 		head: '',
 		body: `At that time, miner's reward will become zero and they will have to rely on transaction fee only which a sender has a choice to include or not. In turn, the miner has the choice to select the high fee.<br><br>
-		Transactions for his block and leave out the low or <strong>zero fee tranactions.</strong>`
+		Transactions for his block and leave out the low or <strong>zero free transactions.</strong>`
 	},
 	page22:
 	{
@@ -899,7 +899,7 @@ export const chapter9 =
 	{
 		title: 'CHAPTER 9',
 		head: "",
-		body: `<strong>Bitcoin</strong>is a vast topic and involves many different disciplines
+		body: `<strong>Bitcoin</strong> is a vast topic and involves many different disciplines
 		such as economics, finance, security, cryptogrpahy, 
 		network theory and so on.`
 	},
