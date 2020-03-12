@@ -106,7 +106,7 @@ function showChapters(e)
 	setTimeout(function()
 	{
 		ch.style.display = "block";
-		index.style.marginTop="-250vh";
+		index.style.marginTop="-300vh";
 
 	},500);
 
