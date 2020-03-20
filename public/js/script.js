@@ -1,27 +1,6 @@
 ;
 import util from './utility.js';
 
-$(document).ready(function() {
-
-	
-	const totalChapters = 9;
-
-	if(localStorage.getItem('v'))
-	{
-		[...document.getElementsByClassName('learn')].forEach((item) => {
-			item.innerHTML = "Continue";
-		});
-
-		let c = parseInt(localStorage.getItem('c')) || 0;
-		document.querySelector('.status').style.width = ((c/totalChapters)*100)+'%';
-	}
-
-	history.pushState(null,'homepage','./');
-	console.log(window.history.state);
-
-
-});
-
 
 
 /*-----Attaching event listeners-----*/
@@ -29,9 +8,7 @@ $(document).ready(function() {
 window.onpopstate = util.checkState;
 window.onbeforeunload = util.unload;
 
-[...document.getElementsByClassName('card')].forEach((elem) => {
-	elem.addEventListener('click', util.showIndex);
-});
+
 
 [...document.getElementsByClassName('index__chapter')].forEach((elem) => {
 	elem.addEventListener('click', util.showChapters);

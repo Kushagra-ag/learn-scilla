@@ -174,7 +174,7 @@ export const chapter2 =
 	{
 		title: '',
 		head: '',
-		body: ``
+		body: `<div class='bg-strip'</div>`
 	},
 	page16:
 	{
@@ -317,8 +317,7 @@ export const chapter3 =
         <input type='radio' name='UTX' id='option2'>
         <label for='option2'>Three UTXOs worth 50 bitcoins each</label><br><br>
         <input type='submit' placeholder='Submit'>
-		</form>
-        `
+		</form>`
 	},
 	page11:
 	{

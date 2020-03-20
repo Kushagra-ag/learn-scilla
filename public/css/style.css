@@ -156,7 +156,10 @@ path
 .fullWidth--dark
 {
 	background-color: #192352!important;
-	background: url('../images/svg/avatar1.svg') 5% 15% no-repeat, url('../images/svg/avatar2.svg') center 15% no-repeat, url('../images/svg/avatar3.svg') 95% 15% no-repeat;
+	background-image: url('../images/svg/avatar1.svg'), url('../images/svg/avatar2.svg'), url('../images/svg/avatar3.svg'), linear-gradient(to right, rgba(255,218,145,1), rgba(255,218,145,1));
+	background-repeat: no-repeat, no-repeat, no-repeat;
+	background-position: 5% 15%, center 15%, 95% 15%, center 40%;
+	background-size: auto, auto, auto, 70% 2px;
 	color: #fff;
 }
 
@@ -249,7 +252,10 @@ path
 	}
 	.fullWidth--dark
 	{
-		background: url('../images/svg/avatar1.svg') center 10% no-repeat, url('../images/svg/avatar2.svg') center center no-repeat, url('../images/svg/avatar3.svg') center 90% no-repeat;
+		background-image: url('../images/svg/avatar1.svg'), url('../images/svg/avatar2.svg'), url('../images/svg/avatar3.svg'), linear-gradient(to bottom, rgba(255,218,145,1), rgba(255,218,145,1));
+		background-repeat: no-repeat, no-repeat, no-repeat, no-repeat;
+		background-position: center 10%, center center, center 90%, center center;
+		background-size: auto, auto, auto, 2px 70%;
 		height: 200vh;
 	}
 	.fullWidth--dark--null

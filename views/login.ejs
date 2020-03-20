@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		Learn Scilla
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<!-- INDEX (login) -->
+
+	<div class="forms">
+		<div class="row d-flex flex-row justify-content-around form__control pb-5">
+			<div class="col-5 pb-3 form__control__login active--form text-center">
+				Login
+			</div>
+			<div class="col-5 pb-3 form__control__reg text-center">
+				Register
+			</div>
+		</div>
+		
+		<form name='register' class='forms__register container' method="POST" action='/register'>
+			<div class="forms__register__div row my-3 align-items-center">
+				<label for='u__name' class="col-6 m-0">Username</label>
+				<input type='text' class="col-6" name='u__name' id='username'>
+			</div>
+			<div class="forms__register__div row my-3 align-items-center">
+				<label for='email' class="col-6 m-0">Email</label>
+				<input type='text' class="col-6" name='email' id='email'>
+			</div>
+			<div class="forms__register__div row my-3 align-items-center">
+				<label for='pass' class="col-6 m-0">Password</label>
+				<input type='text' class="col-6" name='pass'>
+			</div>
+			<input type='submit' value='Register' class="my-3">
+		</form>
+		
+
+		<form name='login' class='forms__login container' method="POST" action='/login'>
+			<div class="forms__login__div row my-3 align-items-center">
+				<label for='u__name' class="col-6 m-0">Username</label>
+				<input type='text' class="col-6" name='u__name' id='username'>
+			</div>
+			<div class="forms__login__div row my-3 align-items-center">
+				<label for='pass' class="col-6 m-0">Password</label>
+				<input type='text' class="col-6" name='pass' id='password'>
+			</div>
+			<input type='submit' value='Log in' class="my-3">
+			<% if(locals.lgerr) { %> <div class="error"><%= lgerr %></div> <% } %>
+		</form>
+		
+	</div>
+
+
+
+	<script type="module" src="./js/login.js"></script>
+</body>
+</html>

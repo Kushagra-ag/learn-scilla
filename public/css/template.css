@@ -76,7 +76,7 @@
 	position: absolute!important;
 }
 
-.chapter__template
+.chapter__template, form.register
 {
 	position: absolute;
 	top: 0;

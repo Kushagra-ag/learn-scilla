@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+@font-face
+{
+	font-family: 'avenirnext';
+	src: url('../fonts/AvenirNextLTPro-Regular.otf');
+	font-weight: 400;
+}
+
+@font-face
+{
+	font-family: 'avenirnext';
+	src: url('../fonts/AvenirNextLTPro-Demi.otf');
+	font-weight: 600;
+}
+
+.forms
+{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	font-size: 110%;
+	font-family: 'avenirnext', sans-serif;
+	font-weight: 400;
+	transform: translate(-50%, -50%);
+	
+}
+
+.form__control
+{
+	font-size: 130%;
+}
+
+.form__control__login, .form__control__reg
+{
+	cursor: pointer;
+}
+
+.forms input:not([type=submit])
+{
+	color: #192352;
+	padding: 5px 5px 5px 10px;
+	border-radius: 10px;
+	outline: none;
+	border: none;
+	box-shadow: 0 5px 6px 3px rgba(0,0,0,0.1);
+}
+
+.forms input:focus
+{
+	border: none;
+	outline: none;
+}
+
+.active--form
+{
+	border-bottom: solid 2px #0025D3;
+}
+
+.forms__register
+{
+	display: none;
+}
+
+.forms input[type=submit]
+{
+	outline: none;
+    border: none;
+    color: #192352;
+    font-weight: bold;
+}
+
+@media only screen and (max-width: 767px)
+{
+	.forms
+	{
+		width: 80%;
+	}
+}
+
+
