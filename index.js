@@ -6,9 +6,8 @@ const cookieParser = require('cookie-parser');
 const path = require('path');
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const reg = require('./routes/register.js');
-const login = require('./routes/login.js');
-
+const auth = require('./routes/auth/auth.js');
+const chapters = require('./routes/chapters.js');
 const port = process.env.PORT || 3000;
 
 
@@ -19,22 +18,17 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 
+//process.env.GOOGLE_APPLICATION_CREDENTIALS = './config/g_auth.js';
 
 
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '/public')));
 
-// register route
-app.use('/register', reg);
 
+app.use('/auth', auth);
 
-app.use('/login', login);
-
-app.get('/chapters', passport.authenticate('jwt', { session: false }), function(req, res) {
-	console.log('going to chapters');
-	res.render('chapters');
-});
+app.use('/chapters', chapters);
 
 // protected route
 app.get('/guide', passport.authenticate('jwt', { session: false }), function(req, res) {
