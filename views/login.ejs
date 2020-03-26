@@ -8,7 +8,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="./css/login.css">
+	<link rel="stylesheet" type="text/css" href="../css/auth.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -27,7 +27,7 @@
 			</div>
 		</div>
 		
-		<form name='register' class='forms__register container' method="POST" action='/register'>
+		<form name='register' class='forms__register container' method="POST" action='/auth/register'>
 			<div class="forms__register__div row my-3 align-items-center">
 				<label for='u__name' class="col-6 m-0">Username</label>
 				<input type='text' class="col-6" name='u__name' id='username'>
@@ -44,7 +44,7 @@
 		</form>
 		
 
-		<form name='login' class='forms__login container' method="POST" action='/login'>
+		<form name='login' class='forms__login container' method="POST" action='/auth/login'>
 			<div class="forms__login__div row my-3 align-items-center">
 				<label for='u__name' class="col-6 m-0">Username</label>
 				<input type='text' class="col-6" name='u__name' id='username'>
@@ -54,13 +54,13 @@
 				<input type='text' class="col-6" name='pass' id='password'>
 			</div>
 			<input type='submit' value='Log in' class="my-3">
-			<% if(locals.lgerr) { %> <div class="error"><%= lgerr %></div> <% } %>
+			<% if(locals.auerr) { %> <div class="error"><%= locals.auerr %></div> <% } %>
 		</form>
 		
 	</div>
 
 
 
-	<script type="module" src="./js/login.js"></script>
+	<script type="module" src="../js/auth.js"></script>
 </body>
 </html>
