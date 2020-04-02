@@ -1,51 +1,33 @@
-const utility = require('../database/utility.js'); 
-const bcrypt = require('bcryptjs');
-const path = require('path');
+const utility = require('../../database/utility.js'); 
+const passport = require('passport');
 const express = require('express');
 let router = express.Router();
-const saltRounds = 10;
 
 router.get('/', function(req, res, next) {
-	res.render('login', {view:'register'});
-	delete res.cookie.lgerr;
+	res.render('auth', {view:'reg'});
+	delete res.cookie.auerr;
 });
 
 
 router.post('/', async function(req, res, next) {
-	let { u__name, email, pass } = req.body;
-	console.log(pass);
-	console.log(email);
-	console.log(u__name);
+	passport.authenticate('register', function(err, user, info) {
 
-	if(u__name && email && pass)
-	{
+		console.log("info - ", info);
 
-		
-		pass = await bcrypt.hash(pass, saltRounds);
-
-
-		let user = await utility.getUser({ email: email });
-		if (user) {
-			
-			res.cookie.lgerr = 'Email already registered';
-			res.redirect('register');
+		if(info.success)
+		{
+			res.cookie.auerr = info.success;
+			res.redirect('/auth');
 		}
-
-		utility.createUser({ u__name, email, pass }).then(user =>
-			res.redirect('login')
-			)
-		.catch(() => {
-			res.cookie.lgerr = 'Cannot register';
-			res.redirect('register');
-		});
-
-	} else
-	{
-		
-		res.cookie.lgerr = 'User does not exist';
-		return res.redirect('login');
-	}
+		else if(info.err)
+		{
+			res.cookie.auerr = info.err;
+			res.cookie.view = "reg";
+			res.redirect('/auth');
+		}
+	})(req, res, next);
 });
+
 
 module.exports = router;
 

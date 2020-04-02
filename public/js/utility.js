@@ -92,11 +92,9 @@ function showChapters(e)
 
 	history.pushState({
 		h_chapter: 0,
-		h_page: 0,
 		t_chapter: c,
-		t_page: p,
 		id: 1,
-	},null,`./lessons/chapter${c}`);
+	},null,`../lessons/chapter${c}`);
 
 	his = window.history.state;
 	console.log(window.history.state);
@@ -370,13 +368,13 @@ function showPageNext(h,t,id,f)
 
 
 	id = (id+1)%3;
-	// history.replaceState({
-	// 	h_chapter: h.chapter,
-	// 	h_page: h.page,
-	// 	t_chapter: t.chapter,
-	// 	t_page: t.page,
-	// 	id: id,
-	// },null,`./chapter${t.chapter}`);
+	history.replaceState({
+		h_chapter: h.chapter,
+		h_page: h.page,
+		t_chapter: t.chapter,
+		t_page: t.page,
+		id: id,
+	},null,`./chapter${t.chapter}`);
 
 	his = window.history.state;
 	console.log(window.history.state);
@@ -489,9 +487,7 @@ function showPagePrev(h,t,id,f)
 	id = (id+2)%3;
 	history.replaceState({
 		h_chapter: h.chapter,
-		h_page: h.page,
 		t_chapter: t.chapter,
-		t_page: t.page,
 		id: id,
 	},null,`./chapter${t.chapter}`);
 

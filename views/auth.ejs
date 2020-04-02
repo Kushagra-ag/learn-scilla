@@ -19,15 +19,15 @@
 
 	<div class="forms">
 		<div class="row d-flex flex-row justify-content-around form__control pb-5">
-			<div class="col-5 pb-3 form__control__login active--form text-center">
+			<div class="col-5 pb-3 form__control__login <% if(locals.view == 'reg') {%> <% } else { %> active--head <% } %> text-center">
 				Login
 			</div>
-			<div class="col-5 pb-3 form__control__reg text-center">
+			<div class="col-5 pb-3 form__control__reg text-center <% if(locals.view == 'reg') {%> active--head <% } else { %> <% } %>">
 				Register
 			</div>
 		</div>
 		
-		<form name='register' class='forms__register container' method="POST" action='/auth/register'>
+		<form name='register' class='forms__register container <% if(locals.view == "reg") {%> active--form <% } else { %> <% } %>' method="POST" action='/auth/register'>
 			<div class="forms__register__div row my-3 align-items-center">
 				<label for='u__name' class="col-6 m-0">Username</label>
 				<input type='text' class="col-6" name='u__name' id='username'>
@@ -37,24 +37,31 @@
 				<input type='text' class="col-6" name='email' id='email'>
 			</div>
 			<div class="forms__register__div row my-3 align-items-center">
-				<label for='pass' class="col-6 m-0">Password</label>
-				<input type='text' class="col-6" name='pass'>
+				<label for='userID' class="col-6 m-0">password</label>
+				<input type='text' class="col-6" name='userID'>
 			</div>
 			<input type='submit' value='Register' class="my-3">
+			<% if(locals.auerr) { %> <div class="error"><%= locals.auerr %></div> <% } %>
 		</form>
 		
 
-		<form name='login' class='forms__login container' method="POST" action='/auth/login'>
+		<form name='login' class='forms__login container <% if(locals.view == "reg") {%> <% } else { %> active--form  <% } %>' method="POST" action='/auth/login'>
 			<div class="forms__login__div row my-3 align-items-center">
-				<label for='u__name' class="col-6 m-0">Username</label>
-				<input type='text' class="col-6" name='u__name' id='username'>
+				<label for='u__name' class="col-6 m-0">Email</label>
+				<input type='text' class="col-6" name='email' id='email'>
 			</div>
 			<div class="forms__login__div row my-3 align-items-center">
-				<label for='pass' class="col-6 m-0">Password</label>
-				<input type='text' class="col-6" name='pass' id='password'>
+				<label for='userID' class="col-6 m-0">password</label>
+				<input type='text' class="col-6" name='userID' id='userIDword'>
 			</div>
 			<input type='submit' value='Log in' class="my-3">
 			<% if(locals.auerr) { %> <div class="error"><%= locals.auerr %></div> <% } %>
+		</form>
+
+		<form name='login' class='forms__login container <% if(locals.view == "reg") {%> <% } else { %> active--form  <% } %>' method="GET" action='/auth/api/auth/google/callback'>
+			
+			<input type='submit' value='Log in with Google' class="my-3">
+			
 		</form>
 		
 	</div>
@@ -62,5 +69,14 @@
 
 
 	<script type="module" src="../js/auth.js"></script>
+	<% if(locals.view == 'reg') { %> 
+	<script type="text/javascript" defer>
+		$(document).ready(function() {
+			document.querySelector('.form__control__reg').click();
+			console.log("fhfh");
+		});
+
+	</script>
+	<% } %>
 </body>
 </html>

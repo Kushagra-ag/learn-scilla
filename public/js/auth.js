@@ -8,25 +8,25 @@ $(document).ready(function() {
 
 	
 	
-	formToggle();
-
-
-});
-
-formToggle = () => {
 	loginButton.addEventListener('click', function() {
 		reg.style.display = "none";
 		login.style.display = "block";
-		regButton.classList.remove('active--form');
-		loginButton.classList.add('active--form');
+		regButton.classList.remove('active--head');
+		loginButton.classList.add('active--head');
 	});
 
 	regButton.addEventListener('click', function() {
 		login.style.display = "none";
 		reg.style.display = "block";
-		regButton.classList.add('active--form');
-		loginButton.classList.remove('active--form');
+		regButton.classList.add('active--head');
+		loginButton.classList.remove('active--head');
 	});
-}
+
+
+});
+
+
+	
+
 
 export default formToggle;

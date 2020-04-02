@@ -52,14 +52,19 @@
 	outline: none;
 }
 
-.active--form
+.active--head
 {
 	border-bottom: solid 2px #0025D3;
 }
 
-.forms__register
+.forms__register, .forms__login
 {
 	display: none;
+}
+
+.active--form
+{
+	display: block;
 }
 
 .forms input[type=submit]
