@@ -101,7 +101,7 @@
 							<label for="email__l">Email</label>
 							<input type="email" class="email__l" name="email" required>
 							<label for="pass__l">Password</label>
-							<input type="pass" class="pass__l" name="pass" autocomplete="current-password" required>
+							<input type="password" class="pass__l" name="pass" autocomplete="current-password" required>
 							<input type="submit" class="submit" value="Submit">
 						</form>
 						<form class="forms__register pb-5 <% if(locals.view == 'register') {%> active--form <% } else { %> <% } %>" method="POST" action='/auth/register'>
@@ -126,7 +126,7 @@
 							<input type="password" class="pass__r" name="confirmPass" autocomplete="new-password" required>
 
 							<input type="submit" class="submit mb-2" value="Submit">
-							<div class="forgot">
+							<div class="forgot" style="display: none">
 								Forgot password?
 							</div>
 
