@@ -48,6 +48,6 @@ function showIndex()
 
 
 // Adding event listeners
-[...document.getElementsByClassName('card')].forEach((elem) => {
+[...document.getElementsByClassName('card1')].forEach((elem) => {
 	elem.addEventListener('click', showIndex);
 });

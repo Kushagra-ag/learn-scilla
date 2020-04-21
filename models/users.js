@@ -13,6 +13,10 @@ module.exports = (connection, type) => {
 		country: {
 			type: type.STRING,
 		},
+		wallet: {
+			type: type.INTEGER,
+			defaultValue: 0,
+		},
 		userID: {
 			type: type.STRING,
 			defaultValue: 0,

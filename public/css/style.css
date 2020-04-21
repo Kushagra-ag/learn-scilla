@@ -220,11 +220,34 @@ path
 	font-weight: 600;
 }
 
+.profile__img
+{
+	background-image:url('../images/profile.png');
+	background-repeat: no-repeat;
+	background-color: #fff;
+	background-size: cover;
+	background-position: center;
+	width: 100px;
+	height: 100px;
+}
+
 .profile__email
 {
 	color: #0025D3;
 	font-size: 75%;
-	font-weight: 400;
+	font-weight: 600;
+}
+
+.profile__wallet
+{
+	font-size: 75%;
+}
+
+.profile__logout
+{
+	align-self: flex-end;
+	font-size: 75%;
+	text-decoration: underline;
 }
 
 /*-----Media queries-----*/
