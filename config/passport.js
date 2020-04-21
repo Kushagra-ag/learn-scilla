@@ -4,9 +4,9 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const utility =  require('../database/utility.js');
 const gCred = require('./credentials.js');
 
-const customFields = {
+const localFields = {
     usernameField: 'email',
-    passwordField: 'userID',
+    passwordField: 'pass',
     passReqToCallback: true
 };
 
@@ -22,19 +22,19 @@ const gFields = {
 };
 
 
-passport.use('login', new LocalStrategy(customFields, utility.verifyLogin));
-passport.use('register', new LocalStrategy(customFields, utility.verifyReg));
+passport.use('login', new LocalStrategy(localFields, utility.verifyLogin));
+passport.use('register', new LocalStrategy(localFields, utility.verifyReg));
 passport.use('google', new GoogleStrategy(gFields, utility.gAuth));
 
 passport.serializeUser((user, done) => {
     console.log("In user serialize");
-    done(null, user.userID);
+    done(null, user.email);
 });
 
-passport.deserializeUser((userId, done) => {
+passport.deserializeUser((email, done) => {
     console.log("In user deserialize");
-    console.log(userId);
-    utility.getUser({userId})
+    console.log(email);
+    utility.getUser({email})
         .then((user) => {
             done(null, user);
         })

@@ -14,7 +14,9 @@ router.get('/', function(req,res,next) {
 	}
 	else
 	{
-		res.render('auth', {auerr: res.cookie.auerr, view: res.cookie.view});
+		let view = res.cookie.view || 'login';
+
+		res.redirect(`/auth/${view}`);
 		delete res.cookie.auerr;
 		delete res.cookie.view;
 	}

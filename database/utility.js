@@ -1,10 +1,12 @@
 let Users = require('./db.js');
 const bcrypt = require('bcryptjs');
+const lookup = require('country-code-lookup');
+const phone = require('awesome-phonenumber');
 
 const saltRounds = 10;
 
-const createUser = async ({ provider, u__name, email, userID }) => { 
-	return await Users.create({ provider, u__name, email, userID });
+const createUser = async ({ username, email, userID, gID }) => { 
+	return await Users.create({ username, email, userID, gID });
 };
 
 const getAllUsers = async () => {
@@ -17,64 +19,82 @@ const getUser = async obj => {
 	});
 };
 
+const updateUser = async (obj1, obj2) => {
+	return await Users.update(
+		obj1, obj2
+		);
+};
+
 const verifyLogin = async (req, email, userID, done) => {
 	console.log("In verifyLogin");
 
-	const user = await getUser({'provider': 'local', email});
+	const user = await getUser({email});
 	if(user)
 	{
-		
 		bcrypt.compare(userID, user.userID, function(err, result) {
 			console.log("res-",result);
 
 			if(result)
 			{
-				req.logIn(user, err => {
+				return req.logIn(user, err => {
 					if(err)
-						done(err, null, {message: 'Could not log in'});
-				});
-				done(null, user);
+						done(err, null, {message: 'Could not log in'})
+					else
+						done(null, user)
+				})
 			}
 			else
 			{
-				done(err, false, {message: 'Incorrect email or userIDword'});
+				return done(err, false, {message: 'Incorrect email or password'});
 			}
 		})
 	}
 	else
-	{
-		
-		done(null, false, {message: 'Email not registered'});
-	}
+		return done(null, false, {message: 'Email not registered'});
+	
 }
 
 const verifyReg = async (req, email, userID, done) => {
 	console.log("In verifyReg");
 
-	const {u__name} = req.body;
-	//console.log(req.body);
+	let {username, contact, country, pass, pass__repeat} = req.body;
+	let countryCode;
+	
+	lookup.byCountry(country, obj => {
+		countryCode = phone.getCountryCodeForRegionCode(obj.iso2);
+	})
 
-	if(u__name && email && userID)
+	countryCode = phone.getCountryCodeForRegionCode(lookup.byCountry(country).iso2);
+	contact = `${countryCode} ${contact}`;
+
+	
+	let user = await getUser({ email });
+	if(user)
 	{
-		let user = await getUser({ email });
-		if(user)
+		if(user.userID != 0)
 		{
-			console.log("erroor");
-			done(null, null, {err: 'Email already registered'});
+			console.log("userID - ",user.userID);
+			return done(null, null, {err: 'Email already registered'});
 		}
 		else
 		{
 			userID = await bcrypt.hash(userID, saltRounds);
 
-			createUser({ provider: 'local', u__name, email, userID }).then(user => {
-				done(null, user, {success: 'Your account has been created'});
-			})
+
+			return updateUser({userID},{where: {email}})
+			.then(user => done(null, user, {success: 'Your account has been created'}))
+			.catch(err => done(null, null, {err: 'Could not create account'}));
 		}
 	}
-	else
-	{
-		done(null, null, {err: 'Incorrect details'});
-	}
+
+	userID = await bcrypt.hash(userID, saltRounds);
+
+	return createUser({username, email, contact, country, userID})
+	.then(user => done(null, user, {success: 'Your account has been created'}))
+	.catch(err => done(null, null, {err: 'Could not create account'}))
+
+	
+	
 }
 
 const gAuth = async (req, accessToken, refreshToken, profile, done) => {
@@ -83,36 +103,43 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 	let obj = {'userID': profile.id};
 	console.log(profile);
 
-	let userID = await bcrypt.hash(profile.id, saltRounds);
+	if(profile.email_verified)
+	{
 
-	getUser({userID}).then( user => {
-		console.log("error - ", err);
-		console.log("user - ", user);
-		if(user)
-		{
-			console.log("user existss");
-			return done(null, user);
-		}
+		let email = profile.email;
 
-		createUser({provider: profile.provider, u__name: profile.displayName, email: profile.email, userID});
-	}).catch(err => done(err, null));
+		getUser({email}).then( user => {
+			
+			//console.log("user - ", user);
+			if(user)
+			{
+				console.log("user existss");
+				return updateUser({gID: profile.id},{where: {email}})
+				.then(() => {console.log("usssser - ", user)
+					req.logIn(user, err => {
+						if(err)
+							done(err, null, {message: 'Could not login1'})
+						else
+							done(null, user)
+					})
+				})
+				.catch(err => done(null, null, {message: 'Could not login2'}))
+			}
 
-	// let user = await Users.findOrCreate({ 
-	// 	where: obj,
-	// });
+			let userID = 0, gID = profile.id;
 
-	// if(user)
-	// {
-	// 	console.log("User exists");
-	// 	return done(null, user);
-	// }
-	// 	// function (err, user) {
-	// 	// 	console.log("error - ", err);
-	// 	// 	console.log("user - ", user);
-	// 	// 	return done(err, user);
-	// 	// });
+			return createUser({
+				username: profile.displayName, email: profile.email, userID, gID
+			})
+			.then(user => done(null,user))
+			.catch(err => done(err, null, {message: 'Could not create account'}));
+		})
+		.catch(err => done(null, null, {message: 'Could not login3'}));
 
-	// 	return done(err, user);
+	}
+	else
+		return done(null, null, {message: 'Account not verified'})
+	
 }
 
 

@@ -6,9 +6,6 @@ const pp_jwt = require('passport-jwt');
 const express = require('express');
 let router = express.Router();
 
-const Strategy = pp_jwt.Strategy;
-const extractJwt = pp_jwt.ExtractJwt;
-
 
 // passport.use({
 //     usernameField: 'u__name',
@@ -59,8 +56,7 @@ const extractJwt = pp_jwt.ExtractJwt;
 router.get('/', function(req, res, next) {
 	console.log('arrived at login-get');
 	
-	res.render('auth', {auerr: res.cookie.auerr});
-	// res.json({ msg: 'default get' });
+	res.render('auth', {auerr: res.cookie.auerr, view: 'login'});
 	delete res.cookie.auerr;
 });
 
@@ -68,18 +64,14 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next) {
 	passport.authenticate('login', function(err, user, info) {
 
-		console.log("info - ", info);
-		if(info != undefined)
+		if(info)
 		{
-			console.log("ab");
 			res.cookie.auerr = info.message;
-			res.redirect('/auth');	
+			res.redirect('/auth/login');	
 		}
 		else
-		{
-			console.log("a");
 			res.redirect('/lessons');
-		}
+		
 		
 	})(req, res, next);
 

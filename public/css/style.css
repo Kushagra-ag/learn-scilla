@@ -220,6 +220,13 @@ path
 	font-weight: 600;
 }
 
+.profile__email
+{
+	color: #0025D3;
+	font-size: 75%;
+	font-weight: 400;
+}
+
 /*-----Media queries-----*/
 
 @media only screen and (max-width: 767px)

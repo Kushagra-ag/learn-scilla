@@ -6,7 +6,7 @@ let connection = new seq ({
 	database : 'zilliqa',
 	username : 'root',
 	password : 'megamind',
-	dialect : 'mysql'
+	dialect : 'mysql',
 });
 
 connection.authenticate()

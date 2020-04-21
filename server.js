@@ -52,7 +52,7 @@ app.get('/guide', passport.authenticate('local', { session: false }), function(r
 
 
 app.get('/', function(req, res) {
-	res.render('index',{msg:'a'});
+	res.render('index');
 	console.log("at homepage");
 });
 

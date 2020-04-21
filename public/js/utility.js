@@ -233,7 +233,7 @@ function pageChange(e)
 
 	console.log("next - "+p);
 
-	//forms(c,p);
+	forms(c,p);
 
 	if((p==null && c==null))
 		return;

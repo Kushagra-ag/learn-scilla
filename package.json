@@ -2,10 +2,10 @@
   "name": "zilliqa",
   "version": "1.0.0",
   "description": "Learn Scilla Tutorial",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +14,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "awesome-phonenumber": "^2.30.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.4",
+    "country-code-lookup": "0.0.17",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-session": "^1.17.0",
@@ -32,5 +34,8 @@
   },
   "engines": {
     "node": "12.16.x"
+  },
+  "devDependencies": {
+    "express-validator": "^6.4.0"
   }
 }

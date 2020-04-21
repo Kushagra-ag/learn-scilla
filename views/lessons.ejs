@@ -39,13 +39,28 @@
 				<li class="nav-item px-sm-3 py-2 py-md-0">
 					<a class="nav-link mx-auto" href="#">Learn Scilla</a>
 				</li>
-				<li class="nav-item pl-sm-3 py-2 py-md-0">
-					<a class="nav-link mx-auto" href="#">Discord Chat</a>
+				<li class="nav-item pl-sm-3 py-2 py-md-0 dropdown">
+					<a class="nav-link mx-auto dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile
+						
+					</a>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: max-content">
+						<div class="container">
+							<div class="row">
+								<div class="col-md-6">
+									<img src="#" class="img-fluid profile__img" width="100px" height="100px" />
+								</div>
+								<div class="col-md-6">
+									<%= locals.user.username %><br>
+									<span class="profile__email"><%= locals.user.email %></span>
+								</div>
+							</div>
+						</div>
+					</div>
 				</li>
 			</ul>
 		</div>
 	</nav>
-	
+
 	<!-- INDEX -->
 	<div class="container-fluid index">
 		<div class="row mx-5">
@@ -90,7 +105,7 @@
 										Chapter 3: Genesis Block
 									</div>
 									<div class="col-3 text-md-right">
-										
+
 										<img src="../images/svg/right-index.svg" class="index__arrow">
 									</div>
 								</div>
@@ -170,7 +185,7 @@
 						</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	</div>
@@ -206,7 +221,7 @@
 						<div class=" sample__container wrapper pb-3 px-0 pt-0">
 							<div class=" sample__container p-0 mx-0 mb-1 mt-0 " data-height>
 								<div class=" sample__container p-0 mx-0 mb-2 mt-0 " data-height>
-									
+
 
 
 
@@ -215,7 +230,7 @@
 									<div data-id=0 class="y" data-height data-class="d__up">
 										<div class="a row content__container px-2 pt-5 pb-1 m-0" style="display: none;" data-chapter="1" data-page="1">
 											<div class="col-12 d-flex flex-column justify-content-center content__row">
-												
+
 												<div class="content">
 													<div class="row mx-2 content__title">
 														<div class="col-12">
@@ -358,7 +373,7 @@
 										</div>
 									</div>
 
-									
+
 								</div>
 							</div>
 						</div>
@@ -378,7 +393,7 @@
 			<div class="info__box__back card__button mt-2 p-1" onclick="document.querySelector('.info').style.display='none';">
 				Back
 			</div>
-			
+
 		</div>
 	</div>
 
