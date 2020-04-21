@@ -43,27 +43,35 @@
 					<a class="nav-link mx-auto dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile
 						
 					</a>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown" style="width: max-content">
-						<div class="container">
-							<div class="row">
-								<div class="col-md-5 d-flex justify-content-center align-items-center">
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<div class="container pb-2 px-4">
+							<div class="row profile__row">
+								<div class="col-md-6 d-flex justify-content-center align-items-center">
 									<div class="profile__img" width="100px" height="100px"></div>
 								</div>
-								<div class="col-md-7 d-flex flex-column text-center text-md-left">
+								<div class="col-md-6 d-flex flex-column justify-content-center">
 									<div><%= locals.user.username %></div>
 									<div class="profile__email"><%= locals.user.email %></div>
-									<div class="row profile__wallet">
-										<div class="col-md-6">
-											Wallet - <%= locals.user.wallet %>
-											
-										</div>
-										<div class="col-md-6" style="text-decoration: underline;">
-											Redeem
-										</div>
-									</div>
-
-									<div class="profile__logout mt-4">Log out</div>
 								</div>
+							</div>
+							<div class="row mt-3 profile__wallet justify-content-around" style="min-width: 100%">
+								
+								<div class="col-md-6 d-flex justify-content-center">
+
+									Wallet<br> <%= locals.user.wallet %> ZILs
+								</div>
+
+								
+								<div class="col-md-6 d-flex justify-content-md-end align-items-center">
+									<span class="profile__redeem">Redeem</span>
+								</div>
+								
+							</div>
+							<div class="row profile__logout mt-3" style="min-width: 100%">
+								<div class="col-12 d-flex justify-content-md-start">
+									Log out
+								</div>
+								
 							</div>
 						</div>
 					</div>

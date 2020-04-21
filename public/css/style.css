@@ -220,6 +220,11 @@ path
 	font-weight: 600;
 }
 
+.profile__row
+{
+	width: max-content;
+	border-bottom: 1px solid #bbb;
+}
 .profile__img
 {
 	background-image:url('../images/profile.png');
@@ -228,7 +233,7 @@ path
 	background-size: cover;
 	background-position: center;
 	width: 100px;
-	height: 100px;
+	height: 80px;
 }
 
 .profile__email
@@ -241,6 +246,14 @@ path
 .profile__wallet
 {
 	font-size: 75%;
+}
+
+.profile__redeem
+{
+	background-color: #0025D3;
+	color: #fff;
+	padding: 5px;
+	border-radius: 5px;
 }
 
 .profile__logout
