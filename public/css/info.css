@@ -3,6 +3,12 @@
 .info
 {
 	display: none;
+	position: fixed;
+	top: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.69);
+	z-index: 10;
 }
 
 .info__box
@@ -19,6 +25,12 @@
 	z-index: 999;
 }
 
+.info__box__header
+{
+	text-transform: capitalize;
+	font-weight: bold;
+}
+
 .info__box__content
 {
 	font-size: 60%;
@@ -29,7 +41,7 @@
 	border-radius: 15%;
 	text-transform: unset;
 	float: right;
-	font-size: 60%;
+	font-size: 75%;
 	font-weight: 500;
 	cursor: pointer;
 }
@@ -42,4 +54,9 @@
 .incorrect
 {
 	color: red;
+}
+
+.information
+{
+	color: #192352;
 }

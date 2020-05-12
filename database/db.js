@@ -3,9 +3,9 @@ const users = require('../models/users.js');
 
 
 let connection = new seq ({
-	database : 'zilliqa',
-	username : 'root',
-	password : 'megamind',
+	database : 'DB_NAME',
+	username : 'USERNAME',
+	password : 'PASSWORD',
 	dialect : 'mysql',
 });
 

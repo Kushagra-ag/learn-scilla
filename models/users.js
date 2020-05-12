@@ -19,11 +19,19 @@ module.exports = (connection, type) => {
 		},
 		userID: {
 			type: type.STRING,
-			defaultValue: 0,
+			defaultValue: null,
 		},
 		gID: {
 			type: type.STRING,
-			defaultValue: 0,
+			defaultValue: null,
+		},
+		progress: {
+			type: type.INTEGER,
+			defaultValue: 1,
+		},
+		resetPass: {
+			type: type.STRING,
+			defaultValue: null,
 		},
 		
 	})

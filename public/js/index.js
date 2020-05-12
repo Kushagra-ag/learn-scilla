@@ -1,4 +1,5 @@
-;
+// ;import bitcoin from './bundle.js';
+// bitcoin();
 $(document).ready(function() {
 
 	

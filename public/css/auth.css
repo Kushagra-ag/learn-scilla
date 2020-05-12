@@ -56,10 +56,6 @@
 {
 	border-bottom: solid 2px #0025D3;
 }
-.forms__register, .forms__login
-{
-	display: none;
-}
 .forms input[type=submit]
 {
 	outline: none;
@@ -105,14 +101,15 @@ a, a:hover {
   height: calc(100% - 40px);
   top: 20px;
   position: relative;
-  width: 40%;
-  max-width: 40%;
+  width: 50%;
+  max-width: 50%;
 }
 
 .login {
   font-size: 50px;
   font-weight: 900;
   margin: 50px 40px 40px;
+  word-break: break-word;
 }
 .eula {
   color: #999;
@@ -131,16 +128,16 @@ a, a:hover {
 
 svg.login {
   position: absolute;
-  width: max-content;
-  margin: -45px 0 0;
+  width: 100%;
+  margin: -20% 0 0;
 }
 path.snake {
   fill: none;
   stroke: url(#linearGradient);;
-  stroke-width: 4;
+  stroke-width: 3;
   stroke-dasharray: 220 1386;
 }
-.forms__login, .forms__register {
+.forms__login, .forms__register, .forms__reset {
   display: none;
   margin: -10px 70px;
 }
@@ -183,10 +180,12 @@ input::-moz-focus-inner {
 }
 .google-login
 {
-	color: #474A59;
+	position: relative;
+  color: #474A59;
 	padding: 30px 0 0;
   text-align: center;
   line-height: 40px;
+  z-index: 10;
 }
 .gButton
 {
@@ -267,13 +266,17 @@ input::-moz-focus-inner {
 .autocomplete-active {
   background-color: #595d6f !important;
 }
-.forgot {
+.back {
   text-align: center;
   font-size: 75%;
   text-decoration: underline;
 }
 
-@media (max-width: 767px) {
+@media only screen and (max-width: 767px) {
+  .forms
+  {
+    width: 100%;
+  }
   .right {
     flex-shrink: 0;
     height: max-content;
@@ -296,15 +299,10 @@ input::-moz-focus-inner {
     padding-bottom: 20px;
   }
   .login {
-    font-size: 40px;
+    font-size: 35px;
   }
-}
-
-@media only screen and (max-width: 767px)
-{
-  .forms
-  {
-    width: 100%;
+  svg.login {
+    margin-top: -17%;
   }
 }
 

@@ -8,141 +8,93 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="../css/auth.css">
+	<link rel="stylesheet" type="text/css" href="/css/auth.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
 
-	<!-- INDEX (login) -->
-
-		<!-- <div class="row d-flex flex-row justify-content-around form__control pb-5">
-			<div class="col-5 pb-3 form__control__login <% if(locals.view == 'reg') {%> <% } else { %> active--head <% } %> text-center">
-				Login
+	<div class="sign">
+		<div class="auth__container">
+			<div class="left">
+				<div class="login"><% if(locals.view == 'register') {%>REGISTER <% } else { %> LOGIN<% } %></div>
+				<div class="eula">OR <br><a href='/auth/<% if(locals.view == "register") {%>login<% } else { %>register<% } %>'><u><% if(locals.view == "register") {%>LOGIN<% } else { %>REGISTER<% } %></u></a></div>
+				<div class="error eula"><%= locals.auerr %></div>
 			</div>
-			<div class="col-5 pb-3 form__control__reg text-center <% if(locals.view == 'reg') {%> active--head <% } else { %> <% } %>">
-				Register
-			</div>
-		</div>
-		
-		<form name='register' class='forms__register container <% if(locals.view == "reg") {%> active--form <% } else { %> <% } %>' method="POST" action='/auth/register'>
-			<div class="forms__register__div row my-3 align-items-center">
-				<label for='username' class="col-6 m-0">Username</label>
-				<input type='text' class="col-6" name='username' id='username'>
-			</div>
-			<div class="forms__register__div row my-3 align-items-center">
-				<label for='email' class="col-6 m-0">Email</label>
-				<input type='text' class="col-6" name='email' id='email'>
-			</div>
-			<div class="forms__register__div row my-3 align-items-center">
-				<label for='userID' class="col-6 m-0">password</label>
-				<input type='text' class="col-6" name='userID'>
-			</div>
-			<input type='submit' value='Register' class="my-3">
-			<% if(locals.auerr) { %> <div class="error"><%= locals.auerr %></div> <% } %>
-		</form>
-		
-
-		<form name='login' class='forms__login container <% if(locals.view == "reg") {%> <% } else { %> active--form  <% } %>' method="POST" action='/auth/login'>
-			<div class="forms__login__div row my-3 align-items-center">
-				<label for='username' class="col-6 m-0">Email</label>
-				<input type='text' class="col-6" name='email' id='email'>
-			</div>
-			<div class="forms__login__div row my-3 align-items-center">
-				<label for='userID' class="col-6 m-0">password</label>
-				<input type='text' class="col-6" name='userID' id='userIDword'>
-			</div>
-			<input type='submit' value='Log in' class="my-3">
-			<% if(locals.auerr) { %> <div class="error"><%= locals.auerr %></div> <% } %>
-		</form>
-
-		<form name='login' class='forms__login container <% if(locals.view == "reg") {%> <% } else { %> active--form  <% } %>' method="GET" action='/auth/api/auth/google'>
-			
-			<input type='submit' value='Log in with Google' class="my-3">
-			
-		</form> -->
-
-		<div class="sign">
-			<div class="auth__container">
-				<div class="left">
-					<div class="login"><% if(locals.view == 'register') {%>REGISTER <% } else { %> LOGIN<% } %></div>
-					<div class="eula">or <br><a href='/auth/<% if(locals.view == "register") {%>login<% } else { %>register<% } %>'><u><% if(locals.view == "register") {%>LOGIN<% } else { %>REGISTER<% } %></u></a></div>
-					<% if(locals.auerr) { %> <div class="error eula"><%= locals.auerr %></div> <% } %>
+			<div class="right"> <% if(locals.view == "register") {%>
+				<div class="signup">
+					Sign up
+				</div>		<% } else { %>
+				<div class="google-login"> 
+					<a href="/auth/api/auth/google" class="gButton">
+						Log in with Google 
+					</a><br>
+					<span class="or">OR</span>
 				</div>
-				<div class="right"> <% if(locals.view == "register") {%>
-					<div class="signup">
-						Sign up
-					</div>		<% } else { %>
-					<div class="google-login"> 
-						<a href="/auth/api/auth/google" class="gButton">
-							Log in with Google 
-						</a><br>
-						<span class="or">OR</span>
-					</div>
-					<svg class="login" viewBox="0 0 320 300" width="300">
-						<defs>
-							<linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientUnits="userSpaceOnUse">
-								<stop
-								style="stop-color:#ff00ff;"
-								offset="0"
-								id="stop876" />
-								<stop
-								style="stop-color:#ff0000;"
-								offset="1"
-								id="stop878" />
-							</linearGradient>
-						</defs>
-						<path class="snake" d="M50,120h230c0,0,25,2.1,25,40s-25,40-25,40H50c0,0-25,2.1-25,40s25,40,25,40h230.4" />
-					</svg> <% } %>
-					<div class="forms">
-						<form name='login' class='forms__login pb-5 <% if(locals.view == "register") {%> <% } else { %> active--form  <% } %>' method="POST" action='/auth/login'>
+				<svg class="login" viewBox="0 0 320 300" width="300">
+					<defs>
+						<linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientUnits="userSpaceOnUse">
+							<stop
+							style="stop-color:#ff00ff;"
+							offset="0"
+							id="stop876" />
+							<stop
+							style="stop-color:#ff0000;"
+							offset="1"
+							id="stop878" />
+						</linearGradient>
+					</defs>
+					<path class="snake" d="M50,120h230c0,0,25,2.1,25,40s-25,40-25,40H50c0,0-25,2.1-25,40s25,40,25,40h230.4" />
+				</svg> <% } %>
+				<div class="forms">
+					<form name='login' class='forms__login pb-5 <% if(locals.view == "register") {%> <% } else { %> active--form  <% } %>' id="lgin" method="post">
 
-							<label for="email__l">Email</label>
-							<input type="email" class="email__l" name="email" required>
-							<label for="pass__l">Password</label>
-							<input type="password" class="pass__l" name="pass" autocomplete="current-password" required>
-							<input type="submit" class="submit" value="Submit">
-						</form>
-						<form class="forms__register pb-5 <% if(locals.view == 'register') {%> active--form <% } else { %> <% } %>" method="POST" action='/auth/register'>
-							<label for='username' class="reg <% if(locals.form && locals.form.username.err) {%> error <% } %>">Username</label>
-							<input type='text' class="username__r" name='username' placeholder="Minimum 6 charachters" title="Min 6 characters Max 50 charactors" value="<% if(locals.form && !locals.form.username.err) { %> <%= locals.values.username %> <% } %>" required>
-
-							<label for="email" class="reg <% if(locals.form && locals.form.email.err) {%> error <% } %>">Email</label>
-							<input type="text" class="email__r" name="email" placeholder="abc@email.com" value="<% if(locals.form && !locals.form.email.err) { %> <%= locals.values.email %> <% } %>" required>
-
-							<div class="autocomplete">
-								<label for="country" class="reg <% if(locals.form && locals.form.country.err) {%> error <% } %>">Country</label>
-								<input type="text" name="country" class="country" autocomplete="off" placeholder="Select" value="<% if(locals.form && !locals.form.country.err) { %> <%= locals.values.country %> <% } %>" required>
-							</div>
-							
-							<label for="contact" class="reg <% if(locals.form && locals.form.contact.err) {%> error <% } %>">Contact Number</label>
-							<input type="" class="contact__r" name="contact" placeholder="Without country code" value="<% if(locals.form && !locals.form.contact.err) { %> <%= locals.values.contact %> <% } %>" required>
-
-							<label for="pass" class="reg">Password</label>
-							<input type="password" class="pass__r <% if(locals.form && locals.form.pass.err) {%> error <% } %>" name="pass" autocomplete="new-password" patttern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
-
-							<label for="confirmPass" class="reg <% if(locals.form && locals.form.confirmPass.err) {%> error <% } %>">Repeat Password</label>
-							<input type="password" class="pass__r" name="confirmPass" autocomplete="new-password" required>
-
-							<input type="submit" class="submit mb-2" value="Submit">
-							<div class="forgot" style="display: none">
+						<label for="email__l">Email</label>
+						<input type="email" class="email__l" name="email" value="<%= locals.email %>" autocomplete="on" autofocus required>
+						<label for="pass__l">Password</label>
+						<input type="password" class="pass__l" name="pass" autocomplete="current-password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+						<input type="submit" class="submit mb-2" value="Submit">
+						<div class="back">
+							<a href="/auth/forgot">
 								Forgot password?
-							</div>
+							</a>
+						</div>
+					</form>
+					<form class="forms__register pb-5 <% if(locals.view == 'register') {%> active--form <% } else { %> <% } %>" method="POST" action='/auth/register'>
+						<label for='username' class="reg <% if(locals.err.username) {%> error <% } %>">Username</label>
+						<input type='text' class="username__r" name='username' placeholder="Minimum 6 charachters" title="Min 6 characters Max 50 charactors" value="<% if(locals.err && !locals.err.username) { %><%= locals.values.username %><% } %>" autofocus required>
 
-						</form>
-					</div>
+						<label for="email" class="reg <% if(locals.err.email) {%> error <% } %>">Email</label>
+						<input type="text" class="email__r" name="email" placeholder="abc@email.com" value="<% if(locals.err && !locals.err.email) { %><%= locals.values.email %> <% } %>" required>
+
+						<div class="autocomplete">
+							<label for="country" class="reg <% if(locals.err.country) {%> error <% } %>">Country</label>
+							<input type="text" name="country" class="country" autocomplete="off" placeholder="Select" value="<% if(locals.err && !locals.err.country) { %><%= locals.values.country %> <% } %>" required>
+						</div>
+
+						<label for="contact" class="reg <% if(locals.err.contact) {%> error <% } %>">Contact Number</label>
+						<input type="" class="contact__r" name="contact" placeholder="Without country code" value="<% if(locals.err && !locals.err.contact) { %><%= locals.values.contact %> <% } %>" required>
+
+						<label for="pass" class="reg">Password</label>
+						<input type="password" class="pass__r <% if(locals.err.pass) {%> error <% } %>" name="pass" autocomplete="new-password" patttern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+
+						<label for="confirmPass" class="reg <% if(locals.err.confirmPass) {%> error <% } %>">Repeat Password</label>
+						<input type="password" class="pass__r" name="confirmPass" autocomplete="new-password" required>
+
+						<input type="submit" class="submit" value="Submit">
+					</form>
 				</div>
 			</div>
-
-
-
 		</div>
 
 
 
-		<script type="module" src="../js/auth.js"></script>
-		<script type="text/javascript">
-		</script>
-	</body>
-	</html>
+	</div>
+
+
+
+	<script type="module" src="/js/auth.js"></script>
+	
+</body>
+</html>

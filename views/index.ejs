@@ -6,11 +6,11 @@
 	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="./css/style.css" type="text/css">
-	<link rel="stylesheet" href="./css/template.css" type="text/css">
-	<link rel="stylesheet" type="text/css" href="./css/auth.css">
+	<link rel="stylesheet" href="/css/style.css" type="text/css">
+	<link rel="stylesheet" href="/css/template.css" type="text/css">
+	<link rel="stylesheet" href="/css/auth.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="./css/index.css" type="text/css">
+	<link rel="stylesheet" href="/css/index.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -142,66 +142,8 @@
 
 	</div>
 
-	<!-- login -->
-
-	<div class="sign" style="display: none;">
-		<div class="l__container">
-			<div class="left">
-				<div class="login"><%= locals.view %></div>
-				<div class="eula">or <br><a href='/auth/<% if(locals.view == "Register") {%>login<% } else { %>register<% } %>'><u><% if(locals.view == "Register") {%>LOGIN<% } else { %>REGISTER<% } %></u></a></div>
-				<% if(locals.auerr) { %> <div class="error eula"><%= locals.auerr %></div> <% } %>
-			</div>
-			<div class="right">
-				<% if(locals.view == "Register") {%> <% } else { %>
-				<div class="google-login"> 
-					<a href="/auth/api/auth/google" class="gButton">
-						Log in with Google <br>
-					</a>
-					<span class="or">OR</span>
-				</div><% } %>
-				<svg class="login" viewBox="0 0 320 300">
-					<defs>
-						<linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientUnits="userSpaceOnUse">
-							<stop
-							style="stop-color:#ff00ff;"
-							offset="0"
-							id="stop876" />
-							<stop
-							style="stop-color:#ff0000;"
-							offset="1"
-							id="stop878" />
-						</linearGradient>
-					</defs>
-					<path class="snake" d="M40,120l240,0c0,0,25,2.1,25,40s-25,40-25,40H40c0,0-25,0-25,28.5S40,257,40,257h215h-21.4" />
-				</svg>
-				<div class="forms">
-					<form  name='login' class='forms__login <% if(locals.view == "Register") {%> <% } else { %> active--form  <% } %>' method="POST" action='/auth/login'>
-
-						<label for="email__l">Email</label>
-						<input type="email" class="email__l" name="email">
-						<label for="pass__l">Password</label>
-						<input type="pass" class="pass__l" name="pass">
-						<input type="submit" class="submit" value="Submit">
-					</form>
-					<form class="forms__register <% if(locals.view == 'Register') {%> active--form <% } else { %> <% } %>" method="POST" action='/auth/register'>
-						<label for='u__name'>Username</label>
-						<input type='text' class="u__name__r" name='u__name'>
-						<label for="email__r">Email</label>
-						<input type="email" class="email__r" name="email">
-						<label for="pass__r">Password</label>
-						<input type="pass" class="pass__r" name="pass">
-						<input type="submit" class="submit" value="Submit">
-					</form>
-				</div>
-			</div>
-		</div>
 
 
-
-	</div>
-
-
-
-	<script type="module" src="./js/index.js"></script>
+	<script type="module" src="/js/index.js"></script>
 </body>
 </html>

@@ -12,11 +12,12 @@ $(document).ready(function() {
 
 function setup() {
 
-	// console.log(document.querySelector('.eula>a>u').innerHTML);
-	if(document.querySelector('.eula>a>u').innerHTML == 'LOGIN')
-	{}
-else
-	loginSetup()
+	if(document.querySelector('.eula>a>u').innerHTML == 'REGISTER')
+	{
+		loginSetup();
+	}
+	
+		
 }
 
 function loginSetup() {
@@ -36,26 +37,6 @@ function loginSetup() {
 		snake.style.strokeDasharray = '220 1386';
 	});
 
-}
-
-function regSetup() {
-	
-
-	//let pass_repeat = document.querySelector('.active--form .email__r');
-	let pass = document.querySelectorAll('.active--form .pass__r');
-	
-	function validatePassword(){
-		if(pass[0].value != pass[1].value) {
-			pass[1].setCustomValidity("Passwords Don't Match");
-		} else {
-			pass[1].setCustomValidity('');
-		}
-	}
-	
-	pass[0].onchange = validatePass;
-	pass[1].onkeyup = validatePass;
-	
-	
 }
 
 function autocomplete(c__inp, countries) {

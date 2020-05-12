@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>
+		Forgot Password
+	</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/auth.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="sign reset">
+		<div class="auth__container">
+			<div class="left">
+				<div class="login">Lost<br>Password?</div>
+				
+				<div class="eula pb-2">Dont worry! </div>
+				<div class="error eula pb-2"><%= locals.auerr %></div>
+
+			</div>
+			<div class="right">
+				<div class="signup">
+					Enter details
+				</div>
+				<svg class="login" viewBox="0 0 320 300" width="300">
+					<defs>
+						<linearGradient inkscape:collect="always" id="linearGradient" x1="13" y1="193.49992" x2="307" y2="193.49992" gradientUnits="userSpaceOnUse">
+							<stop
+							style="stop-color:#ff00ff;"
+							offset="0"
+							id="stop876" />
+							<stop
+							style="stop-color:#ff0000;"
+							offset="1"
+							id="stop878" />
+						</linearGradient>
+					</defs>
+					<path class="snake" d="M50,120h230c0,0,25,2.1,25,40s-25,40-25,40H50c0,0-25,2.1-25,40s25,40,25,40h230.4" />
+				</svg>
+				<div class="forms">
+					<form name='login' class='forms__reset pb-5 active--form' method="POST" action=''>
+
+						<label for="email">Email</label>
+						<input type="email" class="email__l" name="email" autofocus required>
+						<input type="submit" class="submit mt-5 mb-2" value="Submit">
+						<div class="back">
+							<a href="/auth/login">
+								Back to login
+							</a>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

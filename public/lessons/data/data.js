@@ -123,26 +123,26 @@ export const chapter2 =
 		head: 'Private key',
 		body: `A private key is essentially a randomly generated number between 1 and 2^256.<br>
 				While any method can be used to pick this random number, it’s recommended that one uses a cryptographically secure pseudorandom number generator (CSPRNG) with a seed from a source of sufficient entropy.
-				<div class='mt-3 card__footer'>Generate a random private key</div>`
+				<form id='c2p8'><div class='mt-3 card__footer page__control__elem' data-dir='down' data-chapter='2' data-page='8'><input type='submit' value='Generate a random private key' style='background: transparent;color: inherit;'></input></div>`
 	},
 	page9:
 	{
 		title: '',
 		head: `<span class="mx-2" >Your random private key</span>`,
-		body: `<input class="mb-3 mx-2 input">`
+		body: `<input class="mb-3 mx-2 input c2p9" disabled>`
 	},
 	page10:
 	{
 		title: '',
 		head: 'Public key',
 		body: `Once the random private key is selected, the corresponding public key can be calculated. <br>However, no method is currently known that allows one to calculate the private key from the public key.<br>
-		<div class='card__footer mt-4'>Calculate the public key</div>`
+		<div class='card__footer mt-4 page__control__elem' data-dir='down' data-chapter='2' data-page='10'>Calculate the public key</div>`
 	},
 	page11:
 	{
 		title: '',
 		head: `<span class="mx-2" >Public key calculated</span>`,
-		body: `<input class="mb-3 mx-2 input">`
+		body: `<input class="mb-3 mx-2 input c2p11" disabled>`
 	},
 	page12:
 	{
@@ -205,16 +205,16 @@ export const chapter2 =
 	{
 		title: '',
 		head: '',
-		body: `Iin Bitcoin we run a hashing operation twice on the public key to obtain the wallet
+		body: `In Bitcoin we run a hashing operation twice on the public key to obtain the wallet
 		address adding a further layer of safety<br>
 		(Hashing is a rather important concept in blockchain and we will learn more about hashing later)<br>
-		<div class='mt-3 card__footer'>Calculate the wallet address</div>`
+		<div class='mt-3 card__footer page__control__elem' data-dir='down' data-chapter='2' data-page='18'>Calculate the wallet address</div>`
 	},
 	page19:
 	{
 		title: '',
 		head: `<span class="mx-2" >Wallet address generated</span>`,
-		body: `<input class="mb-3 mx-2 input">`
+		body: `<input class="mb-3 mx-2 input c2p19" disabled>`
 	},
 	page20:
 	{
@@ -526,9 +526,10 @@ export const chapter5 =
 	{
 		title: '',
 		head: '',
-		body: `<input class="mx-2 my-4 input" placeholder='Enter your name'><br>
-		<div class='card__button px-3 py-2 my-4'>Generate the hash</div><br>
-		<input class="mx-2 my-4 input" placeholder='Result' disabled><br>
+		body: `<form id='c5'><input class="mx-2 my-4 input" name='name' placeholder='Enter your name'><br>
+		<div class='card__button px-3 py-2 my-4'><input type='submit' value='Generate the hash' style='background-color:transparent;color:inherit'></input></div><br>
+		<input class="mx-2 my-4 input c5" placeholder='Result' disabled><br>
+		</form>
 		<div class='mt-5 card__footer'>Link to the Hashing code</div>`
 	},
 	page10:
@@ -543,10 +544,12 @@ export const chapter5 =
 		title: '',
 		head: '',
 		body: `<div class='row p-5' style='width:100%'>
-		<div class='col-md-7'><textarea style='width:100%' class='input card__textbox'></textarea></div>
+		<form id='c5' class='col-12'><div class='row'>
+		<div class='col-md-7'><textarea style='width:100%' class='input card__textbox' name='name'></textarea></div>
 		<div class='col-md-5'><div class='row'>
-		<div class='col-12 my-5'><div class='card__button px-3 py-3'>Generate the hash</div></div>
-		<div class='col-12'><input class="input" placeholder='Result' disabled></div></div></div>
+		<div class='col-12 my-5'><div class='card__button px-3 py-3'><input type='submit' value='Generate the hash' style='background-color:transparent;color:inherit'></input></div></div>
+		<div class='col-12'><input class="input c5" placeholder='Result' disabled></div></div></div>
+		</div></form>
 		<br>
 		<div class='row px-5'>
 		<div class='col-12'><div class='mt-5 card__footer'>Link to the Hashing code</div></div>`
@@ -705,9 +708,9 @@ export const chapter7 =
 		title: '',
 		head: '',
 		body: `Calculated block hash<br>
-		<input class="my-4 mx-2 input" style='width:75%' placeholder='Value based on nonce' disabled><br>
+		<input class="my-4 mx-2 input" style='width:75%' placeholder='000000000019d6689c085ae165831e934ff763ae46a2a6c172b3f1b60a8ce26f' disabled><br>
 		Difficulty target (Derived from bits)<br>
-		<input style='width: 75%' class="mx-2 my-4 input" placeholder='00000000ffff0000000000000000000000000000000000000000000000000000' disabled>`
+		<input style='width: 75%' class="mx-2 my-4 input" placeholder='1d00ffff' disabled>`
 	},
 	page10:
 	{
@@ -797,9 +800,9 @@ export const chapter8 =
 	{
 		title: '',
 		head: "Today, those 50 bitcoins given out as a reward are worth:",
-		body: `<input class="mx-2 my-4 input" placeholder=''>
+		body: `<input class="mx-2 my-4 input" placeholder='50' disabled>
 		<div style='display:inline'> Bitcoins  =  </div>
-		<input class="mx-2 my-4 input" placeholder='' disabled>
+		<input class="mx-2 my-4 input c8" placeholder='' disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page11:
@@ -807,12 +810,12 @@ export const chapter8 =
 		title: '',
 		head: "However, at the time of mining, they were worthless.",
 		body: `<div>The first time somebody exchanged a bitcoin for a physical good, they ordered pizzas (Of course!)</div><br><br>
-		<input class="mx-2 my-4 input" placeholder=''>
+		<input class="mx-2 my-4 input" placeholder='2'>
 		<div style='display:inline'> Pizzas for  </div>
-		<input class="mx-2 my-4 input" placeholder='' disabled>
+		<input class="mx-2 my-4 input" placeholder='10000' disabled>
 		<div style='display:inline'> Bitcoins </div><br>
 		<div style='display:inline'> = </div>
-		<input class="mx-2 my-4 input" placeholder='' disabled>
+		<input class="mx-2 my-4 input c8" disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page12:

@@ -42,6 +42,11 @@
 	opacity: 0.5;
 }
 
+.index__chapter.active
+{
+	border-left: solid 3px #0025d3;
+}
+
 .index__page
 {
 	display: inline-block;

@@ -10,20 +10,37 @@ const passport = require('passport');
 const jwt = require('jsonwebtoken');
 const auth = require('./routes/auth/auth.js');
 const lessons = require('./routes/lessons.js');
+const functions = require('./routes/functions.js');
+const progress = require('./routes/progress/progress.js');
+const bitcoin = require('bitcoinjs-lib');
+let helmet = require('helmet');
 const port = process.env.PORT || 3000;
 
 
 const app = express();
 
+app.use(helmet());
+app.use(helmet.permittedCrossDomainPolicies());
+app.use(helmet.referrerPolicy({
+	policy: 'no-referrer'
+}));
+app.use(helmet.featurePolicy({
+	features: {
+		vibrate: ["'none'"],
+		camera: ["'none'"]
+	}
+}));
+
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/public')));
+// app.use('/func', express.static(__dirname + '/node_modules/bitcoinjs-lib/src'));
 
 app.use(session({
-    secret: 'secret',
-    resave: false,
-    saveUninitialized: true,
+	secret: 'secret',
+	resave: false,
+	saveUninitialized: true,
     //store: sessionStore,
     cookie: {
         maxAge: 1000 * 60 * 60 * 24// Equals 1 day (1 day * 24 hr/1 day * 60 min/1 hr * 60 sec/1 min * 1000 ms / 1 sec)
@@ -45,9 +62,12 @@ app.use('/auth', auth);
 
 app.use('/lessons', lessons);
 
+app.use('/functions', functions);
+app.use('/progress', progress);
+
 // protected route
 app.get('/guide', passport.authenticate('local', { session: false }), function(req, res) {
-  res.json('Success! You can now see this without a token.');
+	res.json('Success! You can now see this without a token.');
 });
 
 
@@ -56,7 +76,22 @@ app.get('/', function(req, res) {
 	console.log("at homepage");
 });
 
+app.use(function(req,res){
+	res.status(404).render('404');
+});
 
+
+
+// function generateKeyPairs () {
+//     /*It can generate a random address [and support the retrieval of transactions for that address (via 3PBP)*/
+//       const keyPair = bitcoin.ECPair.makeRandom();
+//       const { address } = bitcoin.payments.p2pkh({ pubkey: keyPair.publicKey });
+//       const publicKey = keyPair.publicKey.toString('hex');
+//       const privateKey = keyPair.toWIF();
+//       console.log("Addresss - ", address);
+//       //return { address, privateKey, publicKey };
+//   };
+//   generateKeyPairs();
 
 
 app.listen(port);

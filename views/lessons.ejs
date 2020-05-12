@@ -6,11 +6,11 @@
 	</title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../css/style.css" type="text/css">
-	<link rel="stylesheet" href="../css/template.css" type="text/css">
+	<link rel="stylesheet" href="/css/style.css" type="text/css">
+	<link rel="stylesheet" href="/css/template.css" type="text/css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-	<link rel="stylesheet" href="../css/index.css" type="text/css">
-	<link rel="stylesheet" href="../css/info.css" type="text/css">
+	<link rel="stylesheet" href="/css/index.css" type="text/css">
+	<link rel="stylesheet" href="/css/info.css" type="text/css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
@@ -39,6 +39,8 @@
 				<li class="nav-item px-sm-3 py-2 py-md-0">
 					<a class="nav-link mx-auto" href="#">Learn Scilla</a>
 				</li>
+				<% if(locals.user) {%>
+
 				<li class="nav-item pl-sm-3 py-2 py-md-0 dropdown">
 					<a class="nav-link mx-auto dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Profile
 						
@@ -58,7 +60,7 @@
 								
 								<div class="col-md-6 d-flex justify-content-center">
 
-									Wallet<br> <%= locals.user.wallet %> ZILs
+									Wallet<br> <span class="walletAmt"><%= locals.user.wallet %> ZILs </span>
 								</div>
 
 								
@@ -69,13 +71,20 @@
 							</div>
 							<div class="row profile__logout mt-3" style="min-width: 100%">
 								<div class="col-12 d-flex justify-content-md-start">
-									Log out
+									<a href="/auth/logout">
+										Log out
+									</a>
 								</div>
 								
 							</div>
 						</div>
 					</div>
 				</li>
+				<% } else { %>
+				<li class="nav-item pl-sm-3 py-2 py-md-0">
+					<a class="nav-link mx-auto" href="/auth/login">Log In</a>
+				</li>
+				<% } %>
 			</ul>
 		</div>
 	</nav>
@@ -93,7 +102,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=1>
+						<div class="row index__chapter <%if(locals.user.progress==1) {%>active<%}%>" data-chapter=1>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left py-2">
@@ -105,7 +114,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=2>
+						<div class="row index__chapter <%if(locals.user.progress==2) {%>active<%}%>" data-chapter=2>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -117,7 +126,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=3>
+						<div class="row index__chapter <%if(locals.user.progress==3) {%>active<%}%>" data-chapter=3>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left py-2">
@@ -130,7 +139,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=4>
+						<div class="row index__chapter <%if(locals.user.progress==4) {%>active<%}%>" data-chapter=4>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -142,7 +151,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=5>
+						<div class="row index__chapter <%if(locals.user.progress==5) {%>active<%}%>" data-chapter=5>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left py-2">
@@ -154,7 +163,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=6>
+						<div class="row index__chapter <%if(locals.user.progress==6) {%>active<%}%>" data-chapter=6>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -166,7 +175,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=7>
+						<div class="row index__chapter <%if(locals.user.progress==7) {%>active<%}%>" data-chapter=7>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -178,7 +187,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=8>
+						<div class="row index__chapter <%if(locals.user.progress==8) {%>active<%}%>" data-chapter=8>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -190,7 +199,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="row index__chapter" data-chapter=9>
+						<div class="row index__chapter <%if(locals.user.progress==9) {%>active<%}%>" data-chapter=9>
 							<div class="col-12 text-center">
 								<div class="row my-4 justify-content-center align-items-center">
 									<div class="col-md-6 col-lg-3 text-md-left">
@@ -416,6 +425,6 @@
 		</div>
 	</div>
 
-	<script type="module" src="../js/script.js"></script>
+	<script type="module" src="/js/script.js"></script>
 </body>
 </html>

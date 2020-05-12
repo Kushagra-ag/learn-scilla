@@ -26,15 +26,16 @@ passport.use('login', new LocalStrategy(localFields, utility.verifyLogin));
 passport.use('register', new LocalStrategy(localFields, utility.verifyReg));
 passport.use('google', new GoogleStrategy(gFields, utility.gAuth));
 
+
 passport.serializeUser((user, done) => {
     console.log("In user serialize");
-    done(null, user.email);
+    done(null, {email:user.email});
 });
 
-passport.deserializeUser((email, done) => {
+passport.deserializeUser((user, done) => {
     console.log("In user deserialize");
-    console.log(email);
-    utility.getUser({email})
+    //console.log(email);
+    utility.getUser({email:user.email})
         .then((user) => {
             done(null, user);
         })

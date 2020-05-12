@@ -21,6 +21,8 @@ while(i<20)
 
 	chapter[i].querySelector('.body').innerHTML = data[i][1].body;
 
+	if(i==14)
+		chapter[i].classList.add('msg');
 	if(i==12 || i==14)
 		chapter[i].dataset.mode = 'D';
 
@@ -29,7 +31,7 @@ while(i<20)
 
 	chapter[i].querySelector('.small').innerHTML = `${i+1}/20`;
 
-	if(i==19)
+	if(i==7 || i==9 || i==17 || i==19)
 		chapter[i].dataset.last = true;
 
 	i++;

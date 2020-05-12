@@ -2,6 +2,8 @@ let Users = require('./db.js');
 const bcrypt = require('bcryptjs');
 const lookup = require('country-code-lookup');
 const phone = require('awesome-phonenumber');
+const nodemailer = require('nodemailer');
+const cryptoRandomString = require('crypto-random-string');
 
 const saltRounds = 10;
 
@@ -45,12 +47,12 @@ const verifyLogin = async (req, email, userID, done) => {
 			}
 			else
 			{
-				return done(err, false, {message: 'Incorrect email or password'});
+				return done(null, false, {message: 'Incorrect email or password'});
 			}
 		})
 	}
 	else
-		return done(null, false, {message: 'Email not registered'});
+		return done(null, null, {message: 'Email not registered'});
 	
 }
 
@@ -58,23 +60,14 @@ const verifyReg = async (req, email, userID, done) => {
 	console.log("In verifyReg");
 
 	let {username, contact, country, pass, pass__repeat} = req.body;
-	let countryCode;
-	
-	lookup.byCountry(country, obj => {
-		countryCode = phone.getCountryCodeForRegionCode(obj.iso2);
-	})
-
-	countryCode = phone.getCountryCodeForRegionCode(lookup.byCountry(country).iso2);
-	contact = `${countryCode} ${contact}`;
-
 	
 	let user = await getUser({ email });
 	if(user)
 	{
-		if(user.userID != 0)
+		if(user.userID)
 		{
 			console.log("userID - ",user.userID);
-			return done(null, null, {err: 'Email already registered'});
+			return done(null, null, {message: 'Email already registered'});
 		}
 		else
 		{
@@ -83,7 +76,7 @@ const verifyReg = async (req, email, userID, done) => {
 
 			return updateUser({userID},{where: {email}})
 			.then(user => done(null, user, {success: 'Your account has been created'}))
-			.catch(err => done(null, null, {err: 'Could not create account'}));
+			.catch(err => done(null, null, {message: 'Could not create account'}));
 		}
 	}
 
@@ -91,7 +84,7 @@ const verifyReg = async (req, email, userID, done) => {
 
 	return createUser({username, email, contact, country, userID})
 	.then(user => done(null, user, {success: 'Your account has been created'}))
-	.catch(err => done(null, null, {err: 'Could not create account'}))
+	.catch(err => done(null, null, {message: 'Could not create account'}))
 
 	
 	
@@ -110,7 +103,7 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 
 		getUser({email}).then( user => {
 			
-			//console.log("user - ", user);
+			
 			if(user)
 			{
 				console.log("user existss");
@@ -118,7 +111,7 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 				.then(() => {console.log("usssser - ", user)
 					req.logIn(user, err => {
 						if(err)
-							done(err, null, {message: 'Could not login1'})
+							done(null, null, {message: 'Could not login1'})
 						else
 							done(null, user)
 					})
@@ -126,13 +119,13 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 				.catch(err => done(null, null, {message: 'Could not login2'}))
 			}
 
-			let userID = 0, gID = profile.id;
+			let gID = profile.id;
 
 			return createUser({
-				username: profile.displayName, email: profile.email, userID, gID
+				username: profile.displayName, email: profile.email, gID
 			})
 			.then(user => done(null,user))
-			.catch(err => done(err, null, {message: 'Could not create account'}));
+			.catch(err => done(null, null, {message: 'Could not create account'}));
 		})
 		.catch(err => done(null, null, {message: 'Could not login3'}));
 
@@ -142,5 +135,143 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 	
 }
 
+const forgotPass = async (req, callback) => {
+	console.log("in forgotPass");
 
-module.exports = {createUser, getUser, verifyLogin, verifyReg, gAuth};
+	let {email} = req.body;
+
+
+	
+	getUser({ email })
+	.then(user => {
+
+		if(user)
+		{
+			console.log(user);
+			let rndm = Math.floor((Math.random()*5)+10);
+			let date = Buffer.from(Date.now().toString(), 'binary').toString('base64');
+			let id = Buffer.from(cryptoRandomString({length: rndm, type: 'base64'}), 'binary').toString('base64');
+			let token = `${date}${id}`;
+
+			console.log(token);
+
+			const url = `http://localhost:3000/auth/changepassword/${token}`;
+
+			updateUser({resetPass:token},{where: {email}})
+			.then(user => {
+
+				let transporter = nodemailer.createTransport({
+					service: 'gmail',
+					auth: {
+						user: 'kushag44@gmail.com',
+						pass: 'pencilssxZ4'
+					}
+				});
+
+				let mailOptions = {
+					from: 'kushag44@gmail.com',
+					to: email,
+					subject: 'Reset your password',
+					text: `This is your link - ${url}`
+				};
+
+				transporter.sendMail(mailOptions, function(err, info){
+					if (err) {
+						console.log(err);
+						info.message = 'Cannot send email';
+						return callback(info)
+					} else {
+						console.log('Email sent: ' + info.response);
+						info.success = 'An email has been sent to reset your password';
+						return callback(info);
+
+					}
+				})
+			})
+			.catch(err => {
+				info.message = 'Cannot send email';
+				return callback(info)
+			})
+			
+
+		}
+		else
+		{
+			info.message = 'Email not registered';
+			return callback(info)
+		}
+	})
+	
+}
+
+const getResetPass = (token, callback) => {
+
+	let info={};
+	
+	getUser({resetPass: token})
+	.then(user => {
+		
+		if(user)
+		{
+			info.success = 'Valid link';
+			return callback(info)
+		}
+		else
+		{
+			info.message = 'Invalid link';
+			return callback(info)
+		}
+	})
+	.catch(err => {
+		info.message = 'Invalid link';
+		return callback(info)
+	})
+}
+
+const postResetPass = (req, token, callback) => {
+
+	let info={};
+	
+	getUser({resetPass: token})
+	.then(user => {
+		
+		//console.log(user);
+		if(user)
+		{
+			//console.log(req);
+			bcrypt.hash(req.body.pass, saltRounds)
+			.then(pass => {
+
+				console.log(pass);
+				updateUser({userID:pass, resetPass:null},{where: {resetPass: token}})
+				.then(() => {
+					info.success = 'Valid link';
+					console.log(info);
+					return callback(info)
+				})
+				.catch(() => {
+					info.message = 'Could not complete request';
+					return callback(info)
+				})
+			})
+			.catch(() => {
+				info.message = 'Could not complete request';
+				return callback(info)
+			})
+
+		}
+		else
+		{
+			info.err = 'Invalid link';
+			return callback(info)
+		}
+	})
+	.catch(err => {
+		info.message = 'Could not complete request';
+		return callback(info)
+	})
+	console.log("eend");
+	
+}
+
+module.exports = {createUser, getUser, updateUser, verifyLogin, verifyReg, gAuth, forgotPass, getResetPass, postResetPass};

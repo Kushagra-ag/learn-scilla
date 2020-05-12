@@ -1,6 +1,6 @@
 ;
 import captions from '../lessons/data/data.js';
-import forms from './formActions.js';
+import forms, {_info} from './formActions.js';
 import chapters, { total } from '../lessons/index.js';
 import images from '../images/index.js';
 
@@ -66,46 +66,72 @@ function showIndex()
 	},500);
 }
 
-
 function showChapters(e)
 {
-	
+	console.log("in show chapters func");
 	let ch = document.querySelector('.chapter__template');
 	let index = document.querySelector('.index');
 	let containers = document.querySelectorAll('.content__container'),node;
 	let c = parseInt(e.currentTarget.dataset.chapter);
 
-	node = contentUpdate(c,1,0);
+	$.ajax({
+		type: 'POST',
+		url: '/progress/check',
+		data: {chapter: c},
+		dataType: 'json'
+	})
+	.done(res => {
 
-	containers[1].replaceWith(node);
-	[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
-		elem.dataset.id = node.parentNode.dataset.id;
-		elem.dataset.chapter = node.dataset.chapter;
-		elem.dataset.page = node.dataset.page;
-	});
+		console.log('in done');
 
-	attach();
+		if(res.err)
+		{
+			console.log('shit');
+			return _info(res.err, res.msg);
+		}
+		else
+		{
+			node = contentUpdate(c,1,0);
+
+			containers[1].replaceWith(node);
+			[...node.getElementsByClassName('page__control__elem')].forEach((elem) => {
+				elem.dataset.id = node.parentNode.dataset.id;
+				elem.dataset.chapter = node.dataset.chapter;
+				elem.dataset.page = node.dataset.page;
+			});
+
+			attach();
+
+
+			node.removeAttribute('style');
+
+
+			history.pushState({
+				h_chapter: 0,
+				t_chapter: c,
+				id: 1,
+			},null,`../lessons/chapter${c}`);
+
+			his = window.history.state;
+			
+
+
+			setTimeout(function()
+			{
+				ch.style.display = "block";
+				index.style.marginTop="-300vh";
+
+			},500);
+		}
+
+		
+		
+	})
+	.fail(err => {
+		return _info(err.err, err.msg);
+	})
+
 	
-
-	node.removeAttribute('style');
-
-
-	history.pushState({
-		h_chapter: 0,
-		t_chapter: c,
-		id: 1,
-	},null,`../lessons/chapter${c}`);
-
-	his = window.history.state;
-	console.log(window.history.state);
-
-
-	setTimeout(function()
-	{
-		ch.style.display = "block";
-		index.style.marginTop="-300vh";
-
-	},500);
 
 }
 
@@ -220,9 +246,6 @@ function pageChange(e)
 	let p = parseInt(elem.dataset.page);
 	let dir = elem.dataset.dir;
 
-	console.log(id);
-	console.log(p);
-
 	let host = {
 		chapter: c,
 		page: p,
@@ -230,8 +253,6 @@ function pageChange(e)
 	
 
 	({c, p} = pageSelect(c, p, dir));
-
-	console.log("next - "+p);
 
 	forms(c,p);
 
@@ -304,11 +325,8 @@ function orientSelect(c,p,dir)
 function showPageNext(h,t,id,f)
 {
 
-	console.log(f);
+	//console.log(f);
 	let bar = document.querySelector('.progress');
-	console.log(t);
-	console.log("host id "+id);
-	console.log("dest id "+(id+1)%3);
 	let host = document.querySelector(`.y[data-id='${id}']`);
 	let dest = document.querySelector(`.y[data-id='${(id+1)%3}']`);
 	let other = document.querySelector(`.y[data-id='${(id+2)%3}']`);
@@ -377,34 +395,23 @@ function showPageNext(h,t,id,f)
 	},null,`./chapter${t.chapter}`);
 
 	his = window.history.state;
-	console.log(window.history.state);
-
-	// console.log(h);
-	// console.log(t);
-
-	
-	
 }
 
 function showPagePrev(h,t,id,f)
 {
 	let bar = document.querySelector('.progress');
-	console.log(h);
-	console.log(t);
-	console.log(id);
 
 	if(t.page==0 && t.chapter==0)
 	{
 		
 		hideChapters();
-		console.log('ab');
-		// history.replaceState({
-		// 	h_chapter: 1,
-		// 	h_page: 1,
-		// 	t_chapter: 0,
-		// 	t_page: 0,
-		// 	id: -1,
-		// },null,`./`);
+		history.replaceState({
+			h_chapter: 1,
+			h_page: 1,
+			t_chapter: 0,
+			t_page: 0,
+			id: -1,
+		},null,`./`);
 
 		his = window.history.state;
 
@@ -415,7 +422,7 @@ function showPagePrev(h,t,id,f)
 	// {
 		
 	// 	hideIndex();
-		
+
 	// 	history.replaceState({
 	// 		h_chapter: -1,
 	// 		h_page: -1,
@@ -428,9 +435,6 @@ function showPagePrev(h,t,id,f)
 
 	// 	return
 	// }
-
-	console.log("host id "+id);
-	console.log("dest id "+(id+2)%3);
 
 	let host = document.querySelector(`.y[data-id='${id}']`);
 	let dest = document.querySelector(`.y[data-id='${(id+2)%3}']`);
@@ -492,13 +496,11 @@ function showPagePrev(h,t,id,f)
 	},null,`./chapter${t.chapter}`);
 
 	his = window.history.state;
-	console.log(window.history.state);
-
 }
 
 function checkState(e)
 {	
-	console.log(window.history.state);
+	// console.log(window.history.state);
 
 	let host;
 
@@ -516,7 +518,7 @@ function checkState(e)
 	}
 	
 	showPagePrev(host,target,-1,0);
-	console.log(window.history.state);
+	// console.log(window.history.state);
 	
 }
 
@@ -542,13 +544,11 @@ function cardLandscape(mode)
 	r.classList.add('card--full');
 	l.style.zIndex = '5';
 	l.style.opacity = '0';
-	console.log(mode);
 	setTimeout(function() {
 		r.classList.add('col-md-12');
 		r.classList.add('fullWidth');
 		active.querySelector('.content__row').removeAttribute('style');
 		
-		console.log(mode);
 		if(!mode)
 		{
 			active.querySelector('.content').style.maxWidth = '75%';
@@ -587,7 +587,6 @@ function cardPortrait()
 function theme(mode,o)
 {
 	let active = document.querySelector('.active--card');
-	console.log('t');
 	if(mode && mode.search("D") != -1)
 	{
 		active.querySelector('.content__container').classList.add('fullWidth--dark');
@@ -612,7 +611,6 @@ function theme(mode,o)
 	
 	else
 	{
-		console.log(w);
 		active.querySelector('.content__container').classList.remove('fullWidth--dark');
 		active.querySelector('.page__control').classList.remove('page__control--dark');
 		active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
@@ -630,10 +628,39 @@ function attach()
 {
 	setTimeout(function() {
 		[...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
-			elem.addEventListener('click', pageChange);	
+			elem.addEventListener('click', pageChange);
+			if(elem.classList.contains('next'))
+				elem.addEventListener('click', updateProgress);
 		});
-	}, 1000);
+	}, 600);
 };
+
+function updateProgress(e)
+{
+	let elem = event.currentTarget;
+	let c = parseInt(elem.dataset.chapter);
+
+	let data = {chapter: c};
+
+	$.ajax({
+		type: 'POST',
+		url: '/progress/update',
+		data: data,
+		dataType: 'json'
+	})
+	.done(res => {
+		console.log(res);
+		if(!res.noAction)
+		{
+			_info(res.err || res.success, res.msg)
+			let amt = parseInt(document.querySelector('.walletAmt').innerHTML);
+			document.querySelector('.walletAmt').innerHTML = amt+100;
+		}
+	})
+	.fail(err => {
+		return _info(err.err, err.msg);
+	})
+}
 
 const util = {
 	contentUpdate,

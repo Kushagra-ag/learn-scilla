@@ -9,42 +9,9 @@ router.get('/', function(req, res, next) {
 	console.log('in register-get');
 	console.log(res.cookie.customBody);
 	let form;
-	if(res.cookie.list)
-	{
-		res.cookie.list = res.cookie.list.split(",");
 
-		form = {
-			username: {
-				err: res.cookie.list.indexOf('username') == -1 ? false : true,
-				val: res.cookie.customBody.username || '',
-			},
-			email: {
-				err: res.cookie.list.indexOf('email') == -1 ? false : true,
-				val: res.cookie.customBody.email || '',
-			},
-			contact: {
-				err: res.cookie.list.indexOf('contact') == -1 ? false : true,
-				val: res.cookie.customBody.contact || '',
-			},
-			country: {
-				err: res.cookie.list.indexOf('country') == -1 ? false : true,
-				val: res.cookie.customBody.country || '',
-			},
-			pass: {
-				err: res.cookie.list.indexOf('pass') == -1 ? false : true,
-				val: res.cookie.customBody.pass || '',
-			},
-			confirmPass: {
-				err: res.cookie.list.indexOf('confirmPass') == -1 ? false : true,
-				val: res.cookie.customBody.confirmPass || '',
-			}
-		}
-	}
 	
-	res.render('auth', {auerr: res.cookie.auerr, view:'register', form: form, values: res.cookie.customBody});
-	delete res.cookie.auerr;
-	delete res.cookie.customBody;
-	delete res.cookie.list;
+	res.render('auth', {auerr: '', view:'register', err: '', values: ''});
 });
 
 
@@ -59,11 +26,11 @@ router.post('/', [check('username').not().isEmpty().trim().escape().isLength({mi
 		res.cookie.customBody = req.body;
 		
 		let errors = validationResult(req), msg=``, list=''; 
-		//console.log(validationResult(req));
+		console.log(validationResult(req));
 		if(!errors.isEmpty())
 		{
 			errors.errors.forEach(elem => {
-				// msg += `Invalid ${elem.param} value<br>`;
+				
 				list += `${elem.param},`;
 			});
 			//console.log(list);
@@ -74,8 +41,21 @@ router.post('/', [check('username').not().isEmpty().trim().escape().isLength({mi
 			if(list.indexOf('pass') != -1)
 				msg+= '. Password must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters'
 			console.log("list - ", list);
-			res.cookie.auerr = msg;
-			return res.redirect('/auth/register');
+
+
+			let form;
+			err = {
+				
+				username: list.indexOf('username') == -1 ? false : true,
+				email: list.indexOf('email') == -1 ? false : true,
+				contact: list.indexOf('contact') == -1 ? false : true,
+				country: list.indexOf('country') == -1 ? false : true,
+				pass: list.indexOf('pass') == -1 ? false : true,
+				confirmPass: list.indexOf('confirmPass') == -1 ? false : true,
+
+			};console.log(errors.errors);
+
+			return res.render('auth', {auerr: msg, view:'register', err: err, values: req.body})
 		}
 
 		passport.authenticate('register', function(err, user, info) {
@@ -87,10 +67,10 @@ router.post('/', [check('username').not().isEmpty().trim().escape().isLength({mi
 				res.cookie.auerr = info.success;
 				res.redirect('/auth/login');
 			}
-			else if(info.err || info.message)
+			else if(info.message)
 			{
-				res.cookie.auerr = info.err || info.message;
-				res.redirect('/auth/register');
+				//res.cookie.auerr = info.message;
+				res.render('auth', {auerr: info.message, view:'register', err: '', values: req.body});
 			}
 		})(req, res, next);
 	});
