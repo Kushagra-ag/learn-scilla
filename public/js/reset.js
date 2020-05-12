@@ -6,7 +6,6 @@ $(document).ready(function() {
 function resetSetup() {
 	
 	let pass = document.querySelectorAll('.active--form .pass__l');
-
 	let snake = document.querySelector('.snake');
 	
 	pass[0].addEventListener('focus', function(e) {
@@ -18,5 +17,4 @@ function resetSetup() {
 		snake.style.strokeDashoffset = '-336';
 		snake.style.strokeDasharray = '220 1386';
 	});
-
 }

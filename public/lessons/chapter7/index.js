@@ -1,16 +1,14 @@
-;
 import template from '../data/template.js';
 import { chapter7 } from '../data/data.js';
-import { page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13 } from '../pages.js';
 
-let chapter = [ page1, page2, page3, page4, page5, page6, page7, page8, page9, page10, page11, page12, page13 ];
+let chapter = new Array(13);
 //console.log(chapter[0]);
 
 let data = Object.entries(chapter7);
 let i=0;
 
-while(i<13)
-{
+while(i<13) {
+	
 	chapter[i] = template.cloneNode(true);
 
 	chapter[i].dataset.chapter = "7";

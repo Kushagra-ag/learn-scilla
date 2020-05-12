@@ -1,4 +1,3 @@
-;
 import chapter1 from './chapter1/index.js';
 import chapter2 from './chapter2/index.js';
 import chapter3 from './chapter3/index.js';

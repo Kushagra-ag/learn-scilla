@@ -1,4 +1,4 @@
-;import { table1, table2, table3 } from './table.js';
+import { table1, table2, table3 } from './table.js';
 
 export const captions = [[
 	'Published on October 31, 2008',

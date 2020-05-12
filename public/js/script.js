@@ -1,20 +1,11 @@
-;
 import util from './utility.js';
 
-
-
-/*-----Attaching event listeners-----*/
-
+// Attaching event listeners
 window.onpopstate = util.checkState;
-window.onbeforeunload = util.unload;
-
-
 
 [...document.getElementsByClassName('index__chapter')].forEach((elem) => {
 	elem.addEventListener('click', util.showChapters);
 });
-
-
 
 document.querySelector('.chapter__image').addEventListener('load', function(e) {
 	setTimeout(function() {
