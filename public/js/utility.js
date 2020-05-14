@@ -1,4 +1,3 @@
-;
 import captions from '../lessons/data/data.js';
 import forms, { _info } from './formActions.js';
 import chapters, { total } from '../lessons/index.js';
@@ -165,118 +164,70 @@ function hideIndex() {
 }
 
 function pageSelect(c, p, dir) {
-    if (dir == "up") {
-        if (c == 0 && p == 0)
-            return {
-                c: -1,
-                p: -1
-            }
-        else if (c == 1 && p == 1)
-            return {
-                c: 0,
-                p: 0
-            }
-        else if (c == 0 && p == 0)
-            return {
-                c: 1,
-                p: 1
-            }
-        else if (c == 2 && p == 1)
-            return {
-                c: 1,
-                p: 4
-            }
-        else if (c == 3 && p == 1)
-            return {
-                c: 2,
-                p: 20
-            }
-        else if (c == 4 && p == 1)
-            return {
-                c: 3,
-                p: 11
-            }
-        else if (c == 5 && p == 1)
-            return {
-                c: 4,
-                p: 12
-            }
-        else if (c == 6 && p == 1)
-            return {
-                c: 5,
-                p: 15
-            }
-        else if (c == 7 && p == 1)
-            return {
-                c: 6,
-                p: 8
-            }
-        else if (c == 8 && p == 1)
-            return {
-                c: 7,
-                p: 13
-            }
-        else if (c == 9 && p == 1)
-            return {
-                c: 8,
-                p: 23
-            }
+    if(dir == "up") {
+        if(c == 0 && p == 0)
+            return {c: -1, p: -1}
+        else if(c == 1 && p == 1)
+            return {c: 0, p: 0}
+        else if(c == 0 && p == 0)
+            return {c: 1, p: 1}
+        else if(c == 2 && p == 1)
+            return {c: 1, p: 4}
+        else if(c == 3 && p == 1)
+            return {c: 2, p: 20}
+        else if(c == 4 && p == 1)
+            return {c: 3, p: 11}
+        else if(c == 5 && p == 1)
+            return {c: 4, p: 12}
+        else if(c == 6 && p == 1)
+            return {c: 5, p: 15}
+        else if(c == 7 && p == 1)
+            return {c: 6, p: 8}
+        else if(c == 8 && p == 1)
+            return {c: 7, p: 13}
+        else if(c == 9 && p == 1)
+            return {c: 8, p: 23}
         else
-            return {
-                c: c,
-                p: p - 1
-            }
+            return {c: c, p: p - 1}
     } else {
-        if (c == 1 && p == 4)
-            return {
-                c: 2,
-                p: 1
-            }
-        else if (c == 2 && p == 20)
-            return {
-                c: 3,
-                p: 1
-            }
-        else if (c == 3 && p == 11)
+        if(c == 1 && p == 4)
+            return {c: 2, p: 1}
+        else if(c == 2 && p == 20)
+            return {c: 3, p: 1}
+        else if(c == 3 && p == 11)
             return {
                 c: 4,
                 p: 1
             }
-        else if (c == 4 && p == 12)
+        else if(c == 4 && p == 12)
             return {
                 c: 5,
                 p: 1
             }
-        else if (c == 5 && p == 15)
+        else if(c == 5 && p == 15)
             return {
                 c: 6,
                 p: 1
             }
-        else if (c == 6 && p == 8)
+        else if(c == 6 && p == 8)
             return {
                 c: 7,
                 p: 1
             }
-        else if (c == 7 && p == 13)
+        else if(c == 7 && p == 13)
             return {
                 c: 8,
                 p: 1
             }
-        else if (c == 8 && p == 23)
+        else if(c == 8 && p == 23)
             return {
                 c: 9,
                 p: 1
             }
-        else if (c == 9 && p == 7)
-            return {
-                c: null,
-                p: null
-            }
+        else if(c == 9 && p == 7)
+            return {c: null, p: null}
         else
-            return {
-                c: c,
-                p: p + 1
-            }
+            return {c: c, p: p + 1}
     }
 }
 
@@ -297,7 +248,7 @@ function pageChange(e) {
 
     forms(c, p);
 
-    if ((p == null && c == null))
+    if(p == null && c == null)
         return;
 
     let target = {
@@ -307,7 +258,7 @@ function pageChange(e) {
 
     let flag = orientSelect(c, p, dir) || 0;
 
-    if (dir == 'down')
+    if(dir == 'down')
         showPageNext(host, target, id, flag);
     else
         showPagePrev(host, target, id, flag);
@@ -317,7 +268,7 @@ function orientSelect(c, p, dir) {
     window.scrollTo(0, 0);
 
     let flag = 0;
-    if (dir == "down") {
+    if(dir == "down") {
         if (c == 2) {
             if (p == 12)
                 flag = 1;
@@ -364,10 +315,10 @@ function showPageNext(h, t, id, f) {
     let orient = dest.querySelector('.content__container').dataset.orient;
     let last = dest.querySelector('.content__container').dataset.last;
 
-    if (f == 1) {
+    if(f == 1) {
         dest.firstElementChild.firstElementChild.style.opacity = '0';
         setTimeout(cardLandscape, 600, mode);
-    } else if (f == -1) {
+    } else if(f == -1) {
         setTimeout(cardPortrait, 600);
     }
 
@@ -381,7 +332,7 @@ function showPageNext(h, t, id, f) {
 
     attach();
 
-    if (last) {
+    if(last) {
         dest.querySelector('.page__control__down').style.zIndex = '-1';
     }
 
@@ -413,7 +364,7 @@ function showPageNext(h, t, id, f) {
 function showPagePrev(h, t, id, f) {
     
     let bar = document.querySelector('.progress');
-    if (t.page == 0 && t.chapter == 0) {
+    if(t.page == 0 && t.chapter == 0) {
 
         hideChapters();
         history.replaceState({
@@ -444,10 +395,10 @@ function showPagePrev(h, t, id, f) {
     let orient = dest.querySelector('.content__container').dataset.orient;
     let last = dest.querySelector('.content__container').dataset.last;
 
-    if (f == 1) {
+    if(f == 1) {
         dest.firstElementChild.firstElementChild.style.opacity = '0';
         setTimeout(cardLandscape, 600, mode);
-    } else if (f == -1) {
+    } else if(f == -1) {
         setTimeout(cardPortrait, 600, mode);
     }
     theme(mode, orient);
@@ -460,7 +411,7 @@ function showPagePrev(h, t, id, f) {
 
     attach();
 
-    if (last) {
+    if(last) {
         dest.querySelector('.page__control__down').style.zIndex = '-1';
     }
 
@@ -509,12 +460,12 @@ function cardLandscape(mode) {
         r.classList.add('fullWidth');
         active.querySelector('.content__row').removeAttribute('style');
 
-        if (!mode) {
+        if(!mode) {
             active.querySelector('.content').style.maxWidth = '75%';
             active.querySelector('.content').style.width = '75%';
         }
 
-        if (w) {
+        if(w) {
             r.querySelector('.card__bar').style.width = "30%";
         }
 
@@ -543,7 +494,7 @@ function cardPortrait() {
 
 function theme(mode, o) {
     let active = document.querySelector('.active--card');
-    if (mode && mode.search("D") != -1) {
+    if(mode && mode.search("D") != -1) {
         active.querySelector('.content__container').classList.add('fullWidth--dark');
         active.querySelector('.page__control').classList.add('page__control--dark');
         active.querySelector('.content').removeAttribute('style');
@@ -561,7 +512,7 @@ function theme(mode, o) {
         active.querySelector('.content__container').classList.remove('fullWidth--dark');
         active.querySelector('.page__control').classList.remove('page__control--dark');
         active.querySelector('.content__container').classList.remove('fullWidth--dark--null');
-        if (o == 'L' && w) {
+        if(o == 'L' && w) {
             active.querySelector('.content').style.maxWidth = '75%';
             active.querySelector('.content').style.width = '75%';
         }
@@ -572,7 +523,7 @@ function attach() {
     setTimeout(function() {
         [...document.getElementsByClassName('page__control__elem')].forEach((elem) => {
             elem.addEventListener('click', pageChange);
-            if (elem.classList.contains('next'))
+            if(elem.classList.contains('next'))
                 elem.addEventListener('click', updateProgress);
         });
     }, 600);
@@ -580,7 +531,7 @@ function attach() {
 
 function updateProgress() {
     let elem = event.currentTarget;
-    let c = parseInt(elem.dataset.chapter);
+    let c = parseInt(elem.dataset.chapter), max=1;
 
     let data = {
         chapter: c
@@ -594,15 +545,25 @@ function updateProgress() {
         })
         .done(res => {
             console.log(res);
-            if (!res.noAction) {
+            if(!res.noAction) {
                 _info(res.err || res.success, res.msg)
                 let amt = parseInt(document.querySelector('.walletAmt').innerHTML);
-                document.querySelector('.walletAmt').innerHTML = amt + 100;
+                document.querySelector('.walletAmt').innerHTML = `${amt + 100} ZILs`;
             }
         })
         .fail(err => {
             return _info(err.err, err.msg);
         })
+
+        document.querySelectorAll('.index__chapter').forEach(elem => {
+            if(elem.classList.contains('active')) {
+                
+                max = elem.dataset.chapter;
+                elem.classList.remove('active');
+            }
+        });
+        max = max>c+1 ? max : c+1;
+        document.querySelector(`.index__chapter[data-chapter='${max}']`).classList.add('active');
 }
 
 const util = {
