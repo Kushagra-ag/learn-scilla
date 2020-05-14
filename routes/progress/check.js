@@ -3,16 +3,16 @@ const passport = require('passport');
 const express = require('express');
 let router = express.Router();
 
-router.post('/', async function(req, res, next) {
+router.post('/', passport.authenticate('jwt', {session: false}), async function(req, res, next) {
 
 	console.log("in progress/check");
 	
-	if(req.user && req.session)
+	if(req.user)
 	{
-		let email = req.session.passport.user.email;
-		let user = await utility.getUser({ email });
+		// let email = req.user.email;
+		// let user = await utility.getUser({ email });
 
-		if(req.body.chapter > user.progress)		
+		if(req.body.chapter > req.user.progress)		
 		{
 			return res.send({err: 'Not permissible', msg: `You must attempt the chapters in serial order.<br> Currently, you are on <b>Chapter ${user.progress}</b>`});
 		}

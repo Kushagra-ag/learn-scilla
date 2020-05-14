@@ -4,17 +4,15 @@ let router = express.Router();
 router.get('/', (req, res, next) => {
 	//console.log(req.session);
 	//console.log(req.user);
+	console.log('--------------------')
+	console.log(req.user);
 	console.log("in lessons-get");
 	
 	
-	if(req.user && req.session)
-	{
-		res.render('lessons', {user: req.user.dataValues});	
-	}
-	else
-	{
-		res.redirect('/auth/login');
-	}
+		res.render('lessons', {user: req.user});	
+	
+		// res.redirect('/auth/login');
+	
 	
 });
 

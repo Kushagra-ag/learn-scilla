@@ -3,9 +3,10 @@ const bcrypt = require('bcryptjs');
 const lookup = require('country-code-lookup');
 const phone = require('awesome-phonenumber');
 const nodemailer = require('nodemailer');
-const cryptoRandomString = require('crypto-random-string');
+const jwt = require('jsonwebtoken');
 
 const saltRounds = 10;
+const secret = 'abcd';
 
 const createUser = async ({ username, email, userID, gID }) => { 
 	return await Users.create({ username, email, userID, gID });
@@ -38,11 +39,22 @@ const verifyLogin = async (req, email, userID, done) => {
 
 			if(result)
 			{
-				return req.logIn(user, err => {
+				return req.logIn(user, {session: false}, err => {
 					if(err)
-						done(err, null, {message: 'Could not log in'})
+						done(null, null, {message: 'Could not log in'})
 					else
-						done(null, user)
+					{
+						const data = {
+							username: user.dataValues.username,
+							email: user.dataValues.email,
+							contact: user.dataValues.contact,
+							wallet: user.dataValues.wallet,
+							progress: user.dataValues.progress,
+						}
+						const token = jwt.sign(data, secret, {expiresIn:604800});
+						// console.log(token);
+						done(null, user, {token: token})
+					}
 				})
 			}
 			else
@@ -163,13 +175,13 @@ const forgotPass = async (req, callback) => {
 				let transporter = nodemailer.createTransport({
 					service: 'gmail',
 					auth: {
-						user: 'kushag44@gmail.com',
-						pass: 'pencilssxZ4'
+						user: 'abc@gmail.com',
+						pass: 'password'
 					}
 				});
 
 				let mailOptions = {
-					from: 'kushag44@gmail.com',
+					from: 'abc@gmail.com',
 					to: email,
 					subject: 'Reset your password',
 					text: `This is your link - ${url}`
