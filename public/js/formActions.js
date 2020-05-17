@@ -63,7 +63,7 @@ function c5(e) {
 	})
 }
 
-function c8(e) {
+function c8(ref) {
 	let data=null;
 
 	$.ajax({
@@ -73,7 +73,10 @@ function c8(e) {
 	})
 	.done(res=> {
 		USD=res.price;
-		document.querySelector('input.c8').value=USD*50;
+		if(ref == 'c810')
+			document.querySelector('input.c810').value=USD*50;
+		else
+			document.querySelector('input.c811').value=USD*6000;
 	})
 }
 
@@ -109,7 +112,7 @@ export default function forms(c, p) {
 
 	else if(c==5 && p==11) setTimeout(function() {document.forms.c5.addEventListener('submit', c5, event)}, 600);
 	
-	else if(c==8 && p==10) setTimeout(c8, 600);
+	else if(c==8 && p==10) setTimeout(c8, 600, 'c810');
 
-	else if(c==8 && p==11) setTimeout(function() {console.log(document.querySelector('.c8')); document.querySelector('.c8').setAttribute('value', 6000*USD)}, 600);
+	else if(c==8 && p==11) setTimeout(c8, 600, 'c811');
 }

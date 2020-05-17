@@ -1,4 +1,3 @@
-;
 require('./config/passport.js');
 const mysql = require('mysql2');
 const express = require('express');
@@ -20,7 +19,7 @@ const port = process.env.PORT || 3000;
 
 const app = express();
 
-app.use(bearerToken());
+// app.use(bearerToken());
 app.use(helmet());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy({
@@ -49,7 +48,7 @@ app.use(express.static(path.join(__dirname, '/public')));
 // }));
 
 app.use(passport.initialize());
-app.use(passport.session());
+//app.use(passport.session());
 
 
 //process.env.GOOGLE_APPLICATION_CREDENTIALS = './config/g_auth.js';

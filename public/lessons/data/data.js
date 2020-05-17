@@ -802,7 +802,7 @@ export const chapter8 =
 		head: "Today, those 50 bitcoins given out as a reward are worth:",
 		body: `<input class="mx-2 my-4 input" placeholder='50' disabled>
 		<div style='display:inline'> Bitcoins  =  </div>
-		<input class="mx-2 my-4 input c8" placeholder='' disabled>
+		<input class="mx-2 my-4 input c810" disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page11:
@@ -815,7 +815,7 @@ export const chapter8 =
 		<input class="mx-2 my-4 input" placeholder='10000' disabled>
 		<div style='display:inline'> Bitcoins </div><br>
 		<div style='display:inline'> = </div>
-		<input class="mx-2 my-4 input c8" disabled>
+		<input class="mx-2 my-4 input c811" disabled>
 		<div style='display:inline'> USD  </div>`
 	},
 	page12:

@@ -6,15 +6,14 @@ let router = express.Router();
 router.post('/', passport.authenticate('jwt', {session: false}), async function(req, res, next) {
 
 	console.log("in progress/check");
+	console.log(req.user);
 	
 	if(req.user)
 	{
-		// let email = req.user.email;
-		// let user = await utility.getUser({ email });
 
 		if(req.body.chapter > req.user.progress)		
 		{
-			return res.send({err: 'Not permissible', msg: `You must attempt the chapters in serial order.<br> Currently, you are on <b>Chapter ${user.progress}</b>`});
+			return res.send({err: 'Not allowed', msg: `You must attempt the chapters in serial order.<br> Currently, you are on <b>Chapter ${req.user.progress}</b>`});
 		}
 		else
 		{

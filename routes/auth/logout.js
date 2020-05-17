@@ -4,8 +4,7 @@ let router = express.Router();
 
 router.get('/', function(req, res, next) {
 
-	req.logout();
-
+	res.cookie('zilId', '', {path: '/', maxAge: 0});
 	res.redirect('/lessons');
 })
 

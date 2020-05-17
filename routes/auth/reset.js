@@ -9,7 +9,7 @@ router.get('/:token', async function(req, res, next) {
 	let token = req.params.token;
 	console.log(token);
 
-	if(req.session && req.user)
+	if(req.user)
 	{
 		res.redirect('/lessons');
 	}

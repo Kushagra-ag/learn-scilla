@@ -1,12 +1,13 @@
 let Users = require('./db.js');
 const bcrypt = require('bcryptjs');
-const lookup = require('country-code-lookup');
-const phone = require('awesome-phonenumber');
 const nodemailer = require('nodemailer');
+const cryptoRandomString = require('crypto-random-string');
 const jwt = require('jsonwebtoken');
+const {google} = require("googleapis");
+const {gCred, jwtSecret} = require('../config/config.js');
 
 const saltRounds = 10;
-const secret = 'abcd';
+const OAuth2 = google.auth.OAuth2;
 
 const createUser = async ({ username, email, userID, gID }) => { 
 	return await Users.create({ username, email, userID, gID });
@@ -27,6 +28,24 @@ const updateUser = async (obj1, obj2) => {
 		obj1, obj2
 		);
 };
+
+const verifyToken = async (jwt_payload, done) => {
+	
+	const {email} = jwt_payload;
+	const user = await getUser({email});
+	
+	if(user) {
+		return done(null, jwt_payload)
+	}
+
+	return done(null, null)
+}
+
+const signToken = (data) => {
+
+	token = jwt.sign(data, jwtSecret);
+	return token
+}
 
 const verifyLogin = async (req, email, userID, done) => {
 	console.log("In verifyLogin");
@@ -51,8 +70,7 @@ const verifyLogin = async (req, email, userID, done) => {
 							wallet: user.dataValues.wallet,
 							progress: user.dataValues.progress,
 						}
-						const token = jwt.sign(data, secret, {expiresIn:604800});
-						// console.log(token);
+						const token = signToken(data);
 						done(null, user, {token: token})
 					}
 				})
@@ -105,27 +123,37 @@ const verifyReg = async (req, email, userID, done) => {
 const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 
 	console.log("In gAuth");
-	let obj = {'userID': profile.id};
 	console.log(profile);
+	let obj = {'userID': profile.id};
 
 	if(profile.email_verified)
 	{
 
 		let email = profile.email;
 
-		getUser({email}).then( user => {
-			
+		getUser({email})
+		.then(user => {
 			
 			if(user)
 			{
-				console.log("user existss");
 				return updateUser({gID: profile.id},{where: {email}})
-				.then(() => {console.log("usssser - ", user)
-					req.logIn(user, err => {
+				.then(() => {
+					req.logIn(user, {session: false}, err => {
 						if(err)
 							done(null, null, {message: 'Could not login1'})
 						else
-							done(null, user)
+						{
+							let data = {
+								username: user.dataValues.username,
+								email: user.dataValues.email,
+								contact: user.dataValues.contact,
+								wallet: user.dataValues.wallet,
+								progress: user.dataValues.progress,
+							}
+
+							const token = signToken(data);
+							done(null, user, {token})
+						}
 					})
 				})
 				.catch(err => done(null, null, {message: 'Could not login2'}))
@@ -136,7 +164,20 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 			return createUser({
 				username: profile.displayName, email: profile.email, gID
 			})
-			.then(user => done(null,user))
+			.then(user => 
+			{
+				console.log(user);
+				let data = {
+					username: user.dataValues.username,
+					email: user.dataValues.email,
+					contact: user.dataValues.contact,
+					wallet: user.dataValues.wallet,
+					progress: user.dataValues.progress,
+				}
+
+				const token = signToken(data);
+				done(null, user, {token})
+			})
 			.catch(err => done(null, null, {message: 'Could not create account'}));
 		})
 		.catch(err => done(null, null, {message: 'Could not login3'}));
@@ -150,16 +191,13 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 const forgotPass = async (req, callback) => {
 	console.log("in forgotPass");
 
-	let {email} = req.body;
+	let {email} = req.body, info={};
 
-
-	
 	getUser({ email })
 	.then(user => {
 
 		if(user)
 		{
-			console.log(user);
 			let rndm = Math.floor((Math.random()*5)+10);
 			let date = Buffer.from(Date.now().toString(), 'binary').toString('base64');
 			let id = Buffer.from(cryptoRandomString({length: rndm, type: 'base64'}), 'binary').toString('base64');
@@ -175,25 +213,28 @@ const forgotPass = async (req, callback) => {
 				let transporter = nodemailer.createTransport({
 					service: 'gmail',
 					auth: {
-						user: 'abc@gmail.com',
-						pass: 'password'
+						type: 'OAuth2',
+						user: 'kushag44@gmail.com', 
+						clientId: gCred.clientId,
+						clientSecret: gCred.clientSecret,
+						refreshToken: gCred.refreshToken,
 					}
 				});
 
 				let mailOptions = {
-					from: 'abc@gmail.com',
+					from: 'kushag44@gmail.com',
 					to: email,
 					subject: 'Reset your password',
 					text: `This is your link - ${url}`
 				};
 
-				transporter.sendMail(mailOptions, function(err, info){
+				transporter.sendMail(mailOptions, function(err, res){
 					if (err) {
 						console.log(err);
 						info.message = 'Cannot send email';
 						return callback(info)
 					} else {
-						console.log('Email sent: ' + info.response);
+						console.log('Email sent: ' + res.response);
 						info.success = 'An email has been sent to reset your password';
 						return callback(info);
 
@@ -247,10 +288,8 @@ const postResetPass = (req, token, callback) => {
 	getUser({resetPass: token})
 	.then(user => {
 		
-		//console.log(user);
 		if(user)
 		{
-			//console.log(req);
 			bcrypt.hash(req.body.pass, saltRounds)
 			.then(pass => {
 
@@ -282,8 +321,18 @@ const postResetPass = (req, token, callback) => {
 		info.message = 'Could not complete request';
 		return callback(info)
 	})
-	console.log("eend");
-	
 }
 
-module.exports = {createUser, getUser, updateUser, verifyLogin, verifyReg, gAuth, forgotPass, getResetPass, postResetPass};
+module.exports = {
+	createUser,
+	getUser,
+	updateUser,
+	signToken,
+	verifyToken,
+	verifyLogin,
+	verifyReg,
+	gAuth,
+	forgotPass,
+	getResetPass,
+	postResetPass
+};
