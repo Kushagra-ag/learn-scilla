@@ -8,7 +8,7 @@ let router = express.Router();
 router.get('/', function(req, res, next) {
 	console.log('arrived at login-get');
 	
-	if(req.session && req.user)
+	if(req.user)
 	{
 		return res.redirect('/lessons');
 	}

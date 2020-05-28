@@ -3,7 +3,7 @@ import forms, { _info } from './formActions.js';
 import chapters, { total } from '../lessons/index.js';
 import images from '../images/index.js';
 
-var his, w = window.innerWidth >= 768 ? true : false;
+var his, p=1, c=1, id=1, w = window.innerWidth >= 768 ? true : false;
 
 function contentUpdate(c, p, time) {
 
@@ -66,7 +66,8 @@ function showChapters(e) {
     let index = document.querySelector('.index');
     let containers = document.querySelectorAll('.content__container'),
         node;
-    let c = parseInt(e.currentTarget.dataset.chapter);
+    c = parseInt(e.currentTarget.dataset.chapter);
+    p = 1;
 
     $.ajax({
             type: 'POST',
@@ -79,6 +80,7 @@ function showChapters(e) {
         .done(res => {
 
             console.log('in done');
+            document.onkeyup = pageChange;
 
             if (res.err) {
                 console.log('shit');
@@ -134,6 +136,7 @@ function reset() {
 function hideChapters() {
     let ch = document.querySelector('.chapter__template');
     let index = document.querySelector('.index');
+    document.onkeyup = null;
 
     reset();
 
@@ -163,14 +166,12 @@ function hideIndex() {
     }, 1000);
 }
 
-function pageSelect(c, p, dir) {
+function pageSelect(dir) {
     if(dir == "up") {
         if(c == 0 && p == 0)
             return {c: -1, p: -1}
         else if(c == 1 && p == 1)
             return {c: 0, p: 0}
-        else if(c == 0 && p == 0)
-            return {c: 1, p: 1}
         else if(c == 2 && p == 1)
             return {c: 1, p: 4}
         else if(c == 3 && p == 1)
@@ -195,10 +196,7 @@ function pageSelect(c, p, dir) {
         else if(c == 2 && p == 20)
             return {c: 3, p: 1}
         else if(c == 3 && p == 11)
-            return {
-                c: 4,
-                p: 1
-            }
+            return {c: 4, p: 1}
         else if(c == 4 && p == 12)
             return {
                 c: 5,
@@ -215,15 +213,9 @@ function pageSelect(c, p, dir) {
                 p: 1
             }
         else if(c == 7 && p == 13)
-            return {
-                c: 8,
-                p: 1
-            }
+            return {c: 8, p: 1}
         else if(c == 8 && p == 23)
-            return {
-                c: 9,
-                p: 1
-            }
+            return {c: 9, p: 1}
         else if(c == 9 && p == 7)
             return {c: null, p: null}
         else
@@ -232,19 +224,27 @@ function pageSelect(c, p, dir) {
 }
 
 function pageChange(e) {
+    
+    let dir;
 
-    let elem = event.currentTarget;
-    let id = parseInt(elem.dataset.id);
-    let c = parseInt(elem.dataset.chapter);
-    let p = parseInt(elem.dataset.page);
-    let dir = elem.dataset.dir;
+    if(e.keyCode === 40) {
+        dir = 'down'
+    } else if(e.keyCode === 38){
+        dir = 'up'
+    } else if(!e.keyCode) {
+        let elem = event.currentTarget;
+        dir = elem.dataset.dir;
+    }
+
+    
+    console.log(c,p)
 
     let host = {
         chapter: c,
         page: p,
     };
 
-    ({c, p} = pageSelect(c, p, dir));
+    ({c, p} = pageSelect(dir));
 
     forms(c, p);
 
@@ -256,15 +256,15 @@ function pageChange(e) {
         page: p,
     }
 
-    let flag = orientSelect(c, p, dir) || 0;
+    let flag = orientSelect(dir) || 0;
 
-    if(dir == 'down')
-        showPageNext(host, target, id, flag);
+    if(dir === 'down')
+        showPageNext(host, target, flag);
     else
-        showPagePrev(host, target, id, flag);
+        showPagePrev(host, target, flag);
 }
 
-function orientSelect(c, p, dir) {
+function orientSelect(dir) {
     window.scrollTo(0, 0);
 
     let flag = 0;
@@ -297,7 +297,7 @@ function orientSelect(c, p, dir) {
     return flag;
 }
 
-function showPageNext(h, t, id, f) {
+function showPageNext(h, t, f) {
 
     let bar = document.querySelector('.progress');
     let host = document.querySelector(`.y[data-id='${id}']`);
@@ -334,6 +334,9 @@ function showPageNext(h, t, id, f) {
 
     if(last) {
         dest.querySelector('.page__control__down').style.zIndex = '-1';
+        document.onkeyup = null;
+    } else {
+        document.onkeyup = pageChange;
     }
 
 
@@ -349,7 +352,7 @@ function showPageNext(h, t, id, f) {
         host.querySelector('.content__container').style.display = "none";
     }, 600)
 
-    id = (id + 1) % 3;
+    id = (id + 1)%3;
     history.replaceState({
         h_chapter: h.chapter,
         h_page: h.page,
@@ -361,7 +364,7 @@ function showPageNext(h, t, id, f) {
     his = window.history.state;
 }
 
-function showPagePrev(h, t, id, f) {
+function showPagePrev(h, t, f) {
     
     let bar = document.querySelector('.progress');
     if(t.page == 0 && t.chapter == 0) {
@@ -413,6 +416,9 @@ function showPagePrev(h, t, id, f) {
 
     if(last) {
         dest.querySelector('.page__control__down').style.zIndex = '-1';
+        document.onkeyup = null;
+    } else {
+        document.onkeyup = pageChange;
     }
 
     node.style.display = "block";
@@ -425,7 +431,7 @@ function showPagePrev(h, t, id, f) {
 
     }, 600)
 
-    id = (id + 2) % 3;
+    id = (id + 2)%3;
     history.replaceState({
         h_chapter: h.chapter,
         t_chapter: t.chapter,

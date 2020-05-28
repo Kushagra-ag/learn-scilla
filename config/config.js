@@ -1,8 +1,9 @@
 const gCred = {
 	'clientId': 'YOUR_CLIENT_ID',
 	'clientSecret': 'CLIENT_SECRET',
-	refreshToken: 'REFRESH__TOKEN'
+	'refreshToken': 'REFRESH__TOKEN'
 	'callbackURL': 'CALLBACK'
+	
 }
 
 const cookie_config = {
