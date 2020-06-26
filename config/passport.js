@@ -4,7 +4,6 @@ const LocalStrategy = require('passport-local').Strategy;
 const BearerStrategy = require('passport-http-bearer').Strategy;
 const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const {verifyLogin, verifyReg, verifyToken, gAuth} =  require('../database/utility.js');
-const {gCred, jwtSecret} = require('./config.js');
 
 const ExtractJWT = passportJWT.ExtractJwt;
 const JWTStrategy   = passportJWT.Strategy;
@@ -16,9 +15,9 @@ const localFields = {
 };
 
 const gFields = {
-    clientID: gCred.clientId,
-    clientSecret: gCred.clientSecret,
-    callbackURL: gCred.callbackURL,
+    clientID: '71461848534-k80fcu7vd05pd90jhd52o93oqghb7tr7.apps.googleusercontent.com',
+    clientSecret: 'G9HF7euJp3-cTbwmWkWjRDkl',
+    callbackURL: 'http://localhost:3000/auth/api/auth/google/callback',
     scope: [
     'https://www.googleapis.com/auth/userinfo.profile',
     'https://www.googleapis.com/auth/userinfo.email'
@@ -37,7 +36,7 @@ let cookieExtractor = function(res) {
 
 const jwtFields = {
     jwtFromRequest: cookieExtractor,
-    secretOrKey   : jwtSecret
+    secretOrKey   : process.env.JWT_SECRET
 }
 
 passport.use('login', new LocalStrategy(localFields, verifyLogin));

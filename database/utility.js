@@ -3,14 +3,10 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const cryptoRandomString = require('crypto-random-string');
 const jwt = require('jsonwebtoken');
-const {google} = require("googleapis");
-const {gCred, jwtSecret} = require('../config/config.js');
+const saltRounds = 12;
 
-const saltRounds = 10;
-const OAuth2 = google.auth.OAuth2;
-
-const createUser = async ({ username, email, userID, gID }) => { 
-	return await Users.create({ username, email, userID, gID });
+const createUser = async ({ username, email, userID, gID, contact, country, resetPass, progress, wallet }) => { 
+	return await Users.create({ username, email, userID, gID, contact, country, resetPass, progress, wallet });
 };
 
 const getAllUsers = async () => {
@@ -43,7 +39,7 @@ const verifyToken = async (jwt_payload, done) => {
 
 const signToken = (data) => {
 
-	token = jwt.sign(data, jwtSecret);
+	token = jwt.sign(data, process.env.JWT_SECRET);
 	return token
 }
 
@@ -112,7 +108,7 @@ const verifyReg = async (req, email, userID, done) => {
 
 	userID = await bcrypt.hash(userID, saltRounds);
 
-	return createUser({username, email, contact, country, userID})
+	return createUser({username, email, userID, contact, country})
 	.then(user => done(null, user, {success: 'Your account has been created'}))
 	.catch(err => done(null, null, {message: 'Could not create account'}))
 
@@ -123,7 +119,8 @@ const verifyReg = async (req, email, userID, done) => {
 const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 
 	console.log("In gAuth");
-	console.log(profile);
+	console.log(process.env);
+	
 	let obj = {'userID': profile.id};
 
 	if(profile.email_verified)
@@ -178,7 +175,7 @@ const gAuth = async (req, accessToken, refreshToken, profile, done) => {
 				const token = signToken(data);
 				done(null, user, {token})
 			})
-			.catch(err => done(null, null, {message: 'Could not create account'}));
+			.catch(err => done(null, null, {message: err}));
 		})
 		.catch(err => done(null, null, {message: 'Could not login3'}));
 
@@ -215,9 +212,9 @@ const forgotPass = async (req, callback) => {
 					auth: {
 						type: 'OAuth2',
 						user: 'kushag44@gmail.com', 
-						clientId: gCred.clientId,
-						clientSecret: gCred.clientSecret,
-						refreshToken: gCred.refreshToken,
+						clientId: process.env.CLIENT_ID,
+						clientSecret: process.env.CLIENT_SECRET,
+						refreshToken: process.env.REFRESH_TOKEN,
 					}
 				});
 

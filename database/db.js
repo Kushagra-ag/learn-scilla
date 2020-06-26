@@ -1,12 +1,11 @@
 const seq = require('sequelize');
 const users = require('../models/users.js');
 
-
 let connection = new seq ({
-	database : 'DB_NAME',
-	username : 'USERNAME',
-	password : 'PASSWORD',
-	dialect : 'mysql',
+	database : process.env.DB,
+	username : process.env.DB_USERNAME,
+	password : process.env.DB_PASS,
+	dialect : process.env.DB_DIALECT
 });
 
 connection.authenticate()
