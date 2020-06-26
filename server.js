@@ -18,7 +18,6 @@ const port = process.env.PORT || 3000;
 
 
 const app = express();
-console.log(process.env);
 app.use(helmet());
 app.use(helmet.permittedCrossDomainPolicies());
 app.use(helmet.referrerPolicy({
