@@ -7,7 +7,7 @@ let router = express.Router();
 router.get('/:token', async function(req, res, next) {
 	console.log('at reset get');
 	let token = req.params.token;
-	console.log(token);
+	//console.log(token);
 
 	if(req.user)
 	{

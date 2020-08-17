@@ -1,6 +1,6 @@
 const cookie_config = {
 	maxAge: 604800000,		// 1 week
-	httpOnly: true,
+	HttpOnly: true,
 	signed: false,
 	path: '/'
 }

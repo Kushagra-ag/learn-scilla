@@ -3,7 +3,7 @@ const passport = require('passport');
 const express = require('express');
 let router = express.Router();
 
-router.post('/', passport.authenticate('jwt', {session: false}), async function(req, res, next) {
+router.post('/', passport.authenticate('jwt', {session: false}), function(req, res, next) {
 
 	console.log("in progress/check");
 	console.log(req.user);
