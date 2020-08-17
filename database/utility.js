@@ -211,7 +211,7 @@ const forgotPass = async (req, callback) => {
 					service: 'gmail',
 					auth: {
 						type: 'OAuth2',
-						user: 'kushag44@gmail.com', 
+						user: process.env.EMAIL, 
 						clientId: process.env.CLIENT_ID,
 						clientSecret: process.env.CLIENT_SECRET,
 						refreshToken: process.env.REFRESH_TOKEN,
